@@ -2,8 +2,7 @@
 import { RdRouter } from './router/index';
 
 const routing = [
-    { path: '/', component: 'app-home' },
-    { path: '/about', component: 'app-about' }
+    { path: '/', component: 'home-view' }
 ];
 
 const rdrouter = new RdRouter('#root', routing);

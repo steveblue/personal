@@ -4,7 +4,7 @@ import style from './home.scss';
 import template from './home.html';
 
 @Component({
-    selector: 'app-home',
+    selector: 'home-view',
     style: style,
     template: template,
 })
@@ -15,6 +15,6 @@ class HomeComponent extends CustomElement {
     }
 }
 
-customElements.define('app-home', HomeComponent);
+customElements.define('home-view', HomeComponent);
 
 export { HomeComponent };
