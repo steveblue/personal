@@ -108,7 +108,7 @@ function styleInject(css, ref) {
 var css = "[is=rd-button]{background:#181818;cursor:pointer;color:#fff;font-weight:700;padding:12px 8px;border-radius:4px}";
 styleInject(css);
 
-var template = "<h1>Home</h1>\n<button is=\"rd-button\"></button>\n";
+var template = "<h1>Hello World</h1>\n";
 
 let HomeComponent = class HomeComponent extends CustomElement {
     constructor() {
@@ -117,37 +117,16 @@ let HomeComponent = class HomeComponent extends CustomElement {
 };
 HomeComponent = __decorate([
     Component({
-        selector: 'app-home',
+        selector: 'home-view',
         style: css,
         template: template,
     }),
     __metadata("design:paramtypes", [])
 ], HomeComponent);
-customElements.define('app-home', HomeComponent);
-
-var css$1 = ":host{display:block;padding:8px;border-radius:8px;background:#de8f6e;color:#fff}";
-styleInject(css$1);
-
-var template$1 = "<h1>About</h1>\n<p>This page is about something.</p>\n";
-
-let AboutComponent = class AboutComponent extends CustomElement {
-    constructor() {
-        super();
-    }
-};
-AboutComponent = __decorate([
-    Component({
-        selector: 'app-about',
-        style: css$1,
-        template: template$1,
-    }),
-    __metadata("design:paramtypes", [])
-], AboutComponent);
-customElements.define('app-about', AboutComponent);
+customElements.define('home-view', HomeComponent);
 
 const routes = [
-    { path: '/', component: HomeComponent },
-    { path: '/about', component: AboutComponent }
+    { path: '/', component: HomeComponent }
 ];
 
 export { routes };

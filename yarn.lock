@@ -5202,13 +5202,6 @@ parcel-bundler@^1.12.4:
     v8-compile-cache "^2.0.0"
     ws "^5.1.1"
 
-parcel-plugin-css-to-string@^2.4.3:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/parcel-plugin-css-to-string/-/parcel-plugin-css-to-string-2.4.3.tgz#181ec5808984f60e27c0a0cf25953a724bc4284c"
-  integrity sha512-0cOGBnlthkSFA8E8Q5fetLS2MmIwbgDgoqtvS6yJFd5smGuCaE9g0XB3lK9UeImEsZUWaZnpKuhJKWA60cW0KA==
-  dependencies:
-    postcss-load-config "~2.x"
-
 parent-module@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/parent-module/-/parent-module-1.0.1.tgz#691d2709e78c79fae3a156622452d00762caaaa2"
@@ -5445,7 +5438,7 @@ postcss-discard-overridden@^4.0.1:
   dependencies:
     postcss "^7.0.0"
 
-postcss-load-config@^2.0.0, postcss-load-config@~2.x:
+postcss-load-config@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/postcss-load-config/-/postcss-load-config-2.1.0.tgz#c84d692b7bb7b41ddced94ee62e8ab31b417b003"
   integrity sha512-4pV3JJVPLd5+RueiVVB+gFOAa7GWc25XQcMp86Zexzke69mKf6Nx9LRcQywdz7yZI9n1udOxmLuAwTBypypF8Q==
