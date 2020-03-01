@@ -1,9 +1,9 @@
-
 // components
-export { RdButtonComponent } from './component/button';
-
 // views
-export { HomeComponent } from './view/home';
+import { HomeComponent, StageComponent, CardComponent } from './view/home';
 
 // router
-export { rdrouter } from './router';
+import { rdrouter } from './router';
+
+
+export { StageComponent, CardComponent, HomeComponent, rdrouter };

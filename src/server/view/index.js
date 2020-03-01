@@ -105,10 +105,68 @@ function styleInject(css, ref) {
   }
 }
 
-var css = "[is=rd-button]{background:#181818;cursor:pointer;color:#fff;font-weight:700;padding:12px 8px;border-radius:4px}";
+var css = ":host{position:absolute;display:block;transform-origin:50% 50%;width:100%;height:100%}";
 styleInject(css);
 
-var template = "<h1>Hello World</h1>\n";
+var template = "<slot></slot>";
+
+let CardComponent = class CardComponent extends CustomElement {
+    constructor() {
+        super();
+        this.timeline = [
+            { transform: 'translate3D(50%, 50%, -10000px)', opacity: '0' },
+            { transform: 'translate3D(50%, 50%, 0px)', opacity: '1' }
+        ];
+        this.timing = {
+            fill: 'forwards',
+            easing: 'ease-out',
+            duration: 4000
+        };
+    }
+    connectedCallback() {
+        if (this.animate) {
+            const elem = this;
+            const anim = elem.animate(this.timeline, this.timing);
+            anim.play();
+        }
+    }
+};
+CardComponent = __decorate([
+    Component({
+        selector: 'v-card',
+        style: css,
+        template: template,
+    }),
+    __metadata("design:paramtypes", [])
+], CardComponent);
+customElements.define('v-card', CardComponent);
+
+var css$1 = ":host{display:block;perspective:1000px;width:100vw;height:100vh}";
+styleInject(css$1);
+
+var template$1 = "<slot></slot>";
+
+let StageComponent = class StageComponent extends CustomElement {
+    constructor() {
+        super();
+    }
+    connectedCallback() {
+    }
+};
+StageComponent = __decorate([
+    Component({
+        selector: 'v-stage',
+        style: css$1,
+        template: template$1,
+    }),
+    __metadata("design:paramtypes", [])
+], StageComponent);
+customElements.define('v-stage', StageComponent);
+
+var css$2 = ":host{display:block;width:100vw;height:100vh}v-portal{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%)}";
+styleInject(css$2);
+
+var template$2 = "<v-stage>\n    <v-card>\n        <div class=\"i--center\">\n            <h1>Hello World!</h1>\n        </div>\n    </v-card>\n</v-stage>";
 
 let HomeComponent = class HomeComponent extends CustomElement {
     constructor() {
@@ -118,8 +176,8 @@ let HomeComponent = class HomeComponent extends CustomElement {
 HomeComponent = __decorate([
     Component({
         selector: 'home-view',
-        style: css,
-        template: template,
+        style: css$2,
+        template: template$2,
     }),
     __metadata("design:paramtypes", [])
 ], HomeComponent);
@@ -129,4 +187,4 @@ const routes = [
     { path: '/', component: HomeComponent }
 ];
 
-export { routes };
+export { CardComponent, StageComponent, routes };

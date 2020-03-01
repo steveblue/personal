@@ -1,7 +1,7 @@
-import { HomeComponent } from './app/view/home';
+import { StageComponent, CardComponent, HomeComponent } from './app/view/home';
 
 const routes = [
     { path: '/', component: HomeComponent }
 ];
 
-export { routes };
+export { StageComponent, CardComponent, routes };

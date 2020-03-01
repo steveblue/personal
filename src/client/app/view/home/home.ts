@@ -9,7 +9,6 @@ import template from './home.html';
     template: template,
 })
 class HomeComponent extends CustomElement {
-
     constructor() {
         super();
     }

@@ -1,11 +1,6 @@
-@import "theme/card";
-
 :host {
     display: block;
     width: 100vw;
     height: 100vh;
-}
-
-.i--center {
-    @include i--center;
+    perspective: 1000px;
 }
