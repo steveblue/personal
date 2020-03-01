@@ -1,5 +1,7 @@
 import { CustomElement, Component } from '@readymade/core';
 
+import { zoomAnimation, animate, AnimationPlayer } from './../../util/anim';
+
 import style from './card.scss';
 import template from './card.html';
 
@@ -10,16 +12,7 @@ import template from './card.html';
 })
 class CardComponent extends CustomElement {
 
-    private timeline: any = [
-        { transform: 'translate3D(50%, 50%, -100px)', opacity: '0'},
-        { transform: 'translate3D(50%, 50%, 0px)', opacity: '1' }
-    ];
-
-    private timing: any = {
-        fill: 'forwards',
-        easing: 'ease-in',
-        duration: 1000
-    };
+    private player: AnimationPlayer | undefined;
 
     constructor() {
         super();
@@ -27,12 +20,8 @@ class CardComponent extends CustomElement {
 
     connectedCallback() {
         if (this.animate) {
-            const elem = this as HTMLElement;
-            const anim = elem.animate(
-                this.timeline,
-                this.timing
-            );
-            anim.play();
+           this.player = animate(this, zoomAnimation);
+           this.player.play();
         }
      }
 }
