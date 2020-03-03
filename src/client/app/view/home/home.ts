@@ -1,4 +1,4 @@
-import { CustomElement, Component } from '@readymade/core';
+import { CustomElement, Component, State } from '@readymade/core';
 
 import style from './home.scss';
 import template from './home.html';
@@ -11,6 +11,12 @@ import template from './home.html';
 class HomeComponent extends CustomElement {
     constructor() {
         super();
+    }
+    @State()
+    getState() {
+      return {
+        scale: 0.25
+      }
     }
 }
 

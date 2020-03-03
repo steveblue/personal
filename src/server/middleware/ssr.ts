@@ -10,6 +10,7 @@ const { routes } = require('./../view/index.js');
 
 const indexPath = path.resolve(process.cwd(), "dist", "client", "index.html");
 
+
 export default async (req, res) => {
     let template = class { };
     const dom = fs.readFileSync(indexPath).toString();
