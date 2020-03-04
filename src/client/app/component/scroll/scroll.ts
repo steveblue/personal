@@ -109,7 +109,6 @@ class ScrollSync extends CustomElement {
         }
     }
 
-    @Emitter('start', {}, 'scroll')
     @Listen('touchstart')
     private handleTouchStart(event: ScrollTouchEvent) {
 
@@ -221,7 +220,6 @@ class ScrollSync extends CustomElement {
         }), 'scroll');
     }
 
-    @Emitter('end', {}, 'scroll')
     @Listen('touchend')
     private handleTouchEnd(event: ScrollTouchEvent) {
         this.payload.type = 'end';
