@@ -15,7 +15,7 @@ class HomeComponent extends CustomElement {
     @State()
     getState() {
       return {
-        scale: 0.25
+        scale: 1.0
       }
     }
 }
