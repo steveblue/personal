@@ -60,7 +60,7 @@ class ScrollSync extends CustomElement {
         super();
         this.options = {
             direction: 1,
-            preventDefault: false,
+            preventDefault: true,
             lineHeight: 16,
             scale: 1,
             velocitySampleLength: 10
