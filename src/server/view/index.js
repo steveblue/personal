@@ -381,15 +381,15 @@ class CustomElement extends HTMLElement {
     }
 }
 
-const zoomAnimation = {
+const zoomInAnimation = {
     keyframes: [
-        { transform: 'translate3D(50%, 50%, -100px)', opacity: '0' },
-        { transform: 'translate3D(50%, 50%, 0px)', opacity: '1' }
+        { transform: 'translate3D(50%, 50%, -50px)', opacity: '0.2', zIndex: '-10' },
+        { transform: 'translate3D(50%, 50%, 0px)', opacity: '1', zIndex: '0' }
     ],
     options: {
-        fill: 'forwards',
+        fill: 'both',
         easing: 'ease-in',
-        duration: 1000
+        duration: 500
     }
 };
 
@@ -409,7 +409,18 @@ class AnimationPlayer {
     constructor(elem, animation) {
         this.elem = elem;
         this.animation = animation;
-        this.player = this.elem.animate(animation.keyframes, animation.options ? animation.options : {});
+        if (this.elem.animate) {
+            this.player = this.elem.animate(animation.keyframes, animation.options ? animation.options : {});
+        }
+        else {
+            this.player = {
+                cancel: () => { },
+                play: () => { },
+                pause: () => { },
+                finish: () => { },
+                reverse: () => { }
+            };
+        }
     }
     cancel() {
         this.player.cancel();
@@ -458,7 +469,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css = ":host{position:absolute;display:block;left:50%;top:50%;transform:translateX(-50%) translateY(-50%);transform-origin:50vw 50vh}";
+var css = ":host{display:block;opacity:0;border-radius:6px;border:1px solid var(--font-color);width:640px;height:480px;position:absolute;left:50%;top:50%;transform:translate3D(-50%,-50%,0);transform-origin:50% 50%;background-color:var(--body-color)}@media screen and (max-width:640px){:host{width:300px;height:320px;left:0}}";
 styleInject(css);
 
 var template = "<div class=\"v__card\">\n    <slot></slot>\n</div>";
@@ -466,27 +477,53 @@ var template = "<div class=\"v__card\">\n    <slot></slot>\n</div>";
 let CardComponent = class CardComponent extends CustomElement {
     constructor() {
         super();
-        this.in = zoomAnimation;
+        this.multiplier = 1500;
+        this.index = 0;
+        this.direction = 'forwards';
+        this.in = zoomInAnimation;
         this.animations = {
-            'zoom': zoomAnimation,
+            'zoomIn': zoomInAnimation,
             'slideUp': slideUpAnimation
         };
+        this.animIn = animate(this, this.in);
+        this.currentIndex = 0;
     }
-    static get observedAttributes() { return ['in']; }
+    static get observedAttributes() { return ['in', 'out', 'index']; }
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'in' && this.animations[newValue]) {
             this.in = this.animations[newValue];
+            this.animIn = animate(this, this.in);
+            this.animIn.pause();
+        }
+        if (name === 'index') {
+            this.index = parseInt(newValue, 10);
         }
     }
     connectedCallback() {
-        if (this.animate && this.getAttribute('in')) {
-            this.player = animate(this, this.in);
-            this.player.play();
+        if (this.getAttribute('in') && this.getAttribute('index') === '0') {
+            this.animIn.play();
         }
     }
     onScroll(ev) {
         const payload = ev.detail;
-        console.log(payload);
+        const index = Math.floor(payload.position / this.multiplier) * -1;
+        if (index !== this.currentIndex) {
+            this.currentIndex = index;
+            if (this.index === index) {
+                if (this.direction === 'backwards') {
+                    this.direction = 'forwards';
+                    this.animIn.reverse();
+                }
+                this.animIn.play();
+            }
+            else if ((index === this.index + 1 || index === this.index - 1)) {
+                if (this.direction === 'forwards') {
+                    this.direction = 'backwards';
+                    this.animIn.reverse();
+                }
+                this.animIn.play();
+            }
+        }
     }
 };
 __decorate([
@@ -505,7 +542,7 @@ CardComponent = __decorate([
 ], CardComponent);
 customElements.define('v-card', CardComponent);
 
-var css$1 = ":host{display:block;width:100%;height:100%;perspective:1000px}";
+var css$1 = ":host{display:block;position:relative;width:0;height:0%;perspective:1000px}";
 styleInject(css$1);
 
 var template$1 = "<slot></slot>";
@@ -543,7 +580,7 @@ let ScrollSync = class ScrollSync extends CustomElement {
         this.inProgress = false;
         this.options = {
             direction: 1,
-            preventDefault: false,
+            preventDefault: true,
             lineHeight: 16,
             scale: 1,
             velocitySampleLength: 10
@@ -765,7 +802,6 @@ let ScrollSync = class ScrollSync extends CustomElement {
     }
 };
 __decorate([
-    Emitter('start', {}, 'scroll'),
     Listen('touchstart'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -779,7 +815,6 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ScrollSync.prototype, "handleTouchMove", null);
 __decorate([
-    Emitter('end', {}, 'scroll'),
     Listen('touchend'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -804,7 +839,7 @@ customElements.define('v-scroll-sync', ScrollSync);
 var css$3 = ":host{display:block;width:100vw;height:100vh}.i--center{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);text-align:center}";
 styleInject(css$3);
 
-var template$3 = "<v-scroll-sync scale=\"{{scale}}\">\n    <v-stage>\n        <v-card in=\"zoom\">\n            <div class=\"i--center\">\n                <h1>Hello World!</h1>\n            </div>\n        </v-card>\n    </v-stage>\n</v-scroll>";
+var template$3 = "<v-scroll-sync scale=\"{{scale}}\">\n    <v-stage>\n        <v-card in=\"zoomIn\" index=\"0\">\n            <div class=\"i--center\">\n                <h1>Hello There!</h1>\n            </div>\n        </v-card>\n        <v-card in=\"zoomIn\" index=\"1\">\n            <div class=\"i--center\">\n                <h1>1</h1>\n            </div>\n        </v-card>\n        <v-card in=\"zoomIn\" index=\"2\">\n            <div class=\"i--center\">\n                <h1>2</h1>\n            </div>\n        </v-card>\n        <v-card in=\"zoomIn\" index=\"3\">\n            <div class=\"i--center\">\n                <h1>3</h1>\n            </div>\n        </v-card>\n    </v-stage>\n</v-scroll>";
 
 let HomeComponent = class HomeComponent extends CustomElement {
     constructor() {
@@ -812,7 +847,7 @@ let HomeComponent = class HomeComponent extends CustomElement {
     }
     getState() {
         return {
-            scale: 0.25
+            scale: 1.0
         };
     }
 };

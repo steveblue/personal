@@ -3,15 +3,25 @@ import { WebAnimation } from "./interface";
 export class AnimationPlayer {
     public elem: HTMLElement | SVGElement;
     public animation: WebAnimation;
-    public player: Animation;
+    public player: Animation | any;
     constructor(elem: HTMLElement | SVGElement,
                 animation: WebAnimation) {
         this.elem = elem;
         this.animation = animation;
-        this.player = this.elem.animate(
-            animation.keyframes,
-            animation.options ? animation.options : {}
-        );
+        if (this.elem.animate) {
+            this.player = this.elem.animate(
+                animation.keyframes,
+                animation.options ? animation.options : {}
+            );
+        } else {
+            this.player = {
+                cancel: () => {},
+                play: () => {},
+                pause: () => {},
+                finish: () => {},
+                reverse: () => {}
+            };
+        }
     }
     cancel() {
         this.player.cancel();
