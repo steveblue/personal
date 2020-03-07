@@ -716,7 +716,7 @@ let ScrollSync = class ScrollSync extends CustomElement {
     }
     handleTouchEnd(event) {
         this.payload.type = 'end';
-        this.emitter.broadcast(new CustomEvent('end', {
+        this.emitter.broadcast(new CustomEvent('update', {
             detail: this.payload
         }), 'scroll');
     }
@@ -795,6 +795,7 @@ let ScrollSync = class ScrollSync extends CustomElement {
         this.payload.position = this.position;
         this.payload.timestamp = Date.now();
         this.payload.slip = true;
+        this.payload.type = 'update';
         this.history.push(this.payload);
         this.emitter.broadcast(new CustomEvent('update', {
             detail: this.payload
@@ -836,10 +837,83 @@ ScrollSync = __decorate([
 ], ScrollSync);
 customElements.define('v-scroll-sync', ScrollSync);
 
-var css$3 = ":host{display:block;width:100vw;height:100vh}.i--center{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);text-align:center}";
+var css$3 = ":host{display:block;position:relative;width:100vw;height:40000px}";
 styleInject(css$3);
 
-var template$3 = "<v-scroll-sync scale=\"{{scale}}\">\n    <v-stage>\n        <v-card in=\"zoomIn\" index=\"0\">\n            <div class=\"i--center\">\n                <h1>Hello There!</h1>\n            </div>\n        </v-card>\n        <v-card in=\"zoomIn\" index=\"1\">\n            <div class=\"i--center\">\n                <h1>1</h1>\n            </div>\n        </v-card>\n        <v-card in=\"zoomIn\" index=\"2\">\n            <div class=\"i--center\">\n                <h1>2</h1>\n            </div>\n        </v-card>\n        <v-card in=\"zoomIn\" index=\"3\">\n            <div class=\"i--center\">\n                <h1>3</h1>\n            </div>\n        </v-card>\n    </v-stage>\n</v-scroll>";
+var template$3 = "<slot></slot>";
+
+let ScrollView = class ScrollView extends CustomElement {
+    constructor() {
+        super();
+        this.transform = '';
+        this.transform = `matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1.0)`;
+    }
+    connectedCallback() {
+        this.style.transform = this.transform;
+    }
+    onScroll(ev) {
+        const payload = ev.detail;
+        this.transform = `matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,${payload.position},0,1.0)`;
+        this.style.transform = this.transform;
+    }
+};
+__decorate([
+    Listen('update', 'scroll'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [CustomEvent]),
+    __metadata("design:returntype", void 0)
+], ScrollView.prototype, "onScroll", null);
+ScrollView = __decorate([
+    Component({
+        selector: 'v-scroll-view',
+        style: css$3,
+        template: template$3,
+    }),
+    __metadata("design:paramtypes", [])
+], ScrollView);
+customElements.define('v-scroll-view', ScrollView);
+
+var css$4 = ":host{display:flex;width:100vw;height:640px;justify-content:center;align-items:center}";
+styleInject(css$4);
+
+var template$4 = "<slot></slot>";
+
+let SectionComponent = class SectionComponent extends CustomElement {
+    constructor() {
+        super();
+        this.hasInit = false;
+    }
+    connectedCallback() {
+        if (observer$) {
+            observer$.observe(this);
+        }
+    }
+    onIntersect(ev) {
+        if (ev.index === this.getAttribute('data-index')) {
+            console.log(ev, ev.index, this.getAttribute('data-index'));
+        }
+    }
+};
+__decorate([
+    Listen('entry', 'main'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], SectionComponent.prototype, "onIntersect", null);
+SectionComponent = __decorate([
+    Component({
+        selector: 'v-section',
+        style: css$4,
+        template: template$4,
+    }),
+    __metadata("design:paramtypes", [])
+], SectionComponent);
+customElements.define('v-section', SectionComponent);
+
+var css$5 = ":host{display:block;width:100vw;height:100vh}.i--center{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);text-align:center}";
+styleInject(css$5);
+
+var template$5 = "<v-scroll-sync scale=\"{{scale}}\">\n    <v-stage>\n        <v-scroll-view>\n            <v-section data-index=\"1\">1</v-section>\n            <v-section data-index=\"2\">2</v-section>\n            <v-section data-index=\"3\">3</v-section>\n            <v-section data-index=\"4\">4</v-section>\n            <v-section data-index=\"5\">5</v-section>\n            <v-section data-index=\"6\">6</v-section>\n            <v-section data-index=\"7\">7</v-section>\n            <v-section data-index=\"8\">8</v-section>\n        </v-scroll-view>\n    </v-stage>\n</v-scroll>";
 
 let HomeComponent = class HomeComponent extends CustomElement {
     constructor() {
@@ -860,8 +934,8 @@ __decorate([
 HomeComponent = __decorate([
     Component({
         selector: 'home-view',
-        style: css$3,
-        template: template$3,
+        style: css$5,
+        template: template$5,
     }),
     __metadata("design:paramtypes", [])
 ], HomeComponent);
@@ -869,8 +943,11 @@ customElements.define('home-view', HomeComponent);
 
 function BroadcastChannel$1(channel) { }
 global['BroadcastChannel'] = BroadcastChannel$1;
+global['observer$'] = {
+    observe: () => { }
+};
 const routes = [
     { path: '/', component: HomeComponent }
 ];
 
-export { CardComponent, ScrollSync, StageComponent, routes };
+export { CardComponent, ScrollSync, ScrollView, SectionComponent, StageComponent, routes };
