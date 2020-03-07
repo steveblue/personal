@@ -223,7 +223,7 @@ class ScrollSync extends CustomElement {
     @Listen('touchend')
     private handleTouchEnd(event: ScrollTouchEvent) {
         this.payload.type = 'end';
-        this.emitter.broadcast(new CustomEvent('end', {
+        this.emitter.broadcast(new CustomEvent('update', {
             detail: this.payload
         }), 'scroll');
     }
@@ -313,6 +313,7 @@ class ScrollSync extends CustomElement {
         this.payload.position = this.position;
         this.payload.timestamp = Date.now();
         this.payload.slip = true;
+        this.payload.type = 'update';
         this.history.push(this.payload);
         this.emitter.broadcast(new CustomEvent('update', {
             detail: this.payload

@@ -1,4 +1,5 @@
 // components
+
 // views
 import { HomeComponent, StageComponent, ScrollSync, CardComponent } from './view/home';
 
