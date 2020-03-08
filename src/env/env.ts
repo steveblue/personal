@@ -1,4 +1,4 @@
 export interface Env {
-    browser: boolean;
-    server: boolean;
+  browser: boolean;
+  server: boolean;
 }

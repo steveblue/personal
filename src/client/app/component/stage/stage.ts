@@ -4,19 +4,16 @@ import style from './stage.scss';
 import template from './stage.html';
 
 @Component({
-    selector: 'v-stage',
-    style: style,
-    template: template,
+  selector: 'v-stage',
+  style: style,
+  template: template
 })
 class StageComponent extends CustomElement {
+  constructor() {
+    super();
+  }
 
-    constructor() {
-        super();
-    }
-
-    connectedCallback() {
-
-    }
+  connectedCallback() {}
 }
 
 customElements.define('v-stage', StageComponent);

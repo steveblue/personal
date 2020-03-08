@@ -4,31 +4,31 @@ import style from './section.scss';
 import template from './section.html';
 
 declare global {
-    interface Window { observer$: IntersectionObserver; }
+  interface Window {
+    observer$: IntersectionObserver;
+  }
 }
 
 @Component({
-    selector: 'v-section',
-    style: style,
-    template: template,
+  selector: 'v-section',
+  style: style,
+  template: template
 })
 class SectionComponent extends CustomElement {
+  constructor() {
+    super();
+  }
 
-    constructor() {
-        super();
+  connectedCallback() {
+    if (window && window.observer$) {
+      window.observer$.observe(this);
     }
+  }
 
-    connectedCallback() {
-        if (window && window.observer$) {
-            window.observer$.observe(this);
-        }
-    }
-
-    @Listen('entry')
-    onIntersect(ev: any) {
-        console.log('bang!', ev.detail);
-    }
-
+  @Listen('entry')
+  onIntersect(ev: any) {
+    console.log('bang!', ev.detail);
+  }
 }
 
 customElements.define('v-section', SectionComponent);

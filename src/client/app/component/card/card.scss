@@ -1,22 +1,22 @@
 :host {
-    display: block;
-    opacity: 0;
-    border-radius: 6px;
-    border: 1px solid var(--font-color);
-    width: 640px;
-    height: 480px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate3D(-50%, -50%, 0px);
-    transform-origin: 50% 50%;
-    background-color: var(--body-color);
+  display: block;
+  opacity: 0;
+  border-radius: 6px;
+  border: 1px solid var(--font-color);
+  width: 640px;
+  height: 480px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3D(-50%, -50%, 0px);
+  transform-origin: 50% 50%;
+  background-color: var(--body-color);
 }
 
 @media screen and (max-width: 640px) {
-    :host {
-        width: 300px;
-        height: 320px;
-        left: 0%;
-    }
+  :host {
+    width: 300px;
+    height: 320px;
+    left: 0%;
+  }
 }

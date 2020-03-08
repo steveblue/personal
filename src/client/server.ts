@@ -1,14 +1,25 @@
 function BroadcastChannel(channel) {}
 global['BroadcastChannel'] = BroadcastChannel;
 global['observer$'] = {
-    observe: () => {}
+  observe: () => {}
 };
 
+import {
+  StageComponent,
+  CardComponent,
+  ScrollSync,
+  ScrollView,
+  SectionComponent,
+  HomeComponent
+} from './app/view/home';
 
-import { StageComponent, CardComponent, ScrollSync, ScrollView, SectionComponent, HomeComponent } from './app/view/home';
+const routes = [{ path: '/', component: HomeComponent }];
 
-const routes = [
-    { path: '/', component: HomeComponent }
-];
-
-export { StageComponent, CardComponent, ScrollSync, ScrollView, SectionComponent, routes };
+export {
+  StageComponent,
+  CardComponent,
+  ScrollSync,
+  ScrollView,
+  SectionComponent,
+  routes
+};

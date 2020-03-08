@@ -1,8 +1,8 @@
-import { Env } from "./env";
+import { Env } from './env';
 
 const environment: Env = {
-    browser: false,
-    server: true
-}
+  browser: false,
+  server: true
+};
 
 export { environment };

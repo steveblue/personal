@@ -5,29 +5,28 @@ import template from './scroll-view.html';
 import { ScrollPayload } from './scroll';
 
 @Component({
-    selector: 'v-scroll-view',
-    style: style,
-    template: template,
+  selector: 'v-scroll-view',
+  style: style,
+  template: template
 })
 class ScrollView extends CustomElement {
+  transform: string = '';
 
-    transform: string = ''
+  constructor() {
+    super();
+    this.transform = `matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1.0)`;
+  }
 
-    constructor() {
-        super();
-        this.transform = `matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1.0)`;
-    }
+  connectedCallback() {
+    this.style.transform = this.transform;
+  }
 
-    connectedCallback() {
-        this.style.transform = this.transform;
-    }
-
-     @Listen('update', 'scroll')
-     onScroll(ev: CustomEvent) {
-         const payload = ev.detail as ScrollPayload;
-         this.transform = `matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,${payload.position},0,1.0)`;
-         this.style.transform = this.transform;
-     }
+  @Listen('update', 'scroll')
+  onScroll(ev: CustomEvent) {
+    const payload = ev.detail as ScrollPayload;
+    this.transform = `matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,${payload.position},0,1.0)`;
+    this.style.transform = this.transform;
+  }
 }
 
 customElements.define('v-scroll-view', ScrollView);
