@@ -1,13 +1,9 @@
 // global
-const channel = new BroadcastChannel('main');
 window['observer$'] = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
-    if(entry.isIntersecting){
-        channel.postMessage({
-            type: 'entry',
-            index: entry.target.getAttribute('data-index')
-        });
-        observer.unobserve(entry.target);
-    }
+        if (entry.isIntersecting === true){
+            observer.unobserve(entry.target);
+            entry.target.dispatchEvent( new CustomEvent('entry', { detail: { type: 'entry', index: entry.target.getAttribute('data-index') } }))
+        }
     });
 }, { rootMargin: '0px 0px 0px 0px' });

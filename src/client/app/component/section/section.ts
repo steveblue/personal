@@ -3,7 +3,9 @@ import { CustomElement, Component, Listen } from '@readymade/core';
 import style from './section.scss';
 import template from './section.html';
 
-declare var observer$: IntersectionObserver;
+declare global {
+    interface Window { observer$: IntersectionObserver; }
+}
 
 @Component({
     selector: 'v-section',
@@ -12,23 +14,19 @@ declare var observer$: IntersectionObserver;
 })
 class SectionComponent extends CustomElement {
 
-    private hasInit: boolean = false;
-
     constructor() {
         super();
     }
 
     connectedCallback() {
-        if (observer$) {
-            observer$.observe(this);
+        if (window && window.observer$) {
+            window.observer$.observe(this);
         }
     }
 
-    @Listen('entry', 'main')
+    @Listen('entry')
     onIntersect(ev: any) {
-        if (ev.index === this.getAttribute('data-index')) {
-            console.log(ev, ev.index, this.getAttribute('data-index'));
-        }
+        console.log('bang!', ev.detail);
     }
 
 }
