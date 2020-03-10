@@ -1,7 +1,10 @@
 @import 'theme/card';
+
 :root {
   --body-color: rgba(20, 20, 20, 1);
   --font-color: rgba(210, 210, 210, 1);
+  --headline-font: 'Rubik', sans-serif;
+  --body-font: 'Fira Sans', sans-serif;
 }
 
 body {

@@ -1,0 +1,47 @@
+:host {
+    position: relative;
+    display: flex;
+    width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    .profile__avatar {
+        display: inline-block;
+        position: relative;
+        clip-path: polygon(10% 0, 100% 65%, 20% 100%);
+        width: 320px;
+        height: 320px;
+        background: var(--font-color);
+        box-sizing: border-box;
+        img {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 320px;
+            height: 320px;
+            clip-path: polygon(10% 0, 100% 65%, 20% 100%);
+            background: var(--body-color);
+            box-sizing: border-box;
+        }
+    }
+    .profile__description {
+        color: var(--font-color);
+        margin-left: 40px;
+        h1 {
+            display: block;
+            position: relative;
+            font-family: var(--headline-font);
+            font-size: 72px;
+            font-weight: 700;
+            font-style: italic;
+            transform: rotate3d(0px, 32px);
+        }
+        p {
+            display: block;
+            position: relative;
+            font-family: var(--body-font);
+            font-size: 28px;
+            font-weight: 400;
+            transform: rotate(0px, 32px);
+        }
+    }
+}

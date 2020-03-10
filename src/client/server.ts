@@ -10,6 +10,7 @@ import {
   ScrollSync,
   ScrollView,
   SectionComponent,
+  ProfileComponent,
   HomeComponent
 } from './app/view/home';
 
@@ -21,5 +22,6 @@ export {
   ScrollSync,
   ScrollView,
   SectionComponent,
+  ProfileComponent,
   routes
 };
