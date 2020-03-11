@@ -1,0 +1,35 @@
+$phone-width: 320px;
+$portrait-width: 768px;
+$landscape-width: 1024px;
+$desktop-width: 1360px;
+$monitor-width: 1880px;
+
+@mixin phone {
+    @media (max-width: #{$portrait-width - 1px}) {
+      @content;
+    }
+}
+
+@mixin portrait {
+    @media (min-width: #{$portrait-width}) and (max-width: #{$landscape-width - 1px}) {
+      @content;
+    }
+}
+
+@mixin landscape {
+    @media (min-width: #{$landscape-width}) and (max-width: #{$desktop-width - 1px}) {
+      @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop-width}) and (max-width: #{$monitor-width - 1px}) {
+      @content;
+    }
+}
+
+@mixin monitor {
+    @media (min-width: #{$monitor-width}) {
+      @content;
+    }
+}

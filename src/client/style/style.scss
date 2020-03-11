@@ -3,8 +3,9 @@
 :root {
   --body-color: rgba(20, 20, 20, 1);
   --font-color: rgba(210, 210, 210, 1);
-  --headline-font: 'Rubik', sans-serif;
-  --body-font: 'Fira Sans', sans-serif;
+  --cta-color: #FF2D55;
+  --headline-font: 'Exo 2', sans-serif;
+  --body-font: 'Lato', sans-serif;
 }
 
 body {
@@ -16,4 +17,8 @@ body {
   color: var(--font-color);
   max-height: 100vh;
   overflow: scroll;
+}
+
+a:link, a:visited {
+  color: var(--cta-color);
 }
