@@ -384,11 +384,11 @@ class CustomElement extends HTMLElement {
 const zoomInAnimation = {
     keyframes: [
         {
-            transform: 'translate3D(50%, 50%, -50px)',
-            opacity: '0.2',
+            transform: 'translate3D(-50%, 0%, -50px)',
+            opacity: '0',
             zIndex: '-10'
         },
-        { transform: 'translate3D(50%, 50%, 0px)', opacity: '1', zIndex: '0' }
+        { transform: 'translate3D(-50%, 0%, 0px)', opacity: '1', zIndex: '0' }
     ],
     options: {
         fill: 'both',
@@ -880,7 +880,7 @@ ScrollView = __decorate([
 ], ScrollView);
 customElements.define('v-scroll-view', ScrollView);
 
-var css$4 = ":host{display:flex;width:100vw;margin-top:60px}";
+var css$4 = ":host{display:flex;width:100vw;margin-top:60px;perspective:1000px}";
 styleInject(css$4);
 
 var template$4 = "<slot></slot>\n";
@@ -914,18 +914,106 @@ SectionComponent = __decorate([
 ], SectionComponent);
 customElements.define('v-section', SectionComponent);
 
-var css$5 = ":host{position:relative;display:flex}:host .profile__avatar{background:var(--font-color)}:host .profile__avatar,:host .profile__avatar img{-webkit-clip-path:polygon(5% 0,100% 60%,20% 100%);clip-path:polygon(5% 0,100% 60%,20% 100%);box-sizing:border-box}:host .profile__avatar img{position:absolute;top:2px;left:2px;width:320px;height:320px;background:var(--body-color)}:host .profile__description{color:var(--font-color)}:host .profile__description h1{display:block;position:relative;font-family:var(--headline-font);font-size:74px;font-weight:900;transform:rotate3d(0,32px);-webkit-margin-before:0;margin-block-start:0;-webkit-margin-after:0;margin-block-end:0}:host .profile__description p{display:block;position:relative;font-family:var(--body-font);font-size:28px;font-weight:400;transform:rotate(0,32px);-webkit-margin-before:.5em;margin-block-start:.5em;-webkit-margin-after:1em;margin-block-end:1em}@media (max-width:767px){:host{display:block;height:480px;width:calc(100vw - 40px);flex-direction:column;justify-content:center;margin-top:20px}:host .profile__avatar{position:relative;left:50%;transform:translateX(-50%) translateY(-20px);flex:1}:host .profile__avatar,:host .profile__avatar img{width:280px;height:280px}:host .profile__description{flex:1;position:relative;left:50%;transform:translateX(-50%);margin-left:20px;margin-right:20px}:host .profile__description h1{font-size:48px}:host .profile__description p{font-size:18px}}@media (min-width:768px) and (max-width:1023px){:host{display:block;height:480px;width:66%;left:50%;transform:translateX(-50%);flex-direction:column;margin-top:40px}:host .profile__avatar{flex:1;position:relative;left:50%;transform:translateX(-50%) translateY(-20px)}:host .profile__avatar,:host .profile__avatar img{width:320px;height:320px}:host .profile__description{flex:1;position:relative;left:50%;transform:translateX(-50%)}:host .profile__description h1{font-size:64px}:host .profile__description p{font-size:24px}}@media (min-width:1024px) and (max-width:1359px){:host{margin-top:40px;left:50%;transform:translateX(-50%);width:66%}:host .profile__avatar{-ms-grid-row-align:center;align-self:center}:host .profile__avatar,:host .profile__avatar img{width:320px;height:320px}:host .profile__description{flex:1;-ms-grid-row-align:center;align-self:center;margin-left:40px}:host .profile__description h1{font-size:64px}:host .profile__description p{font-size:24px}}@media (min-width:1360px) and (max-width:1879px){:host{left:50%;transform:translateX(-50%);width:66%}:host .profile__avatar{-ms-grid-row-align:center;align-self:center}:host .profile__avatar,:host .profile__avatar img{width:320px;height:320px}:host .profile__description{flex:1;-ms-grid-row-align:center;align-self:center;margin-left:40px}}@media (min-width:1880px){:host{left:50%;transform:translateX(-50%);width:60%}:host .profile__avatar{-ms-grid-row-align:center;align-self:center}:host .profile__avatar,:host .profile__avatar img{width:360px;height:360px}:host .profile__description{flex:1;-ms-grid-row-align:center;align-self:center;margin-left:40px}}a:link,a:visited{color:var(--cta-color)}";
+var css$5 = ":host{display:block;position:relative;perspective:1000px;color:var(--font-color);left:50%;top:50%;transform:translate3D(-50%,0,-50px);opacity:0}:host .profile{position:relative;display:flex;transition:transform 30ms ease-out}:host .profile__avatar{background:var(--font-color)}:host .profile__avatar,:host .profile__avatar img{-webkit-clip-path:polygon(5% 0,100% 60%,20% 100%);clip-path:polygon(5% 0,100% 60%,20% 100%);box-sizing:border-box}:host .profile__avatar img{position:absolute;top:2px;left:2px;width:320px;height:320px;background:var(--body-color)}:host .profile__description h1{display:block;position:relative;font-family:var(--headline-font);font-size:74px;font-weight:900;transform:rotate3d(0,32px);-webkit-margin-before:0;margin-block-start:0;-webkit-margin-after:0;margin-block-end:0}:host .profile__description p{display:block;position:relative;font-family:var(--body-font);font-size:28px;font-weight:400;transform:rotate(0,32px);-webkit-margin-before:.5em;margin-block-start:.5em;-webkit-margin-after:1em;margin-block-end:1em}@media (max-width:767px){:host{display:block;height:480px;width:calc(100vw - 40px);margin-top:20px}:host .profile{flex-direction:column;justify-content:center}:host .profile__avatar{position:relative;left:50%;transform:translateX(-50%) translateY(-20px);flex:1}:host .profile__avatar,:host .profile__avatar img{width:280px;height:280px}:host .profile__description{flex:1;position:relative;left:50%;transform:translateX(-50%);margin-left:20px;margin-right:20px}:host .profile__description h1{font-size:48px}:host .profile__description p{font-size:18px}}@media (min-width:768px) and (max-width:1023px){:host{display:block;height:480px;width:66%;left:50%;transform:translateX(-50%);margin-top:40px}:host .profile{flex-direction:column}:host .profile__avatar{flex:1;position:relative;left:50%;transform:translateX(-50%) translateY(-20px)}:host .profile__avatar,:host .profile__avatar img{width:320px;height:320px}:host .profile__description{flex:1;position:relative;left:50%;transform:translateX(-50%)}:host .profile__description h1{font-size:64px}:host .profile__description p{font-size:24px}}@media (min-width:1024px) and (max-width:1359px){:host{margin-top:40px;left:50%;transform:translateX(-50%);width:66%}:host .profile__avatar{-ms-grid-row-align:center;align-self:center}:host .profile__avatar,:host .profile__avatar img{width:320px;height:320px}:host .profile__description{flex:1;-ms-grid-row-align:center;align-self:center;margin-left:40px}:host .profile__description h1{font-size:64px}:host .profile__description p{font-size:24px}}@media (min-width:1360px) and (max-width:1879px){:host{left:50%;transform:translateX(-50%);width:60%;margin-top:60px}:host .profile__avatar{-ms-grid-row-align:center;align-self:center}:host .profile__avatar,:host .profile__avatar img{width:320px;height:320px}:host .profile__description{flex:1;-ms-grid-row-align:center;align-self:center;margin-left:40px}}@media (min-width:1880px){:host{left:50%;transform:translateX(-50%);width:60%;margin-top:60px}:host .profile__avatar{-ms-grid-row-align:center;align-self:center}:host .profile__avatar,:host .profile__avatar img{width:360px;height:360px}:host .profile__description{flex:1;-ms-grid-row-align:center;align-self:center;margin-left:40px}}a:link,a:visited{color:var(--cta-color)}";
 styleInject(css$5);
 
-var template$5 = "<div class=\"profile__avatar\">\n\n</div>\n<div class=\"profile__description\">\n    <h1>Steve Belovarich</h1>\n    <p>Full Stack Web Engineer in Portland, OR. Senior Software Development Engineer at Workday.</p><p>I code, make art, write, teach and speak about web design &amp; development. <a href=\"https://dev.to/steveblue\">Follow steveblue on dev.to</a></p>\n</div>";
+var template$5 = "<div class=\"profile\">\n    <div class=\"profile__avatar\">\n\n    </div>\n    <div class=\"profile__description\">\n        <h1>Steve Belovarich</h1>\n        <p>Full Stack Web Engineer in Portland, OR. Senior Software Development Engineer at Workday.</p><p>I code, make art, write, teach and speak about web design &amp; development. <a href=\"https://dev.to/steveblue\">Follow steveblue on dev.to</a></p>\n    </div>\n    <div class=\"log\"></div>\n</div>";
 
 let ProfileComponent = class ProfileComponent extends CustomElement {
     constructor() {
         super();
+        this.isVisible = null;
+        this.in = zoomInAnimation;
+        this.animations = {
+            zoomIn: zoomInAnimation
+        };
+        this.in = this.animations.zoomIn;
+        this.animIn = animate(this, this.in);
+        this.animIn.pause();
     }
     connectedCallback() {
+        this.setAttribute('data-index', 'profile-0');
+        if (this.shadowRoot && this.shadowRoot.querySelector) {
+            const root = this.shadowRoot;
+            this.wrapper = root.querySelector('.profile');
+            window.addEventListener('mousemove', this.onMouseMove.bind(this));
+            window.addEventListener('mouseout', this.onMouseOut.bind(this));
+            if (window && window.observer$) {
+                window.observer$.observe(this);
+            }
+        }
+    }
+    disconnectedCallback() {
+        window.removeEventListener('mousemove', this.onMouseMove.bind(this));
+        window.removeEventListener('mouseout', this.onMouseOut.bind(this));
+        window.removeEventListener('deviceorientation', this.onOrientationChange.bind(this));
+    }
+    onIntersect(ev) {
+        if (this.isVisible === null) {
+            this.animIn.play();
+        }
+        this.isVisible = true;
+    }
+    onExit(ev) {
+        this.isVisible = false;
+    }
+    onClick(ev) {
+        if (typeof (DeviceMotionEvent) !== "undefined" && typeof (DeviceMotionEvent.requestPermission) === "function") {
+            DeviceOrientationEvent.requestPermission()
+                .then(response => {
+                if (response == 'granted') {
+                    window.addEventListener('deviceorientation', this.onOrientationChange.bind(this), true);
+                }
+            })
+                .catch(console.error);
+        }
+        else if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', this.onOrientationChange.bind(this), true);
+        }
+    }
+    onMouseMove(ev) {
+        if (this.isVisible) {
+            const angle = this.scale(ev.pageX, 0, window.innerWidth, -5.00, 5.00);
+            this.wrapper.style.transform = `rotate3d(0, 1, 0, ${angle}deg)`;
+        }
+    }
+    onMouseOut(ev) {
+        this.wrapper.style.transform = `rotate3d(0, 1, 0, 0deg)`;
+    }
+    onOrientationChange(ev) {
+        if (this.isVisible) {
+            let angle = 0;
+            if (window.matchMedia('(orientation: portrait)').matches) {
+                angle = this.scale(ev.gamma, -50, 50, 50.00, -50.0);
+            }
+            if (window.matchMedia('(orientation: landscape)').matches) {
+                angle = this.scale(ev.beta, -50, 50, 50.00, -50.0);
+            }
+            this.wrapper.style.transform = `rotate3d(0, 1, 0, ${angle}deg)`;
+        }
+    }
+    scale(v, min, max, gmin, gmax) {
+        return ((v - min) / (max - min)) * (gmax - gmin) + gmin;
     }
 };
+__decorate([
+    Listen('entry'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], ProfileComponent.prototype, "onIntersect", null);
+__decorate([
+    Listen('exit'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], ProfileComponent.prototype, "onExit", null);
+__decorate([
+    Listen('touchend'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], ProfileComponent.prototype, "onClick", null);
 ProfileComponent = __decorate([
     Component({
         selector: 't-profile',
@@ -939,7 +1027,7 @@ customElements.define('t-profile', ProfileComponent);
 var css$6 = ":host{display:block;width:100vw;height:100vh}.i--center{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);text-align:center}";
 styleInject(css$6);
 
-var template$6 = "<v-scroll-sync scale=\"{{scale}}\">\n  <v-stage>\n    <v-scroll-view>\n      <v-section data-index=\"1\">\n        <t-profile></t-profile>\n      </v-section>\n      <v-section data-index=\"2\">2</v-section>\n      <v-section data-index=\"3\">3</v-section>\n      <v-section data-index=\"4\">4</v-section>\n      <v-section data-index=\"5\">5</v-section>\n      <v-section data-index=\"6\">6</v-section>\n      <v-section data-index=\"7\">7</v-section>\n      <v-section data-index=\"8\">8</v-section>\n    </v-scroll-view>\n  </v-stage>\n</v-scroll-sync>\n";
+var template$6 = "<v-scroll-sync scale=\"{{scale}}\">\n  <v-stage>\n    <v-scroll-view>\n      <v-section data-index=\"1\">\n        <t-profile style=\"opacity: 0\"></t-profile>\n      </v-section>\n      <!-- <v-section data-index=\"2\">2</v-section>\n      <v-section data-index=\"3\">3</v-section>\n      <v-section data-index=\"4\">4</v-section>\n      <v-section data-index=\"5\">5</v-section>\n      <v-section data-index=\"6\">6</v-section>\n      <v-section data-index=\"7\">7</v-section>\n      <v-section data-index=\"8\">8</v-section> -->\n    </v-scroll-view>\n  </v-stage>\n</v-scroll-sync>\n";
 
 let HomeComponent = class HomeComponent extends CustomElement {
     constructor() {

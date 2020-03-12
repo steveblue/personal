@@ -1,7 +1,13 @@
 import { CustomElement, Component, Listen } from '@readymade/core';
-
+import {
+  animate,
+  AnimationPlayer,
+  zoomInAnimation
+} from './../../../../util/anim';
+import { WebAnimation } from './../../../../util/anim/interface';
 import style from './profile.scss';
 import template from './profile.html';
+
 
 @Component({
   selector: 't-profile',
@@ -11,20 +17,30 @@ import template from './profile.html';
 class ProfileComponent extends CustomElement {
 
   private wrapper!: HTMLElement;
-  private isVisible: boolean = false;
+  private isVisible: boolean | null = null;
+  private animIn: AnimationPlayer;
+  private in: WebAnimation = zoomInAnimation;
+  private animations: { [key: string]: WebAnimation } = {
+    zoomIn: zoomInAnimation
+  };
 
   constructor() {
     super();
+    this.in = this.animations.zoomIn;
+    this.animIn = animate((<unknown>this) as HTMLElement, this.in);
+    this.animIn.pause();
   }
 
   connectedCallback() {
     this.setAttribute('data-index', 'profile-0');
-    const root = this.shadowRoot as ShadowRoot;
-    this.wrapper = root.querySelector('.profile') as HTMLElement;
-    window.addEventListener('mousemove', this.onMouseMove.bind(this));
-    window.addEventListener('mouseout', this.onMouseOut.bind(this));
-    if (window && window.observer$) {
-      window.observer$.observe(this);
+    if (this.shadowRoot && this.shadowRoot.querySelector) {
+      const root = this.shadowRoot as ShadowRoot;
+      this.wrapper = root.querySelector('.profile') as HTMLElement;
+      window.addEventListener('mousemove', this.onMouseMove.bind(this));
+      window.addEventListener('mouseout', this.onMouseOut.bind(this));
+      if (window && window.observer$) {
+        window.observer$.observe(this);
+      }
     }
   }
 
@@ -36,6 +52,9 @@ class ProfileComponent extends CustomElement {
 
   @Listen('entry')
   onIntersect(ev: any) {
+    if (this.isVisible === null) {
+      this.animIn.play();
+    }
     this.isVisible = true;
   }
 

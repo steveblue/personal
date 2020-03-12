@@ -5,6 +5,10 @@
     position: relative;
     perspective: 1000px;
     color: var(--font-color);
+    left: 50%;
+    top: 50%;
+    transform: translate3D(-50%, 0%, -50px);
+    opacity: 0;
     .profile {
         position: relative;
         display: flex;
