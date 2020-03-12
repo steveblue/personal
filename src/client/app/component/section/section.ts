@@ -29,6 +29,7 @@ class SectionComponent extends CustomElement {
   onIntersect(ev: any) {
     console.log('bang!', ev.detail);
   }
+
 }
 
 customElements.define('v-section', SectionComponent);

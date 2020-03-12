@@ -1,8 +1,15 @@
 @import 'template/responsive';
 
 :host {
+    display: block;
     position: relative;
-    display: flex;
+    perspective: 1000px;
+    color: var(--font-color);
+    .profile {
+        position: relative;
+        display: flex;
+        transition: transform 30ms ease-out;
+    }
     .profile__avatar {
         -webkit-clip-path: polygon(5% 0, 100% 60%, 20% 100%);
         clip-path: polygon(5% 0, 100% 60%, 20% 100%);
@@ -21,7 +28,6 @@
         }
     }
     .profile__description {
-        color: var(--font-color);
         h1 {
             display: block;
             position: relative;
@@ -48,9 +54,11 @@
         display: block;
         height: 480px;
         width: calc(100vw - 40px);
-        flex-direction: column;
-        justify-content: center;
         margin-top: 20px;
+        .profile {
+            flex-direction: column;
+            justify-content: center;
+        }
         .profile__avatar {
             position: relative;
             left: 50%;
@@ -85,8 +93,10 @@
         width: 66%;
         left: 50%;
         transform: translateX(-50%);
-        flex-direction: column;
         margin-top: 40px;
+        .profile {
+            flex-direction: column;
+        }
         .profile__avatar {
             flex: 1;
             width: 320px;
