@@ -8,6 +8,11 @@ import { WebAnimation } from './../../../../util/anim/interface';
 import style from './profile.scss';
 import template from './profile.html';
 
+declare global {
+  interface Window {
+    observer$: IntersectionObserver;
+  }
+}
 
 @Component({
   selector: 't-profile',
@@ -106,8 +111,6 @@ class ProfileComponent extends CustomElement {
   scale(v: number, min: number, max: number, gmin: number, gmax: number) {
     return ((v - min) / (max - min)) * (gmax - gmin) + gmin;
   }
-
-
 
 }
 

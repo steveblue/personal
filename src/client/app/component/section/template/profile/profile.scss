@@ -67,7 +67,6 @@
             position: relative;
             left: 50%;
             transform: translateX(-50%) translateY(-20px);
-            flex: 1;
             width: 280px;
             height: 280px;
             img {
@@ -102,7 +101,6 @@
             flex-direction: column;
         }
         .profile__avatar {
-            flex: 1;
             width: 320px;
             height: 320px;
             position: relative;

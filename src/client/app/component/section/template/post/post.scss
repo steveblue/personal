@@ -1,0 +1,62 @@
+@import 'template/responsive';
+
+:host {
+    display: block;
+    width: 100%;
+    .post__wrapper {
+        width: 100%;
+        height: 100%;
+        &.is--light {
+            color: var(--body-color);
+            .post__background {
+                background: var(--font-color);
+            }
+        }
+        &.is--dark {
+            color: var(--font-color);
+            .post__background {
+                background: var(--body-color);
+            }
+        }
+    }
+    .post__background {
+        position: absolute;
+        top: -40px;
+        //left: 50%;
+        width: 200%;
+        height: 640px;
+        //transform: translateX(-50%) rotate3d(0, 0, 1, -15deg);
+    }
+    .post__content {
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        h2 {
+            font-size: 20px;
+        }
+        p {
+            font-size: 16px;
+        }
+    }
+}
+
+@include phone {
+
+}
+
+@include portrait {
+
+}
+
+@include landscape {
+
+}
+
+@include desktop {
+
+}
+
+@include monitor {
+
+}

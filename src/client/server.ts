@@ -11,6 +11,7 @@ import {
   ScrollView,
   SectionComponent,
   ProfileComponent,
+  PostComponent,
   HomeComponent
 } from './app/view/home';
 
@@ -23,5 +24,6 @@ export {
   ScrollView,
   SectionComponent,
   ProfileComponent,
+  PostComponent,
   routes
 };
