@@ -3,11 +3,11 @@ import { WebAnimation } from './interface';
 const zoomInAnimation: WebAnimation = {
   keyframes: [
     {
-      transform: 'translate3D(-50%, 0%, -50px)',
+      transform: 'translate3D(0%, 0%, -50px)',
       opacity: '0',
       zIndex: '-10'
     },
-    { transform: 'translate3D(-50%, 0%, 0px)', opacity: '1', zIndex: '0' }
+    { transform: 'translate3D(0%, 0%, 0px)', opacity: '1', zIndex: '0' }
   ],
   options: {
     fill: 'both',

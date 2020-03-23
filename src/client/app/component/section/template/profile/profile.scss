@@ -6,8 +6,6 @@
     color: var(--font-color);
     left: 50%;
     top: 50%;
-    transform: translate3D(-50%, 0%, -50px);
-    opacity: 0;
     .profile__avatar {
         position: absolute;
         top: 0px;
@@ -28,10 +26,13 @@
     }
     .profile {
         position: relative;
+        opacity: 0;
+        transform: translate3D(0%, 0%, -50px);
         display: flex;
         transition: transform 30ms ease-out;
         justify-content: flex-start;
         align-content: flex-end;
+        perspective: 1000px;
         .profile__description {
             h1 {
                 display: block;
@@ -60,6 +61,7 @@
     @include phone {
         display: block;
         width: calc(100vw - 40px);
+        left: 0px;
         .profile {
             height: 640px;
             width: 100%;
@@ -91,7 +93,6 @@
     }
 
     @include portrait {
-        left: 50%;
         transform: translateX(-50%);
         width: 100%;
         .profile {

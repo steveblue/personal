@@ -32,21 +32,26 @@ class ProfileComponent extends CustomElement {
   constructor() {
     super();
     this.in = this.animations.zoomIn;
-    this.animIn = animate((<unknown>this) as HTMLElement, this.in);
-    this.animIn.pause();
   }
 
   connectedCallback() {
+
     this.setAttribute('data-index', 'profile-0');
     if (this.shadowRoot && this.shadowRoot.querySelector) {
       const root = this.shadowRoot as ShadowRoot;
-      this.wrapper = root.querySelector('.profile') as HTMLElement;
+      this.animIn = animate((<unknown>root.querySelector('.profile')) as HTMLElement, this.in);
+      this.animIn.pause();
+      this.wrapper = root.querySelector('.profile__description') as HTMLElement;
       window.addEventListener('mousemove', this.onMouseMove.bind(this));
       window.addEventListener('mouseout', this.onMouseOut.bind(this));
       if (window && window.observer$) {
         window.observer$.observe(this);
       }
     }
+    if (this.isVisible === null) {
+      this.animIn.play();
+    }
+    this.isVisible = true;
   }
 
   disconnectedCallback() {
@@ -57,10 +62,7 @@ class ProfileComponent extends CustomElement {
 
   @Listen('entry')
   onIntersect(ev: any) {
-    if (this.isVisible === null) {
-      this.animIn.play();
-    }
-    this.isVisible = true;
+
   }
 
   @Listen('exit')
