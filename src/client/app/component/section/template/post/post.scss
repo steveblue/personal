@@ -23,9 +23,10 @@
         position: absolute;
         top: -40px;
         //left: 50%;
-        width: 200%;
-        height: 640px;
-        transform: translateX(-50%) rotate3d(0, 0, 1, 3deg);
+        width: 200vw;
+        height: 200vw;
+        transform: translateX(-25%);
+        border-radius: 50%;
     }
     .post__content {
         position: absolute;

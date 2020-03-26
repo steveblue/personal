@@ -1,0 +1,43 @@
+@import 'template/responsive';
+
+:host {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: block;
+    .nav__button {
+        width: 240px;
+        height: 240px;
+        -webkit-clip-path: polygon(5% 0, 100% 60%, 20% 100%);
+        clip-path: polygon(5% 0, 100% 60%, 20% 100%);
+        background: var(--space-grey-color);
+        box-sizing: border-box;
+        img {
+
+            -webkit-clip-path: polygon(5% 0, 100% 60%, 20% 100%);
+            clip-path: polygon(5% 0, 100% 60%, 20% 100%);
+            background: var(--space-grey-color);
+            box-sizing: border-box;
+        }
+    }
+
+    @include phone {
+
+    }
+
+    @include portrait {
+
+    }
+
+    @include landscape {
+
+    }
+
+    @include desktop {
+
+    }
+
+    @include monitor {
+
+    }
+}

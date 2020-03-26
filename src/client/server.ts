@@ -12,6 +12,7 @@ import {
   SectionComponent,
   ProfileComponent,
   PostComponent,
+  NavComponent,
   HomeComponent
 } from './app/view/home';
 
@@ -25,5 +26,7 @@ export {
   SectionComponent,
   ProfileComponent,
   PostComponent,
+  HomeComponent,
+  NavComponent,
   routes
 };

@@ -23,10 +23,6 @@ class PostComponent extends CustomElement {
     }
   }
 
-  connectedCallback() {
-
-}
-
 }
 
 customElements.define('t-post', PostComponent);
