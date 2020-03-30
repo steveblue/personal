@@ -3,15 +3,15 @@
 $transition-duration: 0.7s;
 
 @keyframes containerIn {
-    0%   { width: 44px; height: 44px; border-radius: 0% 0% 0% 0%; }
-    50%  { width: 100vw; height: 100vh; border-radius: 50% 0% 50% 50%; }
-    100% { width: 100vw; height: 100vh; border-radius: 0% 0% 0% 0%; }
+    0%   { width: 44px; height: 44px; border-radius: 0% 0% 0% 0%; background: rgba(0,0,0,0.0); }
+    50%  { width: 100vw; height: 100vh; border-radius: 50% 0% 50% 50%; background: rgba(0,0,0,1.0); }
+    100% { width: 100vw; height: 100vh; border-radius: 0% 0% 0% 0%; background: rgba(0,0,0,1.0); }
 }
 
 @keyframes containerOut {
-    0% { width: 100vw; height: 100vh; border-radius: 0% 0% 0% 0%; }
-    15%  { width: 100vw; height: 100vh; border-radius: 50% 0% 50% 50%; }
-    100%   { width: 44px; height: 44px; border-radius: 0% 0% 0% 0%; }
+    0% { width: 100vw; height: 100vh; border-radius: 0% 0% 0% 0%; background: rgba(0,0,0,1.0);  }
+    50%  { width: 100vw; height: 100vh; border-radius: 50% 0% 50% 50%; background: rgba(0,0,0,1.0); }
+    100%   { width: 44px; height: 44px; border-radius: 0% 0% 0% 0%; background: rgba(0,0,0,0.0); }
 }
 
 @keyframes linkIn {
@@ -22,24 +22,11 @@ $transition-duration: 0.7s;
 
 @keyframes linkOut {
     0%   { font-size: 1.5em; line-height: 1.5em; color: rgba(210, 210, 210, 1); transform: translateY(0%) scaleY(1.0); }
-    1%  { font-size: 1.0em; line-height: 1.0em; color: rgba(0,0,0,0.0); transform: translateY(0%) scaleY(1.0); }
-    15%  { font-size: 1.0em; line-height: 1.0em; color: rgba(0,0,0,0.0); transform: translateY(0%) scaleY(0.2); }
+    1%  { font-size: 0.0em; line-height: 1.0em; color: rgba(0,0,0,0.0); transform: translateY(0%) scaleY(1.0); }
+    15%  { font-size: 0.0em; line-height: 1.0em; color: rgba(0,0,0,0.0); transform: translateY(0%) scaleY(0.2); }
     100% { font-size: 1.0em; line-height: 1.0em; color: rgba(0,0,0,0.0); transform: translateY(0%) scaleY(0.2); }
 }
 
-@keyframes navOut {
-    0%   {  width: 320px; top: 50%; right: 50%; transform: translateX(50%) translateY(-50%); }
-    10%  { width: 120px; top: 50%; right: 50%; transform: translateX(50%) translateY(-50%); }
-    35%  { width: 44px; top: 0%; right: 0px; transform: translateX(50%) translateY(-50%); }
-    100% { width: 44px; top: 0%; right: 0px; transform: translateX(0%) translateY(0%); }
-}
-
-@keyframes navIn {
-    0%   {  width: 44px; top: 0%; right: 0px; transform: translateX(0%) translateY(0%); }
-    15%  {  width: 44px; top: 50%; right: 50%; transform: translateX(50%) translateY(-50%); }
-    80% {  width: 320px; top: 50%; right: 50%; transform: translateX(50%) translateY(-50%); }
-    100% {  width: 320px; top: 50%; right: 50%; transform: translateX(50%) translateY(-50%); }
-}
 
 :host {
     position: fixed;
@@ -88,7 +75,7 @@ $transition-duration: 0.7s;
                 }
                 a {
                     display: block;
-                    color: transparent;
+                    color: rgba(0,0,0,0.0);
                     opacity: 1;
                     width: 100%;
                     font-size: 1.0em;
@@ -113,12 +100,10 @@ $transition-duration: 0.7s;
             }
         }
         &.is--init {
-            animation: containerOut $transition-duration;
+            animation: containerOut $transition-duration - 0.3s;
             animation-fill-mode: both;
         }
         &.is--open {
-            width: 100vw;
-            height: 100vh;
             background: rgba(0,0,0,1.0);
             animation: containerIn $transition-duration;
             animation-fill-mode: both;
@@ -165,17 +150,10 @@ $transition-duration: 0.7s;
                     max-width: 320px;
                     transform: translateX(50%) translateY(-50%);
                     pointer-events: initial;
-                    animation: navIn $transition-duration;
-                    animation-fill-mode: both;
                     border-top: 3px solid var(--font-color);
                     border-bottom: 3px solid var(--font-color);
                     a {
-                        display: block;
-                        color: var(--font-color);
                         background: transparent;
-                        font-size: 1.5em;
-                        line-height: 1.5em;
-                        transform: translateY(0%) scaleY(1.0);
                         animation: linkIn $transition-duration;
                         animation-fill-mode: both;
                         transition: $transition-duration, opacity;
@@ -200,32 +178,24 @@ $transition-duration: 0.7s;
                 }
             }
         }
-        &.is--init:not(.is--open) {
-            .nav__wrapper {
-                nav {
-                    animation: navOut $transition-duration;
-                    animation-fill-mode: both;
-                }
-            }
-        }
     }
 
     @include phone {
         .nav__container {
             &.is--open {
                 .nav__wrapper {
-                    width: calc(100vw - 24px);
-                    nav {
-                        width: 100%;
-                    }
+                   // width: calc(100vw - 24px);
+                    // nav {
+                    //     width: 100%;
+                    // }
                 }
             }
             &.is--init:not(.is--open) {
                 .nav__wrapper {
-                    width: 44px;
-                    nav {
-                        width: 44px;
-                    }
+                    // width: 44px;
+                    // nav {
+                    //     width: 44px;
+                    // }
                 }
             }
         }

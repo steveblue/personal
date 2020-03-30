@@ -1,5 +1,11 @@
 import { CustomElement, Component, Listen } from '@readymade/core';
-
+import {
+  animate,
+  AnimationPlayer,
+  navOutAnimation,
+  navInAnimation
+} from './../../util/anim';
+import { WebAnimation } from 'app/util/anim/interface';
 import style from './nav.scss';
 import template from './nav.html';
 
@@ -11,10 +17,21 @@ import template from './nav.html';
 })
 class NavComponent extends CustomElement {
   private isActive: boolean = false;
+  private navIn: AnimationPlayer;
+  private navOut: AnimationPlayer;
+  private direction: string = 'forwards';
+  private animations: { [key: string]: WebAnimation } = {
+    navIn: navInAnimation,
+    navOut: navOutAnimation
+  };
   constructor() {
     super();
   }
   connectedCallback() {
+    this.navIn = animate((<unknown>this.shadowRoot?.querySelector('nav')) as HTMLElement, this.animations.navIn);
+    this.navOut = animate((<unknown>this.shadowRoot?.querySelector('nav')) as HTMLElement, this.animations.navOut);
+    this.navIn.pause();
+    this.navOut.play();
     this.shadowRoot?.querySelector('.nav__button')?.addEventListener('click', this.toggle.bind(this));
   }
   toggle() {
@@ -23,12 +40,24 @@ class NavComponent extends CustomElement {
       this.shadowRoot?.querySelector('.nav__container')?.classList.add('is--init');
     }
     if (this.isActive) {
-      this.style.width = '100vw';
-      this.style.width = '100vh';
+      // this.style.width = '100vw';
+      // this.style.width = '100vh';
+      // if (this.direction === 'backwards') {
+      //   this.direction = 'forewards';
+      //   this.navIn.reverse();
+      // }
+      this.navOut.cancel();
+      this.navIn.play();
       this.shadowRoot?.querySelector('.nav__container')?.classList.add('is--open');
     } else {
-      this.style.width = '68px';
-      this.style.width = '68px';
+      // this.style.width = '68px';
+      // this.style.width = '68px';
+      // if (this.direction === 'forewards') {
+      //   this.direction = 'backwards';
+      //   this.navIn.reverse();
+      // }
+      this.navIn.cancel();
+      this.navOut.play();
       this.shadowRoot?.querySelector('.nav__container')?.classList.remove('is--open');
     }
   }
