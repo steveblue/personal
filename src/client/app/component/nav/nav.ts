@@ -19,9 +19,16 @@ class NavComponent extends CustomElement {
   }
   toggle() {
     this.isActive = this.isActive ? false : true;
+    if (!this.shadowRoot?.querySelector('.nav__container')?.classList.contains('is--init')) {
+      this.shadowRoot?.querySelector('.nav__container')?.classList.add('is--init');
+    }
     if (this.isActive) {
+      this.style.width = '100vw';
+      this.style.width = '100vh';
       this.shadowRoot?.querySelector('.nav__container')?.classList.add('is--open');
     } else {
+      this.style.width = '68px';
+      this.style.width = '68px';
       this.shadowRoot?.querySelector('.nav__container')?.classList.remove('is--open');
     }
   }
