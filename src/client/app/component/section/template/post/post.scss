@@ -43,7 +43,9 @@
 }
 
 @include phone {
-
+ :host {
+    margin-top: 640px;
+ }
 }
 
 @include portrait {

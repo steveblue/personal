@@ -40,22 +40,14 @@ class NavComponent extends CustomElement {
       this.shadowRoot?.querySelector('.nav__container')?.classList.add('is--init');
     }
     if (this.isActive) {
-      // this.style.width = '100vw';
-      // this.style.width = '100vh';
-      // if (this.direction === 'backwards') {
-      //   this.direction = 'forewards';
-      //   this.navIn.reverse();
-      // }
+      this.style.width = '100vw';
+      this.style.width = '100vh';
       this.navOut.cancel();
       this.navIn.play();
       this.shadowRoot?.querySelector('.nav__container')?.classList.add('is--open');
     } else {
-      // this.style.width = '68px';
-      // this.style.width = '68px';
-      // if (this.direction === 'forewards') {
-      //   this.direction = 'backwards';
-      //   this.navIn.reverse();
-      // }
+      this.style.width = '68px';
+      this.style.width = '68px';
       this.navIn.cancel();
       this.navOut.play();
       this.shadowRoot?.querySelector('.nav__container')?.classList.remove('is--open');
