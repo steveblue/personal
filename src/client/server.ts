@@ -13,10 +13,17 @@ import {
   ProfileComponent,
   PostComponent,
   NavComponent,
-  HomeComponent
-} from './app/view/home';
+} from './app/shared';
 
-const routes = [{ path: '/', component: HomeComponent }];
+import { HomeComponent } from './app/view/home';
+import { BlogComponent } from './app/view/blog';
+import { ResumeComponent } from './app/view/resume';
+import { GalleryComponent } from './app/view/gallery';
+
+const routes = [{ path: '/', component: HomeComponent },
+                { path: '/blog', component: BlogComponent },
+                { path: '/resume', component: ResumeComponent },
+                { path: '/gallery', component: GalleryComponent }];
 
 export {
   StageComponent,
@@ -26,7 +33,10 @@ export {
   SectionComponent,
   ProfileComponent,
   PostComponent,
-  HomeComponent,
   NavComponent,
+  HomeComponent,
+  BlogComponent,
+  ResumeComponent,
+  GalleryComponent,
   routes
 };

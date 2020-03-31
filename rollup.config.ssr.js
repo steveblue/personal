@@ -8,7 +8,7 @@ export default [{
     treeshake: true,
     output: {
         file: 'src/server/view/index.js',
-        format: 'esm'
+        format: 'esm',
     },
     plugins: [
         postcss({
