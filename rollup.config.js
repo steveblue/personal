@@ -13,7 +13,7 @@ export default [{
     plugins: [
         nodeResolve({
             mainFields: ['module', 'jsnext'],
-            extensions: [".ts", ".js"]
+            extensions: ['.ts', '.js']
         }),
         postcss({
             extract: false,
@@ -23,7 +23,8 @@ export default [{
                     includePaths: ['src/client/style']
                 }]
             ],
-            minimize: true
+            minimize: true,
+            extensions: ['.scss','.css']
         }),
         string({
             include: ['**/*.html'],

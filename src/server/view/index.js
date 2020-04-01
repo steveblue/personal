@@ -381,7 +381,35 @@ class CustomElement extends HTMLElement {
     }
 }
 
-var style = "var css_248z = \":host{display:block;position:relative;width:0;height:0%;perspective:1000px}\";\nexport default css_248z;\nexport const stylesheet=\":host{display:block;position:relative;width:0;height:0%;perspective:1000px}\";\nimport styleInject from '/Users/steve/www/personal/node_modules/style-inject/dist/style-inject.es.js';\nstyleInject(css_248z);";
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css_248z = ":host{display:block;position:relative;width:0;height:0%;perspective:1000px}";
+styleInject(css_248z);
 
 var template = "<slot></slot>\n";
 
@@ -394,7 +422,7 @@ let StageComponent = class StageComponent extends CustomElement {
 StageComponent = __decorate([
     Component({
         selector: 'v-stage',
-        style: style,
+        style: css_248z,
         template: template
     }),
     __metadata("design:paramtypes", [])
@@ -533,7 +561,8 @@ function animate(elem, animation) {
     return new AnimationPlayer(elem, animation);
 }
 
-var style$1 = "var css_248z = \"@keyframes containerIn{0%{width:44px;height:44px;border-radius:0 0 0 0;background:transparent}50%{width:100vw;height:100vh;border-radius:50% 0 50% 50%;background:#000}to{width:100vw;height:100vh;border-radius:0 0 0 0;background:#000}}@keyframes containerOut{0%{width:100vw;height:100vh;border-radius:0 0 0 0;background:#000}50%{width:100vw;height:100vh;border-radius:50% 0 50% 50%;background:#000}to{width:44px;height:44px;border-radius:0 0 0 0;background:transparent}}@keyframes linkIn{0%{font-size:1em;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}15%{font-size:1em;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}to{font-size:1.5em;line-height:1.5em;color:#d2d2d2;transform:translateY(0) scaleY(1)}}@keyframes linkOut{0%{font-size:1.5em;line-height:1.5em;color:#d2d2d2;transform:translateY(0) scaleY(1)}1%{font-size:0;line-height:1em;color:transparent;transform:translateY(0) scaleY(1)}15%{font-size:0;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}to{font-size:1em;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}}:host{display:block;padding:12px;z-index:1000}:host,:host .nav__container{position:fixed;top:0;right:0;width:44px;height:44px}:host .nav__container{border-radius:0 0 0 0;background:transparent;margin:12px}:host .nav__container .nav__wrapper{position:absolute;right:0;top:0;width:44px;height:44px}:host .nav__container .nav__wrapper .nav__button{width:44px;height:44px;box-sizing:border-box;cursor:pointer}:host .nav__container .nav__wrapper nav{position:absolute;display:block;top:0;right:0;width:44px;height:44px;max-width:320px;transform:translateX(0) translateY(0);pointer-events:none;text-align:center}:host .nav__container .nav__wrapper nav a:link,:host .nav__container .nav__wrapper nav a:visited{text-transform:uppercase;text-decoration:none}:host .nav__container .nav__wrapper nav a{display:block;color:transparent;opacity:1;width:100%;font-size:1em;line-height:1em;transform:translateY(0) scaleY(.3);transition:.7s,opacity;margin-bottom:0}:host .nav__container .nav__wrapper nav a:nth-child(n+4){opacity:0}:host .nav__container .nav__wrapper nav a:before{position:absolute;content:\\\"\\\";top:0;left:0;width:100%;height:12px;background:var(--font-color);transition:.2s}:host .nav__container.is--init{animation:containerOut .4s;animation-fill-mode:both}:host .nav__container.is--open{background:#000;animation:containerIn .7s;animation-fill-mode:both;margin:0}:host .nav__container.is--open .nav__wrapper{width:100vw;height:100vh;opacity:1;pointer-events:auto;transform:translateX(0);margin:0}:host .nav__container.is--open .nav__wrapper .nav__button{position:fixed;top:0;right:0;margin:12px}:host .nav__container.is--open .nav__wrapper .nav__button:before{position:absolute;content:\\\"\\\";top:50%;left:50%;width:100%;height:2px;background:var(--font-color);transform:translateX(-50%) translateY(-50%) rotate(45deg);transition:.7s}:host .nav__container.is--open .nav__wrapper .nav__button:after{position:absolute;content:\\\"\\\";top:50%;left:50%;width:100%;height:2px;background:var(--font-color);transform:translateX(-50%) translateY(-50%) rotate(-45deg);transition:.7s}:host .nav__container.is--open .nav__wrapper nav{top:50%;right:50%;width:320px;height:auto;max-width:320px;transform:translateX(50%) translateY(-50%);pointer-events:auto;border-top:3px solid var(--font-color);border-bottom:3px solid var(--font-color)}:host .nav__container.is--open .nav__wrapper nav a{background:transparent;animation:linkIn .7s;animation-fill-mode:both;transition:.7s,opacity;margin-bottom:20px}:host .nav__container.is--open .nav__wrapper nav a:nth-child(n+4){opacity:1}:host .nav__container.is--open .nav__wrapper nav a:before{height:0;opacity:0}:host .nav__container.is--open .nav__wrapper nav a:first-child{margin-top:20px}:host .nav__container.is--open.is--init a{animation:linkOut .7s;animation-fill-mode:both}\";\nexport default css_248z;\nexport const stylesheet=\"@keyframes containerIn{0%{width:44px;height:44px;border-radius:0 0 0 0;background:transparent}50%{width:100vw;height:100vh;border-radius:50% 0 50% 50%;background:#000}to{width:100vw;height:100vh;border-radius:0 0 0 0;background:#000}}@keyframes containerOut{0%{width:100vw;height:100vh;border-radius:0 0 0 0;background:#000}50%{width:100vw;height:100vh;border-radius:50% 0 50% 50%;background:#000}to{width:44px;height:44px;border-radius:0 0 0 0;background:transparent}}@keyframes linkIn{0%{font-size:1em;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}15%{font-size:1em;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}to{font-size:1.5em;line-height:1.5em;color:#d2d2d2;transform:translateY(0) scaleY(1)}}@keyframes linkOut{0%{font-size:1.5em;line-height:1.5em;color:#d2d2d2;transform:translateY(0) scaleY(1)}1%{font-size:0;line-height:1em;color:transparent;transform:translateY(0) scaleY(1)}15%{font-size:0;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}to{font-size:1em;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}}:host{display:block;padding:12px;z-index:1000}:host,:host .nav__container{position:fixed;top:0;right:0;width:44px;height:44px}:host .nav__container{border-radius:0 0 0 0;background:transparent;margin:12px}:host .nav__container .nav__wrapper{position:absolute;right:0;top:0;width:44px;height:44px}:host .nav__container .nav__wrapper .nav__button{width:44px;height:44px;box-sizing:border-box;cursor:pointer}:host .nav__container .nav__wrapper nav{position:absolute;display:block;top:0;right:0;width:44px;height:44px;max-width:320px;transform:translateX(0) translateY(0);pointer-events:none;text-align:center}:host .nav__container .nav__wrapper nav a:link,:host .nav__container .nav__wrapper nav a:visited{text-transform:uppercase;text-decoration:none}:host .nav__container .nav__wrapper nav a{display:block;color:transparent;opacity:1;width:100%;font-size:1em;line-height:1em;transform:translateY(0) scaleY(.3);transition:.7s,opacity;margin-bottom:0}:host .nav__container .nav__wrapper nav a:nth-child(n+4){opacity:0}:host .nav__container .nav__wrapper nav a:before{position:absolute;content:\\\"\\\";top:0;left:0;width:100%;height:12px;background:var(--font-color);transition:.2s}:host .nav__container.is--init{animation:containerOut .4s;animation-fill-mode:both}:host .nav__container.is--open{background:#000;animation:containerIn .7s;animation-fill-mode:both;margin:0}:host .nav__container.is--open .nav__wrapper{width:100vw;height:100vh;opacity:1;pointer-events:auto;transform:translateX(0);margin:0}:host .nav__container.is--open .nav__wrapper .nav__button{position:fixed;top:0;right:0;margin:12px}:host .nav__container.is--open .nav__wrapper .nav__button:before{position:absolute;content:\\\"\\\";top:50%;left:50%;width:100%;height:2px;background:var(--font-color);transform:translateX(-50%) translateY(-50%) rotate(45deg);transition:.7s}:host .nav__container.is--open .nav__wrapper .nav__button:after{position:absolute;content:\\\"\\\";top:50%;left:50%;width:100%;height:2px;background:var(--font-color);transform:translateX(-50%) translateY(-50%) rotate(-45deg);transition:.7s}:host .nav__container.is--open .nav__wrapper nav{top:50%;right:50%;width:320px;height:auto;max-width:320px;transform:translateX(50%) translateY(-50%);pointer-events:auto;border-top:3px solid var(--font-color);border-bottom:3px solid var(--font-color)}:host .nav__container.is--open .nav__wrapper nav a{background:transparent;animation:linkIn .7s;animation-fill-mode:both;transition:.7s,opacity;margin-bottom:20px}:host .nav__container.is--open .nav__wrapper nav a:nth-child(n+4){opacity:1}:host .nav__container.is--open .nav__wrapper nav a:before{height:0;opacity:0}:host .nav__container.is--open .nav__wrapper nav a:first-child{margin-top:20px}:host .nav__container.is--open.is--init a{animation:linkOut .7s;animation-fill-mode:both}\";\nimport styleInject from '/Users/steve/www/personal/node_modules/style-inject/dist/style-inject.es.js';\nstyleInject(css_248z);";
+var css_248z$1 = "@keyframes containerIn{0%{width:44px;height:44px;border-radius:0 0 0 0;background:transparent}50%{width:100vw;height:100vh;border-radius:50% 0 50% 50%;background:#000}to{width:100vw;height:100vh;border-radius:0 0 0 0;background:#000}}@keyframes containerOut{0%{width:100vw;height:100vh;border-radius:0 0 0 0;background:#000}50%{width:100vw;height:100vh;border-radius:50% 0 50% 50%;background:#000}to{width:44px;height:44px;border-radius:0 0 0 0;background:transparent}}@keyframes linkIn{0%{font-size:1em;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}15%{font-size:1em;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}to{font-size:1.5em;line-height:1.5em;color:#d2d2d2;transform:translateY(0) scaleY(1)}}@keyframes linkOut{0%{font-size:1.5em;line-height:1.5em;color:#d2d2d2;transform:translateY(0) scaleY(1)}1%{font-size:0;line-height:1em;color:transparent;transform:translateY(0) scaleY(1)}15%{font-size:0;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}to{font-size:1em;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}}:host{display:block;padding:12px;z-index:1000}:host,:host .nav__container{position:fixed;top:0;right:0;width:44px;height:44px}:host .nav__container{border-radius:0 0 0 0;background:transparent;margin:12px}:host .nav__container .nav__wrapper{position:absolute;right:0;top:0;width:44px;height:44px}:host .nav__container .nav__wrapper .nav__button{width:44px;height:44px;box-sizing:border-box;cursor:pointer}:host .nav__container .nav__wrapper nav{position:absolute;display:block;top:0;right:0;width:44px;height:44px;max-width:320px;transform:translateX(0) translateY(0);pointer-events:none;text-align:center}:host .nav__container .nav__wrapper nav a:link,:host .nav__container .nav__wrapper nav a:visited{text-transform:uppercase;text-decoration:none}:host .nav__container .nav__wrapper nav a{display:block;color:transparent;opacity:1;width:100%;font-size:1em;line-height:1em;transform:translateY(0) scaleY(.3);transition:.7s,opacity;margin-bottom:0}:host .nav__container .nav__wrapper nav a:nth-child(n+4){opacity:0}:host .nav__container .nav__wrapper nav a:before{position:absolute;content:\"\";top:0;left:0;width:100%;height:12px;background:var(--font-color);transition:.2s}:host .nav__container.is--init{animation:containerOut .4s;animation-fill-mode:both}:host .nav__container.is--open{background:#000;animation:containerIn .7s;animation-fill-mode:both;margin:0}:host .nav__container.is--open .nav__wrapper{width:100vw;height:100vh;opacity:1;pointer-events:auto;transform:translateX(0);margin:0}:host .nav__container.is--open .nav__wrapper .nav__button{position:fixed;top:0;right:0;margin:12px}:host .nav__container.is--open .nav__wrapper .nav__button:before{position:absolute;content:\"\";top:50%;left:50%;width:100%;height:2px;background:var(--font-color);transform:translateX(-50%) translateY(-50%) rotate(45deg);transition:.7s}:host .nav__container.is--open .nav__wrapper .nav__button:after{position:absolute;content:\"\";top:50%;left:50%;width:100%;height:2px;background:var(--font-color);transform:translateX(-50%) translateY(-50%) rotate(-45deg);transition:.7s}:host .nav__container.is--open .nav__wrapper nav{top:50%;right:50%;width:320px;height:auto;max-width:320px;transform:translateX(50%) translateY(-50%);pointer-events:auto;border-top:3px solid var(--font-color);border-bottom:3px solid var(--font-color)}:host .nav__container.is--open .nav__wrapper nav a{background:transparent;animation:linkIn .7s;animation-fill-mode:both;transition:.7s,opacity;margin-bottom:20px}:host .nav__container.is--open .nav__wrapper nav a:nth-child(n+4){opacity:1}:host .nav__container.is--open .nav__wrapper nav a:before{height:0;opacity:0}:host .nav__container.is--open .nav__wrapper nav a:first-child{margin-top:20px}:host .nav__container.is--open.is--init a{animation:linkOut .7s;animation-fill-mode:both}";
+styleInject(css_248z$1);
 
 var template$1 = "<div class=\"nav__container\">\n\n    <div class=\"nav__wrapper\">\n        <nav>\n            <a href=\"/\">Home</a>\n            <a href=\"/blog\">Blog</a>\n            <a href=\"/resume\">Resume</a>\n            <a href=\"/gallery\">Gallery</a>\n        </nav>\n        <div class=\"nav__button\"></div>\n    </div>\n\n</div>";
 
@@ -583,14 +612,15 @@ let NavComponent = class NavComponent extends CustomElement {
 NavComponent = __decorate([
     Component({
         selector: 'v-nav',
-        style: style$1,
+        style: css_248z$1,
         template: template$1
     }),
     __metadata("design:paramtypes", [])
 ], NavComponent);
 customElements.define('v-nav', NavComponent);
 
-var style$2 = "var css_248z = \":host{display:block;opacity:0;border-radius:6px;border:1px solid var(--font-color);width:640px;height:480px;position:absolute;left:50%;top:50%;transform:translate3D(-50%,-50%,0);transform-origin:50% 50%;background-color:var(--body-color)}@media screen and (max-width:640px){:host{width:300px;height:320px;left:0}}\";\nexport default css_248z;\nexport const stylesheet=\":host{display:block;opacity:0;border-radius:6px;border:1px solid var(--font-color);width:640px;height:480px;position:absolute;left:50%;top:50%;transform:translate3D(-50%,-50%,0);transform-origin:50% 50%;background-color:var(--body-color)}@media screen and (max-width:640px){:host{width:300px;height:320px;left:0}}\";\nimport styleInject from '/Users/steve/www/personal/node_modules/style-inject/dist/style-inject.es.js';\nstyleInject(css_248z);";
+var css_248z$2 = ":host{display:block;opacity:0;border-radius:6px;border:1px solid var(--font-color);width:640px;height:480px;position:absolute;left:50%;top:50%;transform:translate3D(-50%,-50%,0);transform-origin:50% 50%;background-color:var(--body-color)}@media screen and (max-width:640px){:host{width:300px;height:320px;left:0}}";
+styleInject(css_248z$2);
 
 var template$2 = "<div class=\"v__card\">\n  <slot></slot>\n</div>\n";
 
@@ -657,14 +687,15 @@ __decorate([
 CardComponent = __decorate([
     Component({
         selector: 'v-card',
-        style: style$2,
+        style: css_248z$2,
         template: template$2
     }),
     __metadata("design:paramtypes", [])
 ], CardComponent);
 customElements.define('v-card', CardComponent);
 
-var style$3 = "var css_248z = \":host{display:block;width:100vw;height:100vh}\";\nexport default css_248z;\nexport const stylesheet=\":host{display:block;width:100vw;height:100vh}\";\nimport styleInject from '/Users/steve/www/personal/node_modules/style-inject/dist/style-inject.es.js';\nstyleInject(css_248z);";
+var css_248z$3 = ":host{display:block;width:100vw;height:100vh}";
+styleInject(css_248z$3);
 
 var template$3 = "<slot></slot>\n";
 
@@ -931,14 +962,15 @@ __decorate([
 ScrollSync = __decorate([
     Component({
         selector: 'v-scroll-sync',
-        style: style$3,
+        style: css_248z$3,
         template: template$3
     }),
     __metadata("design:paramtypes", [])
 ], ScrollSync);
 customElements.define('v-scroll-sync', ScrollSync);
 
-var style$4 = "var css_248z = \":host{display:block;position:relative;width:100vw;height:40000px}\";\nexport default css_248z;\nexport const stylesheet=\":host{display:block;position:relative;width:100vw;height:40000px}\";\nimport styleInject from '/Users/steve/www/personal/node_modules/style-inject/dist/style-inject.es.js';\nstyleInject(css_248z);";
+var css_248z$4 = ":host{display:block;position:relative;width:100vw;height:40000px}";
+styleInject(css_248z$4);
 
 var template$4 = "<slot></slot>\n";
 
@@ -966,14 +998,15 @@ __decorate([
 ScrollView = __decorate([
     Component({
         selector: 'v-scroll-view',
-        style: style$4,
+        style: css_248z$4,
         template: template$4
     }),
     __metadata("design:paramtypes", [])
 ], ScrollView);
 customElements.define('v-scroll-view', ScrollView);
 
-var style$5 = "var css_248z = \":host{position:relative;display:flex;width:100vw;perspective:1000px;z-index:0}\";\nexport default css_248z;\nexport const stylesheet=\":host{position:relative;display:flex;width:100vw;perspective:1000px;z-index:0}\";\nimport styleInject from '/Users/steve/www/personal/node_modules/style-inject/dist/style-inject.es.js';\nstyleInject(css_248z);";
+var css_248z$5 = ":host{position:relative;display:flex;width:100vw;perspective:1000px;z-index:0}";
+styleInject(css_248z$5);
 
 var template$5 = "<slot></slot>\n";
 
@@ -999,14 +1032,15 @@ __decorate([
 SectionComponent = __decorate([
     Component({
         selector: 'v-section',
-        style: style$5,
+        style: css_248z$5,
         template: template$5
     }),
     __metadata("design:paramtypes", [])
 ], SectionComponent);
 customElements.define('v-section', SectionComponent);
 
-var style$6 = "var css_248z = \":host{position:relative;perspective:1000px;color:var(--font-color);left:50%;top:50%}:host .profile__avatar{display:none;position:absolute;top:0;right:0;width:320px;height:320px;background:var(--font-color)}:host .profile__avatar,:host .profile__avatar img{-webkit-clip-path:polygon(5% 0,100% 60%,20% 100%);clip-path:polygon(5% 0,100% 60%,20% 100%);box-sizing:border-box}:host .profile__avatar img{background:var(--body-color)}:host .profile{position:relative;opacity:0;transform:translateZ(-50px);display:flex;transition:transform 30ms ease-out;justify-content:flex-start;align-content:flex-end;perspective:1000px}:host .profile .profile__description h1{display:block;position:relative;font-family:var(--headline-font);font-size:74px;font-weight:900;transform:rotate3d(0,32px);-webkit-margin-before:0;margin-block-start:0;-webkit-margin-after:0;margin-block-end:0}:host .profile .profile__description p{display:block;position:relative;font-family:var(--body-font);font-size:28px;font-weight:400;transform:rotate(0,32px);-webkit-margin-before:.5em;margin-block-start:.5em;-webkit-margin-after:1em;margin-block-end:1em}@media (max-width:767px){:host{display:block;width:calc(100vw - 40px);left:0}:host .profile{height:640px;width:100%;justify-content:flex-start;align-content:flex-end}:host .profile .profile__avatar,:host .profile .profile__avatar img{width:280px;height:280px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:10px;margin-right:10px;margin-bottom:60px}:host .profile .profile__description h1{font-size:48px}:host .profile .profile__description p{font-size:18px}}@media (min-width:768px) and (max-width:1023px){:host{transform:translateX(-50%);width:100%}:host .profile{height:720px;width:100%;justify-content:flex-start;align-content:flex-end}:host .profile .profile__avatar{width:320px;height:320px;position:relative;left:50%;transform:translateX(-50%) translateY(-20px)}:host .profile .profile__avatar img{width:320px;height:320px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:20px;margin-right:20px;margin-bottom:60px}:host .profile .profile__description h1{font-size:64px}:host .profile .profile__description p{font-size:24px}}@media (min-width:1024px) and (max-width:1359px){:host{left:50%;transform:translateX(-50%);width:100%}:host .profile{height:90vh;width:720px}:host .profile .profile__avatar{-ms-grid-row-align:center;align-self:center;width:320px;height:320px}:host .profile .profile__avatar img{width:320px;height:320px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:40px;margin-bottom:60px}:host .profile .profile__description h1{font-size:64px}:host .profile .profile__description p{font-size:24px}}@media (min-width:1360px) and (max-width:1879px){:host{left:50%;transform:translateX(-50%);width:100%}:host .profile{height:90vh;width:720px}:host .profile .profile__avatar{-ms-grid-row-align:center;align-self:center;width:320px;height:320px}:host .profile .profile__avatar img{width:320px;height:320px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:40px;margin-bottom:60px}}@media (min-width:1880px){:host{left:50%;transform:translateX(-50%);width:100%}:host .profile{height:90vh;width:720px}:host .profile .profile__avatar{-ms-grid-row-align:center;align-self:center;width:360px;height:360px}:host .profile .profile__avatar img{width:360px;height:360px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:40px;margin-bottom:60px}}a:link,a:visited{color:var(--cta-color)}\";\nexport default css_248z;\nexport const stylesheet=\":host{position:relative;perspective:1000px;color:var(--font-color);left:50%;top:50%}:host .profile__avatar{display:none;position:absolute;top:0;right:0;width:320px;height:320px;background:var(--font-color)}:host .profile__avatar,:host .profile__avatar img{-webkit-clip-path:polygon(5% 0,100% 60%,20% 100%);clip-path:polygon(5% 0,100% 60%,20% 100%);box-sizing:border-box}:host .profile__avatar img{background:var(--body-color)}:host .profile{position:relative;opacity:0;transform:translateZ(-50px);display:flex;transition:transform 30ms ease-out;justify-content:flex-start;align-content:flex-end;perspective:1000px}:host .profile .profile__description h1{display:block;position:relative;font-family:var(--headline-font);font-size:74px;font-weight:900;transform:rotate3d(0,32px);-webkit-margin-before:0;margin-block-start:0;-webkit-margin-after:0;margin-block-end:0}:host .profile .profile__description p{display:block;position:relative;font-family:var(--body-font);font-size:28px;font-weight:400;transform:rotate(0,32px);-webkit-margin-before:.5em;margin-block-start:.5em;-webkit-margin-after:1em;margin-block-end:1em}@media (max-width:767px){:host{display:block;width:calc(100vw - 40px);left:0}:host .profile{height:640px;width:100%;justify-content:flex-start;align-content:flex-end}:host .profile .profile__avatar,:host .profile .profile__avatar img{width:280px;height:280px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:10px;margin-right:10px;margin-bottom:60px}:host .profile .profile__description h1{font-size:48px}:host .profile .profile__description p{font-size:18px}}@media (min-width:768px) and (max-width:1023px){:host{transform:translateX(-50%);width:100%}:host .profile{height:720px;width:100%;justify-content:flex-start;align-content:flex-end}:host .profile .profile__avatar{width:320px;height:320px;position:relative;left:50%;transform:translateX(-50%) translateY(-20px)}:host .profile .profile__avatar img{width:320px;height:320px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:20px;margin-right:20px;margin-bottom:60px}:host .profile .profile__description h1{font-size:64px}:host .profile .profile__description p{font-size:24px}}@media (min-width:1024px) and (max-width:1359px){:host{left:50%;transform:translateX(-50%);width:100%}:host .profile{height:90vh;width:720px}:host .profile .profile__avatar{-ms-grid-row-align:center;align-self:center;width:320px;height:320px}:host .profile .profile__avatar img{width:320px;height:320px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:40px;margin-bottom:60px}:host .profile .profile__description h1{font-size:64px}:host .profile .profile__description p{font-size:24px}}@media (min-width:1360px) and (max-width:1879px){:host{left:50%;transform:translateX(-50%);width:100%}:host .profile{height:90vh;width:720px}:host .profile .profile__avatar{-ms-grid-row-align:center;align-self:center;width:320px;height:320px}:host .profile .profile__avatar img{width:320px;height:320px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:40px;margin-bottom:60px}}@media (min-width:1880px){:host{left:50%;transform:translateX(-50%);width:100%}:host .profile{height:90vh;width:720px}:host .profile .profile__avatar{-ms-grid-row-align:center;align-self:center;width:360px;height:360px}:host .profile .profile__avatar img{width:360px;height:360px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:40px;margin-bottom:60px}}a:link,a:visited{color:var(--cta-color)}\";\nimport styleInject from '/Users/steve/www/personal/node_modules/style-inject/dist/style-inject.es.js';\nstyleInject(css_248z);";
+var css_248z$6 = ":host{position:relative;perspective:1000px;color:var(--font-color);left:50%;top:50%}:host .profile__avatar{display:none;position:absolute;top:0;right:0;width:320px;height:320px;background:var(--font-color)}:host .profile__avatar,:host .profile__avatar img{-webkit-clip-path:polygon(5% 0,100% 60%,20% 100%);clip-path:polygon(5% 0,100% 60%,20% 100%);box-sizing:border-box}:host .profile__avatar img{background:var(--body-color)}:host .profile{position:relative;opacity:0;transform:translateZ(-50px);display:flex;transition:transform 30ms ease-out;justify-content:flex-start;align-content:flex-end;perspective:1000px}:host .profile .profile__description h1{display:block;position:relative;font-family:var(--headline-font);font-size:74px;font-weight:900;transform:rotate3d(0,32px);-webkit-margin-before:0;margin-block-start:0;-webkit-margin-after:0;margin-block-end:0}:host .profile .profile__description p{display:block;position:relative;font-family:var(--body-font);font-size:28px;font-weight:400;transform:rotate(0,32px);-webkit-margin-before:.5em;margin-block-start:.5em;-webkit-margin-after:1em;margin-block-end:1em}@media (max-width:767px){:host{display:block;width:calc(100vw - 40px);left:0}:host .profile{height:640px;width:100%;justify-content:flex-start;align-content:flex-end}:host .profile .profile__avatar,:host .profile .profile__avatar img{width:280px;height:280px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:10px;margin-right:10px;margin-bottom:60px}:host .profile .profile__description h1{font-size:48px}:host .profile .profile__description p{font-size:18px}}@media (min-width:768px) and (max-width:1023px){:host{transform:translateX(-50%);width:100%}:host .profile{height:720px;width:100%;justify-content:flex-start;align-content:flex-end}:host .profile .profile__avatar{width:320px;height:320px;position:relative;left:50%;transform:translateX(-50%) translateY(-20px)}:host .profile .profile__avatar img{width:320px;height:320px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:20px;margin-right:20px;margin-bottom:60px}:host .profile .profile__description h1{font-size:64px}:host .profile .profile__description p{font-size:24px}}@media (min-width:1024px) and (max-width:1359px){:host{left:50%;transform:translateX(-50%);width:100%}:host .profile{height:90vh;width:720px}:host .profile .profile__avatar{-ms-grid-row-align:center;align-self:center;width:320px;height:320px}:host .profile .profile__avatar img{width:320px;height:320px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:40px;margin-bottom:60px}:host .profile .profile__description h1{font-size:64px}:host .profile .profile__description p{font-size:24px}}@media (min-width:1360px) and (max-width:1879px){:host{left:50%;transform:translateX(-50%);width:100%}:host .profile{height:90vh;width:720px}:host .profile .profile__avatar{-ms-grid-row-align:center;align-self:center;width:320px;height:320px}:host .profile .profile__avatar img{width:320px;height:320px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:40px;margin-bottom:60px}}@media (min-width:1880px){:host{left:50%;transform:translateX(-50%);width:100%}:host .profile{height:90vh;width:720px}:host .profile .profile__avatar{-ms-grid-row-align:center;align-self:center;width:360px;height:360px}:host .profile .profile__avatar img{width:360px;height:360px}:host .profile .profile__description{flex:1;align-self:flex-end;margin-left:40px;margin-bottom:60px}}a:link,a:visited{color:var(--cta-color)}";
+styleInject(css_248z$6);
 
 var template$6 = "\n\n\n\n<div class=\"profile\">\n    <div class=\"profile__avatar\">\n\n    </div>\n    <div class=\"profile__description\">\n        <h1>Steve Belovarich</h1>\n        <p>Web Engineer &amp; Digital Artist in Portland, OR</p>\n    </div>\n    <div class=\"log\"></div>\n</div>";
 
@@ -1109,14 +1143,15 @@ __decorate([
 ProfileComponent = __decorate([
     Component({
         selector: 't-profile',
-        style: style$6,
+        style: css_248z$6,
         template: template$6
     }),
     __metadata("design:paramtypes", [])
 ], ProfileComponent);
 customElements.define('t-profile', ProfileComponent);
 
-var style$7 = "var css_248z = \":host{display:block;width:100%}:host .post__wrapper{width:100%;height:640px}:host .post__wrapper.is--light{color:var(--body-color)}:host .post__wrapper.is--light .post__background{background:var(--font-color)}:host .post__wrapper.is--dark{color:var(--font-color)}:host .post__wrapper.is--dark .post__background{background:var(--body-color)}:host .post__background{position:absolute;top:-40px;width:100%;height:100%;-webkit-clip-path:polygon(0 0,100% 12%,100% 100%,0 100%);clip-path:polygon(0 0,100% 12%,100% 100%,0 100%)}:host .post__content{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%)}:host .post__content h2{font-size:20px}:host .post__content p{font-size:16px}@media (max-width:767px){:host{margin-top:640px}}\";\nexport default css_248z;\nexport const stylesheet=\":host{display:block;width:100%}:host .post__wrapper{width:100%;height:640px}:host .post__wrapper.is--light{color:var(--body-color)}:host .post__wrapper.is--light .post__background{background:var(--font-color)}:host .post__wrapper.is--dark{color:var(--font-color)}:host .post__wrapper.is--dark .post__background{background:var(--body-color)}:host .post__background{position:absolute;top:-40px;width:100%;height:100%;-webkit-clip-path:polygon(0 0,100% 12%,100% 100%,0 100%);clip-path:polygon(0 0,100% 12%,100% 100%,0 100%)}:host .post__content{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%)}:host .post__content h2{font-size:20px}:host .post__content p{font-size:16px}@media (max-width:767px){:host{margin-top:640px}}\";\nimport styleInject from '/Users/steve/www/personal/node_modules/style-inject/dist/style-inject.es.js';\nstyleInject(css_248z);";
+var css_248z$7 = ":host{display:block;width:100%}:host .post__wrapper{width:100%;height:640px}:host .post__wrapper.is--light{color:var(--body-color)}:host .post__wrapper.is--light .post__background{background:var(--font-color)}:host .post__wrapper.is--dark{color:var(--font-color)}:host .post__wrapper.is--dark .post__background{background:var(--body-color)}:host .post__background{position:absolute;top:-40px;width:100%;height:100%;-webkit-clip-path:polygon(0 0,100% 12%,100% 100%,0 100%);clip-path:polygon(0 0,100% 12%,100% 100%,0 100%)}:host .post__content{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%)}:host .post__content h2{font-size:20px}:host .post__content p{font-size:16px}@media (max-width:767px){:host{margin-top:640px}}";
+styleInject(css_248z$7);
 
 var template$7 = "<div class=\"post__wrapper\">\n    <div class=\"post__background\"></div>\n    <div class=\"post__content\">\n        <slot></slot>\n    </div>\n</div>";
 
@@ -1138,14 +1173,15 @@ let PostComponent = class PostComponent extends CustomElement {
 PostComponent = __decorate([
     Component({
         selector: 't-post',
-        style: style$7,
+        style: css_248z$7,
         template: template$7
     }),
     __metadata("design:paramtypes", [])
 ], PostComponent);
 customElements.define('t-post', PostComponent);
 
-var style$8 = "var css_248z = \":host{display:block;width:100vw;height:100vh}:host p{font-size:1.4em}.i--center{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);text-align:center}\";\nexport default css_248z;\nexport const stylesheet=\":host{display:block;width:100vw;height:100vh}:host p{font-size:1.4em}.i--center{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);text-align:center}\";\nimport styleInject from '/Users/steve/www/personal/node_modules/style-inject/dist/style-inject.es.js';\nstyleInject(css_248z);";
+var css_248z$8 = ":host{display:block;width:100vw;height:100vh}:host p{font-size:1.4em}.i--center{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);text-align:center}";
+styleInject(css_248z$8);
 
 var template$8 = "<v-nav></v-nav>\r\n<v-scroll-sync scale=\"{{scale}}\">\r\n  <v-stage>\r\n    <v-scroll-view>\r\n      <v-section data-index=\"1\">\r\n        <t-profile></t-profile>\r\n      </v-section>\r\n      <v-section data-index=\"2\">\r\n        <t-post theme=\"is--light\">\r\n          <h2>Hey there!</h2>\r\n          <p>I'm a fullstack JavaScript engineer who specializes in UI library architecture and design. I've made a career out of developing web apps for Nike, Lexus, NBCUniversal and Ubiquiti Networks. I'm currently employed at Workday in the role of Senior Software Development Engineer.</p>\r\n          <p>You may also find me exhibiting a variety of artwork from photography and print to interactive installations and video art. When I'm not teaching in the classroom I'm writing, speaking and mentoring others. I like to bicycle, digital detox with a hike in the mountains, attend meetups and indie rock shows. I'm a leader.</p>\r\n        </t-post>\r\n      </v-section>\r\n<!--  <v-section data-index=\"3\">3</v-section>\r\n      <v-section data-index=\"4\">4</v-section>\r\n      <v-section data-index=\"5\">5</v-section>\r\n      <v-section data-index=\"6\">6</v-section>\r\n      <v-section data-index=\"7\">7</v-section>\r\n      <v-section data-index=\"8\">8</v-section> -->\r\n    </v-scroll-view>\r\n  </v-stage>\r\n</v-scroll-sync>\r\n";
 
@@ -1168,14 +1204,15 @@ __decorate([
 HomeComponent = __decorate([
     Component({
         selector: 'home-view',
-        style: style$8,
+        style: css_248z$8,
         template: template$8
     }),
     __metadata("design:paramtypes", [])
 ], HomeComponent);
 customElements.define('home-view', HomeComponent);
 
-var style$9 = "var css_248z = \":host{display:block;width:100vw;height:100vh}:host p{font-size:1.4em}\";\nexport default css_248z;\nexport const stylesheet=\":host{display:block;width:100vw;height:100vh}:host p{font-size:1.4em}\";\nimport styleInject from '/Users/steve/www/personal/node_modules/style-inject/dist/style-inject.es.js';\nstyleInject(css_248z);";
+var css_248z$9 = ":host{display:block;width:100vw;height:100vh}:host p{font-size:1.4em}";
+styleInject(css_248z$9);
 
 var template$9 = "<v-nav></v-nav>\n<v-scroll-sync scale=\"{{scale}}\">\n  <v-stage>\n    <v-scroll-view>\n      <v-section data-index=\"1\">\n        <t-post theme=\"is--light\">\n          <h2>Headline</h2>\n          <p>I'm a fullstack JavaScript engineer who specializes in UI library architecture and design. I've made a career out of developing web apps for Nike, Lexus, NBCUniversal and Ubiquiti Networks. I'm currently employed at Workday in the role of Senior Software Development Engineer.</p>\n        </t-post>\n      </v-section>\n    </v-scroll-view>\n  </v-stage>\n</v-scroll-sync>\n";
 
@@ -1198,14 +1235,15 @@ __decorate([
 BlogComponent = __decorate([
     Component({
         selector: 'blog-view',
-        style: style$9,
+        style: css_248z$9,
         template: template$9
     }),
     __metadata("design:paramtypes", [])
 ], BlogComponent);
 customElements.define('blog-view', BlogComponent);
 
-var style$a = "var css_248z = \":host{display:block}\";\nexport default css_248z;\nexport const stylesheet=\":host{display:block}\";\nimport styleInject from '/Users/steve/www/personal/node_modules/style-inject/dist/style-inject.es.js';\nstyleInject(css_248z);";
+var css_248z$a = ":host{display:block}";
+styleInject(css_248z$a);
 
 var template$a = "<v-nav></v-nav>\n<v-scroll-sync scale=\"{{scale}}\">\n    <v-stage>\n      <v-scroll-view>\n        <v-section data-index=\"1\">\n            <t-post theme=\"is--light\">\n              <h2>Resume</h2>\n            </t-post>\n          </v-section>\n      </v-scroll-view>\n     </v-stage>\n</v-scroll-sync>";
 
@@ -1228,14 +1266,15 @@ __decorate([
 ResumeComponent = __decorate([
     Component({
         selector: 'resume-view',
-        style: style$a,
+        style: css_248z$a,
         template: template$a
     }),
     __metadata("design:paramtypes", [])
 ], ResumeComponent);
 customElements.define('resume-view', ResumeComponent);
 
-var style$b = "var css_248z = \":host{display:block}\";\nexport default css_248z;\nexport const stylesheet=\":host{display:block}\";\nimport styleInject from '/Users/steve/www/personal/node_modules/style-inject/dist/style-inject.es.js';\nstyleInject(css_248z);";
+var css_248z$b = ":host{display:block}";
+styleInject(css_248z$b);
 
 var template$b = "<v-nav></v-nav>\n<v-scroll-sync scale=\"{{scale}}\">\n    <v-stage>\n      <v-scroll-view>\n        <v-section data-index=\"1\">\n            <t-post theme=\"is--light\">\n                <h2>Gallery</h2>\n            </t-post>\n          </v-section>\n      </v-scroll-view>\n     </v-stage>\n</v-scroll-sync>";
 
@@ -1258,7 +1297,7 @@ __decorate([
 GalleryComponent = __decorate([
     Component({
         selector: 'gallery-view',
-        style: style$b,
+        style: css_248z$b,
         template: template$b
     }),
     __metadata("design:paramtypes", [])

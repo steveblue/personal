@@ -27,7 +27,7 @@ export default [{
             extensions: ['.scss','.css']
         }),
         string({
-            include: ['**/*.html', '**/*.scss'],
+            include: ['**/*.html'],
         }),
         typescript()
     ],
