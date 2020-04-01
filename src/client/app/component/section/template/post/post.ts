@@ -18,8 +18,9 @@ class PostComponent extends CustomElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
+    if (!this.shadowRoot.querySelector) return;
     if (name === 'theme') {
-      this.shadowRoot?.querySelector('.post__wrapper')?.classList.add(newValue);
+      this.shadowRoot.querySelector('.post__wrapper').classList.add(newValue);
     }
   }
 

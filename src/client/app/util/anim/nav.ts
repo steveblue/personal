@@ -64,7 +64,7 @@ const navOutAnimation: WebAnimation = {
   options: {
     fill: 'forwards',
     easing: 'ease-in-out',
-    duration: 700
+    duration: 350
   }
 };
 

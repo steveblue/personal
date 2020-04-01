@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@corpuscule/custom-builtin-elements": "^0.3.0",
-    "@readymade/core": "^1.0.1",
+    "@readymade/core": "1.0.2",
     "@skatejs/ssr": "^0.19.11",
     "broadcastchannel-polyfill": "^1.0.0",
     "chalk": "^3.0.0",
@@ -35,6 +35,9 @@
     "web-animations-js": "^2.3.2"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-typescript": "^4.0.0",
     "@types/node": "^13.7.4",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
@@ -46,12 +49,11 @@
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-css-as-string": "^1.0.0",
     "prettier": "^1.19.1",
-    "rollup": "^2.3.1",
-    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup": "2.3.2",
     "rollup-plugin-postcss": "^2.5.0",
     "rollup-plugin-string": "^3.0.0",
-    "rollup-plugin-typescript2": "^0.27.0",
     "sass": "^1.26.3",
+    "tslib": "^1.11.1",
     "typescript": "^3.5.0"
   },
   "browserslist": [

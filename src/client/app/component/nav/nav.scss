@@ -35,7 +35,7 @@ $transition-duration: 0.7s;
     right: 0px;
     width: 44px;
     height: 44px;
-    margin: 12px;
+    padding: 12px;
     z-index: 1000;
     .nav__container {
         position: fixed;
@@ -114,11 +114,12 @@ $transition-duration: 0.7s;
                 opacity: 1;
                 pointer-events: initial;
                 transform: translateX(0px);
-                margin: 12px;
+                margin: 0px;
                 .nav__button {
                     position: fixed;
                     top: 0px;
                     right: 0px;
+                    margin: 12px;
                     &:before {
                         position: absolute;
                         content: '';

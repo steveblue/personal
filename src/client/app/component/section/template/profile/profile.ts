@@ -32,6 +32,7 @@ class ProfileComponent extends CustomElement {
   constructor() {
     super();
     this.in = this.animations.zoomIn;
+    this.animIn = animate((<unknown>this) as HTMLElement, this.in);
   }
 
   connectedCallback() {

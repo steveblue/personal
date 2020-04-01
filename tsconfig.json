@@ -7,6 +7,8 @@
                 "server/*"
             ]
         },
+        "rootDirs": ["./src/client",
+                     "./src/server"],
         "target": "ES2020",
         "module": "ESNext",
         "moduleResolution": "node",
@@ -20,7 +22,8 @@
         "allowSyntheticDefaultImports": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "strictNullChecks": false
     },
     "include": [
         "src"

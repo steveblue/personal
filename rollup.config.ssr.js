@@ -1,16 +1,20 @@
-import nodeResolve from 'rollup-plugin-node-resolve';
-import typescript from 'rollup-plugin-typescript2';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
-import { string } from "rollup-plugin-string";
+import { string } from 'rollup-plugin-string';
 
 export default [{
     input: 'src/client/server.ts',
     treeshake: true,
     output: {
         file: 'src/server/view/index.js',
-        format: 'esm',
+        format: 'esm'
     },
     plugins: [
+        nodeResolve({
+            mainFields: ['module', 'jsnext'],
+            extensions: ['.ts', '.js']
+        }),
         postcss({
             extract: false,
             modules: false,
@@ -19,13 +23,11 @@ export default [{
                     includePaths: ['src/client/style']
                 }]
             ],
-            minimize: true
+            minimize: true,
+            extensions: ['.scss','.css']
         }),
         string({
-            include: ["**/*.html"],
-        }),
-        nodeResolve({
-            mainFields: ['module', 'jsnext']
+            include: ['**/*.html', '**/*.scss'],
         }),
         typescript()
     ],
