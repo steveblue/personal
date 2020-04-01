@@ -25,20 +25,16 @@ class NavComponent extends CustomElement {
   constructor() {
     super();
     this.isActive = false;
-    this.navIn = animate((<unknown>this) as HTMLElement, this.animations.navIn);
-    this.navOut = animate((<unknown>this) as HTMLElement, this.animations.navOut);
   }
   connectedCallback() {
     if (!this.shadowRoot.querySelector) return;
-    this.navIn = animate((<unknown>this.shadowRoot.querySelector('nav')) as HTMLElement, this.animations.navIn);
-    this.navOut = animate((<unknown>this.shadowRoot.querySelector('nav')) as HTMLElement, this.animations.navOut);
-    this.shadowRoot.querySelector('.nav__button').addEventListener('click', this.toggle.bind(this));
-    this.navIn.pause();
-    this.navOut.play();
+    this.shadowRoot.querySelector('.nav__button').addEventListener('click', this.toggle.bind(this), false);
   }
   toggle() {
     if (!this.shadowRoot.querySelector) return;
     this.isActive = this.isActive ? false : true;
+    this.navIn = animate((<unknown>this.shadowRoot.querySelector('nav')) as HTMLElement, this.animations.navIn);
+    this.navOut = animate((<unknown>this.shadowRoot.querySelector('nav')) as HTMLElement, this.animations.navOut);
     if (!this.shadowRoot.querySelector('.nav__container').classList.contains('is--init')) {
       this.shadowRoot.querySelector('.nav__container').classList.add('is--init');
     }

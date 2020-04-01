@@ -65,7 +65,6 @@ $transition-duration: 0.7s;
                 right: 0%;
                 width: 44px;
                 height: 44px;
-                max-width: 320px;
                 transform: translateX(0%) translateY(0%);
                 pointer-events: none;
                 text-align: center;
@@ -148,7 +147,6 @@ $transition-duration: 0.7s;
                     right: 50%;
                     width: 320px;
                     height: auto;
-                    max-width: 320px;
                     transform: translateX(50%) translateY(-50%);
                     pointer-events: initial;
                     border-top: 3px solid var(--font-color);
@@ -174,7 +172,7 @@ $transition-duration: 0.7s;
             }
             &.is--init {
                 a {
-                    animation: linkOut $transition-duration;
+                    animation: linkOut 0.5s;
                     animation-fill-mode: both;
                 }
             }
@@ -182,24 +180,7 @@ $transition-duration: 0.7s;
     }
 
     @include phone {
-        .nav__container {
-            &.is--open {
-                .nav__wrapper {
-                   // width: calc(100vw - 24px);
-                    // nav {
-                    //     width: 100%;
-                    // }
-                }
-            }
-            &.is--init:not(.is--open) {
-                .nav__wrapper {
-                    // width: 44px;
-                    // nav {
-                    //     width: 44px;
-                    // }
-                }
-            }
-        }
+
     }
 
     @include portrait {
