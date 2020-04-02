@@ -19,6 +19,8 @@ import { GalleryComponent } from './view/gallery';
 // router
 import { rdrouter } from './router';
 
+document.body.classList.add('is--init');
+
 export { StageComponent,
          CardComponent,
          NavComponent,

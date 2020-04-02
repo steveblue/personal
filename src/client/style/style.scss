@@ -18,6 +18,12 @@ body {
   color: var(--font-color);
   max-height: 100vh;
   overflow: scroll;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+  transition-delay: 0.1s;
+  &.is--init {
+    opacity: 1;
+  }
 }
 
 a:link, a:visited {

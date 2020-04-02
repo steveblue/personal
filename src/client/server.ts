@@ -25,6 +25,8 @@ const routes = [{ path: '/', component: HomeComponent },
                 { path: '/resume', component: ResumeComponent },
                 { path: '/gallery', component: GalleryComponent }];
 
+document.body.classList.add('is--init');
+
 export {
   StageComponent,
   CardComponent,

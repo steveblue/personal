@@ -1309,5 +1309,6 @@ const routes = [{ path: '/', component: HomeComponent },
     { path: '/blog', component: BlogComponent },
     { path: '/resume', component: ResumeComponent },
     { path: '/gallery', component: GalleryComponent }];
+document.body.classList.add('is--init');
 
 export { BlogComponent, CardComponent, GalleryComponent, HomeComponent, NavComponent, PostComponent, ProfileComponent, ResumeComponent, ScrollSync, ScrollView, SectionComponent, StageComponent, routes };
