@@ -68,33 +68,51 @@ $transition-duration: 0.7s;
                 transform: translateX(0%) translateY(0%);
                 pointer-events: none;
                 text-align: center;
+                ul {
+                    list-style-type: none;
+                    margin-block-start: 0em;
+                    margin-block-end: 0em;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 0px;
+                    padding-inline-start: 0px;
+                    li {
+                        opacity: 1;
+                        transform: translateY(0%) scaleY(0.3);
+                        transition: $transition-duration, opacity;
+                        margin-bottom: 0px;
+                        &:nth-child(n + 4) {
+                            opacity: 0;
+                        }
+                        &:before {
+                            position: absolute;
+                            content: '';
+                            top: 0px;
+                            left: 0px;
+                            width: 100%;
+                            height: 12px;
+                            background: var(--font-color);
+                            transition: 0.2s;
+                        }
+                        span {
+                            opacity: 0;
+                        }
+                    }
+                }
                 a:link, a:visited {
                     text-transform: uppercase;
                     text-decoration: none;
                 }
                 a {
-                    display: block;
+                    display: inline-block;
                     color: rgba(0,0,0,0.0);
-                    opacity: 1;
-                    width: 100%;
                     font-size: 1.0em;
                     line-height: 1.0em;
-                    transform: translateY(0%) scaleY(0.3);
-                    transition: $transition-duration, opacity;
-                    margin-bottom: 0px;
-                    &:nth-child(n + 4) {
-                        opacity: 0;
-                    }
-                    &:before {
-                        position: absolute;
-                        content: '';
-                        top: 0px;
-                        left: 0px;
-                        width: 100%;
-                        height: 12px;
-                        background: var(--font-color);
-                        transition: 0.2s;
-                    }
+                }
+                span {
+                    display: none;
+                }
+                a + span + a {
+                    display: none;
                 }
             }
         }
@@ -151,27 +169,39 @@ $transition-duration: 0.7s;
                     pointer-events: initial;
                     border-top: 3px solid var(--font-color);
                     border-bottom: 3px solid var(--font-color);
-                    a {
-                        background: transparent;
-                        animation: linkIn $transition-duration;
-                        animation-fill-mode: both;
-                        transition: $transition-duration, opacity;
-                        margin-bottom: 20px;
-                        &:nth-child(n + 4) {
-                            opacity: 1;
-                        }
-                        &:before {
-                            height: 0px;
-                            opacity: 0;
-                        }
-                        &:first-child {
-                            margin-top: 20px;
+                    ul {
+                        li {
+                            background: transparent;
+                            animation: linkIn $transition-duration;
+                            animation-fill-mode: both;
+                            transition: $transition-duration, opacity;
+                            margin-bottom: 20px;
+                            &:nth-child(n + 4) {
+                                opacity: 1;
+                            }
+                            &:before {
+                                height: 0px;
+                                opacity: 0;
+                            }
+                            &:first-child {
+                                margin-top: 20px;
+                            }
+                            span {
+                                display: inline-block;
+                                opacity: 1;
+                            }
+                            a {
+                                color: rgba(255,255,255,1.0);
+                            }
+                            a + span + a {
+                                display: inline-block;
+                            }
                         }
                     }
                 }
             }
             &.is--init {
-                a {
+                li {
                     animation: linkOut 0.5s;
                     animation-fill-mode: both;
                 }

@@ -12,6 +12,7 @@ import {
   SectionComponent,
   ProfileComponent,
   PostComponent,
+  MarketingComponent,
   NavComponent,
 } from './app/shared';
 
@@ -35,6 +36,7 @@ export {
   SectionComponent,
   ProfileComponent,
   PostComponent,
+  MarketingComponent,
   NavComponent,
   HomeComponent,
   BlogComponent,

@@ -7,7 +7,8 @@ import {
   NavComponent,
   SectionComponent,
   ProfileComponent,
-  PostComponent
+  PostComponent,
+  MarketingComponent
 } from './shared';
 
 // views
@@ -27,6 +28,7 @@ export { StageComponent,
          SectionComponent,
          ProfileComponent,
          PostComponent,
+         MarketingComponent,
          ScrollSync,
          ScrollView,
          HomeComponent,

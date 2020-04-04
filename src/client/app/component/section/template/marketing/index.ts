@@ -1,0 +1,1 @@
+export { MarketingComponent } from './marketing';
