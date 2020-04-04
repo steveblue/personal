@@ -1,0 +1,1 @@
+export { CVComponent } from './cv';

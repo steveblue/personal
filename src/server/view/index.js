@@ -564,7 +564,7 @@ function animate(elem, animation) {
 var css_248z$1 = "@keyframes containerIn{0%{width:44px;height:44px;border-radius:0 0 0 0;background:transparent}50%{width:100vw;height:100vh;border-radius:50% 0 50% 50%;background:#000}to{width:100vw;height:100vh;border-radius:0 0 0 0;background:#000}}@keyframes containerOut{0%{width:100vw;height:100vh;border-radius:0 0 0 0;background:#000}50%{width:100vw;height:100vh;border-radius:50% 0 50% 50%;background:#000}to{width:44px;height:44px;border-radius:0 0 0 0;background:transparent}}@keyframes linkIn{0%{font-size:1em;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}15%{font-size:1em;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}to{font-size:1.5em;line-height:1.5em;color:#d2d2d2;transform:translateY(0) scaleY(1)}}@keyframes linkOut{0%{font-size:1.5em;line-height:1.5em;color:#d2d2d2;transform:translateY(0) scaleY(1)}1%{font-size:0;line-height:1em;color:transparent;transform:translateY(0) scaleY(1)}15%{font-size:0;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}to{font-size:1em;line-height:1em;color:transparent;transform:translateY(0) scaleY(.2)}}:host{display:block;padding:12px;z-index:1000}:host,:host .nav__container{position:fixed;top:0;right:0;width:44px;height:44px}:host .nav__container{border-radius:0 0 0 0;background:transparent;margin:12px}:host .nav__container .nav__wrapper{position:absolute;right:0;top:0;width:44px;height:44px}:host .nav__container .nav__wrapper .nav__button{width:44px;height:44px;box-sizing:border-box;cursor:pointer}:host .nav__container .nav__wrapper nav{position:absolute;display:block;top:0;right:0;width:44px;height:44px;transform:translateX(0) translateY(0);pointer-events:none;text-align:center}:host .nav__container .nav__wrapper nav ul{list-style-type:none;-webkit-margin-before:0;margin-block-start:0;-webkit-margin-after:0;margin-block-end:0;-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:0;margin-inline-end:0;-webkit-padding-start:0;padding-inline-start:0}:host .nav__container .nav__wrapper nav ul li{opacity:1;transform:translateY(0) scaleY(.3);transition:.7s,opacity;margin-bottom:0}:host .nav__container .nav__wrapper nav ul li:nth-child(n+4){opacity:0}:host .nav__container .nav__wrapper nav ul li:before{position:absolute;content:\"\";top:0;left:0;width:100%;height:12px;background:var(--font-color);transition:.2s}:host .nav__container .nav__wrapper nav ul li span{opacity:0}:host .nav__container .nav__wrapper nav a:link,:host .nav__container .nav__wrapper nav a:visited{text-transform:uppercase;text-decoration:none}:host .nav__container .nav__wrapper nav a{display:inline-block;color:transparent;font-size:1em;line-height:1em}:host .nav__container .nav__wrapper nav a+span+a,:host .nav__container .nav__wrapper nav span{display:none}:host .nav__container.is--init{animation:containerOut .4s;animation-fill-mode:both}:host .nav__container.is--open{background:#000;animation:containerIn .7s;animation-fill-mode:both;margin:0}:host .nav__container.is--open .nav__wrapper{width:100vw;height:100vh;opacity:1;pointer-events:auto;transform:translateX(0);margin:0}:host .nav__container.is--open .nav__wrapper .nav__button{position:fixed;top:0;right:0;margin:12px}:host .nav__container.is--open .nav__wrapper .nav__button:before{position:absolute;content:\"\";top:50%;left:50%;width:100%;height:2px;background:var(--font-color);transform:translateX(-50%) translateY(-50%) rotate(45deg);transition:.7s}:host .nav__container.is--open .nav__wrapper .nav__button:after{position:absolute;content:\"\";top:50%;left:50%;width:100%;height:2px;background:var(--font-color);transform:translateX(-50%) translateY(-50%) rotate(-45deg);transition:.7s}:host .nav__container.is--open .nav__wrapper nav{top:50%;right:50%;width:320px;height:auto;transform:translateX(50%) translateY(-50%);pointer-events:auto;border-top:3px solid var(--font-color);border-bottom:3px solid var(--font-color)}:host .nav__container.is--open .nav__wrapper nav ul li{background:transparent;animation:linkIn .7s;animation-fill-mode:both;transition:.7s,opacity;margin-bottom:20px}:host .nav__container.is--open .nav__wrapper nav ul li:nth-child(n+4){opacity:1}:host .nav__container.is--open .nav__wrapper nav ul li:before{height:0;opacity:0}:host .nav__container.is--open .nav__wrapper nav ul li:first-child{margin-top:20px}:host .nav__container.is--open .nav__wrapper nav ul li span{display:inline-block;opacity:1}:host .nav__container.is--open .nav__wrapper nav ul li a{color:#fff}:host .nav__container.is--open .nav__wrapper nav ul li a+span+a{display:inline-block}:host .nav__container.is--open.is--init li{animation:linkOut .5s;animation-fill-mode:both}";
 styleInject(css_248z$1);
 
-var template$1 = "<div class=\"nav__container\">\n\n    <div class=\"nav__wrapper\">\n        <nav>\n            <ul>\n                <li><a href=\"/\">Home</a></li>\n                <li><a href=\"/blog\">Blog</a></li>\n                <li><a href=\"/resume\">Resume</a> <span>/</span> <a href=\"/resume\">CV</a></li>\n                <!-- <li><a href=\"/gallery\">Gallery</a></li> -->\n            </ul>\n        </nav>\n        <div class=\"nav__button\"></div>\n    </div>\n\n</div>";
+var template$1 = "<div class=\"nav__container\">\n\n    <div class=\"nav__wrapper\">\n        <nav>\n            <ul>\n                <li><a href=\"/\">Home</a></li>\n                <li><a href=\"/blog\">Blog</a></li>\n                <li><a href=\"/resume\">Resume</a> <span>/</span> <a href=\"/cv\">CV</a></li>\n                <!-- <li><a href=\"/gallery\">Gallery</a></li> -->\n            </ul>\n        </nav>\n        <div class=\"nav__button\"></div>\n    </div>\n\n</div>";
 
 let NavComponent = class NavComponent extends CustomElement {
     constructor() {
@@ -1176,10 +1176,40 @@ PostComponent = __decorate([
 ], PostComponent);
 customElements.define('t-post', PostComponent);
 
-var css_248z$8 = ":host{display:block;width:100vw;height:100vh}:host p{font-size:1.4em}.i--center{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);text-align:center}";
+var css_248z$8 = ":host{display:block;width:100%}:host .post__wrapper{width:100%;height:640px}:host .post__wrapper.is--light{color:var(--body-color)}:host .post__wrapper.is--light .post__background{background:var(--font-color)}:host .post__wrapper.is--dark{color:var(--font-color)}:host .post__wrapper.is--dark .post__background{background:var(--body-color)}:host .post__background{position:absolute;top:-40px;width:100%;height:100%}:host .post__content{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%)}:host .post__content h2{font-size:20px}:host .post__content p{font-size:16px}@media (max-width:767px){:host{margin-top:640px}}";
 styleInject(css_248z$8);
 
-var template$8 = "<v-nav></v-nav>\r\n<v-scroll-sync scale=\"{{scale}}\">\r\n  <v-stage>\r\n    <v-scroll-view>\r\n      <v-section data-index=\"1\">\r\n        <t-profile></t-profile>\r\n      </v-section>\r\n      <v-section data-index=\"2\">\r\n        <t-post theme=\"is--light\">\r\n          <h2>Hey there!</h2>\r\n          <p>I'm a fullstack JavaScript engineer who specializes in UI library architecture and design. I've made a career out of developing web apps for Nike, Lexus, NBCUniversal and Ubiquiti Networks. I'm currently employed at Workday in the role of Senior Software Development Engineer.</p>\r\n          <p>You may also find me exhibiting a variety of artwork from photography and print to interactive installations and video art. When I'm not teaching in the classroom I'm writing, speaking and mentoring others. I like to bicycle, digital detox with a hike in the mountains, attend meetups and indie rock shows. I'm a leader.</p>\r\n        </t-post>\r\n      </v-section>\r\n<!--  <v-section data-index=\"3\">3</v-section>\r\n      <v-section data-index=\"4\">4</v-section>\r\n      <v-section data-index=\"5\">5</v-section>\r\n      <v-section data-index=\"6\">6</v-section>\r\n      <v-section data-index=\"7\">7</v-section>\r\n      <v-section data-index=\"8\">8</v-section> -->\r\n    </v-scroll-view>\r\n  </v-stage>\r\n</v-scroll-sync>\r\n";
+var template$8 = "<div class=\"post__wrapper\">\n    <div class=\"post__background\"></div>\n    <div class=\"post__content\">\n        <slot></slot>\n    </div>\n</div>";
+
+let MarketingComponent = class MarketingComponent extends CustomElement {
+    constructor() {
+        super();
+    }
+    static get observedAttributes() {
+        return ['theme'];
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (!this.shadowRoot.querySelector)
+            return;
+        if (name === 'theme') {
+            this.shadowRoot.querySelector('.post__wrapper').classList.add(newValue);
+        }
+    }
+};
+MarketingComponent = __decorate([
+    Component({
+        selector: 't-market',
+        style: css_248z$8,
+        template: template$8
+    }),
+    __metadata("design:paramtypes", [])
+], MarketingComponent);
+customElements.define('t-market', MarketingComponent);
+
+var css_248z$9 = ":host{display:block;width:100vw;height:100vh}:host p{font-size:1.4em}.i--center{position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);text-align:center}";
+styleInject(css_248z$9);
+
+var template$9 = "<v-nav></v-nav>\r\n<v-scroll-sync scale=\"{{scale}}\">\r\n  <v-stage>\r\n    <v-scroll-view>\r\n      <v-section data-index=\"1\">\r\n        <t-profile></t-profile>\r\n      </v-section>\r\n      <v-section data-index=\"2\">\r\n        <t-market theme=\"is--light\">\r\n          <h2>Engineer By Trade, Artist At Heart</h2>\r\n          <p>I'm a fourth generation engineer. Even when I'm making art, I find myself solving problems with technological solutions. In my current role at Workday, I'm a senior software development engineer. I help maintain the UI platform. <a href=\"/resume\">View my resume</a>.</p>\r\n        </t-market>\r\n      </v-section>\r\n      <v-section data-index=\"3\">\r\n        <t-market theme=\"is--dark\">\r\n          <h2>Livin' In The Pacific Northwest</h2>\r\n          <p>I live in Portland, OR with my significant other Susanne. We travel around the Pacific Northwest, soaking up the lush environments. I take photographs documenting our adventures. <a href=\"https://500px.com/stevebelovarich\" target=\"_blank\">View my photography on 500px</a>.</p>\r\n        </t-market>\r\n      </v-section>\r\n      <v-section data-index=\"4\">\r\n        <t-market theme=\"is--light\">\r\n          <h2>I Code, Therefore I Am</h2>\r\n          <p>You'll usually find me coding user interfaces in a web browser. I love architecting UI libraries and experimenting with web standards. This site was made entirely with custom elements. I followed a \"no framework\" approach. I challenged myself to make this interation of my personal site performant yet design forward. In what seems like a past life I was a web designer. <a href=\"/resume\">View my resume</a>.</p>\r\n        </t-market>\r\n      </v-section>\r\n      <v-section data-index=\"5\">\r\n        <t-market theme=\"is--dark\">\r\n          <h2>Photography Is My Jam</h2>\r\n          <p>I'm working on a series of photographs about the American Dream. It's taken over a decade to collect the images I want to portray the decaying ideal of the dream in America. <a href=\"https://500px.com/stevebelovarich/galleries/american_dream_photo_essay\" target=\"_blank\">View candidates for this exhibition on 500px</a>.</p>\r\n         </t-market>\r\n      </v-section>\r\n      <v-section data-index=\"6\">\r\n        <t-market theme=\"is--light\">\r\n          <h2>Teaching Is A Way Of Life</h2>\r\n          <p>I love learning new things and helping others unlock thier potential. I taught part-time at General Assembly where I helped architect the curricula for a course about JavaScript. I'm currently looking for a part-time faculty position in higher education focusing either on web development or digital art. <a href=\"/cv\">View my curriculum vitae</a></p>\r\n        </t-market>\r\n      </v-section>\r\n      <v-section data-index=\"7\">\r\n        <t-market theme=\"is--dark\">\r\n          <h2>I Write About Web Development</h2>\r\n          <p><a href=\"https://dev.to/steveblue\" target=\"_blank\">I write about web development on dev.to</a>. This year I'm focused on writing a technical book about front end web development.</p>\r\n        </t-market>\r\n      </v-section>\r\n      <v-section data-index=\"8\">\r\n        <t-market theme=\"is--light\">\r\n          <h2>I'm Steve</h2>\r\n          <p>You can <a href=\"https://twitter.com/iplayitofflegit\" target=\"_blank\">find me on Twitter</a>.</p>\r\n        </t-market>\r\n      </v-section>\r\n    </v-scroll-view>\r\n  </v-stage>\r\n</v-scroll-sync>\r\n";
 
 let HomeComponent = class HomeComponent extends CustomElement {
     constructor() {
@@ -1200,17 +1230,17 @@ __decorate([
 HomeComponent = __decorate([
     Component({
         selector: 'home-view',
-        style: css_248z$8,
-        template: template$8
+        style: css_248z$9,
+        template: template$9
     }),
     __metadata("design:paramtypes", [])
 ], HomeComponent);
 customElements.define('home-view', HomeComponent);
 
-var css_248z$9 = ":host{display:block;width:100vw;height:100vh}:host p{font-size:1.4em}";
-styleInject(css_248z$9);
+var css_248z$a = ":host{display:block;width:100vw;height:100vh}:host p{font-size:1.4em}";
+styleInject(css_248z$a);
 
-var template$9 = "<v-nav></v-nav>\n<v-scroll-sync scale=\"{{scale}}\">\n  <v-stage>\n    <v-scroll-view>\n      <v-section data-index=\"1\">\n        <t-post theme=\"is--light\">\n          <h2>Headline</h2>\n          <p>I'm a fullstack JavaScript engineer who specializes in UI library architecture and design. I've made a career out of developing web apps for Nike, Lexus, NBCUniversal and Ubiquiti Networks. I'm currently employed at Workday in the role of Senior Software Development Engineer.</p>\n        </t-post>\n      </v-section>\n    </v-scroll-view>\n  </v-stage>\n</v-scroll-sync>\n";
+var template$a = "<v-nav></v-nav>\n<v-scroll-sync scale=\"{{scale}}\">\n  <v-stage>\n    <v-scroll-view>\n      <v-section data-index=\"1\">\n        <t-post theme=\"is--light\">\n          <h2>Headline</h2>\n          <p>I'm a fullstack JavaScript engineer who specializes in UI library architecture and design. I've made a career out of developing web apps for Nike, Lexus, NBCUniversal and Ubiquiti Networks. I'm currently employed at Workday in the role of Senior Software Development Engineer.</p>\n        </t-post>\n      </v-section>\n    </v-scroll-view>\n  </v-stage>\n</v-scroll-sync>\n";
 
 let BlogComponent = class BlogComponent extends CustomElement {
     constructor() {
@@ -1231,17 +1261,17 @@ __decorate([
 BlogComponent = __decorate([
     Component({
         selector: 'blog-view',
-        style: css_248z$9,
-        template: template$9
+        style: css_248z$a,
+        template: template$a
     }),
     __metadata("design:paramtypes", [])
 ], BlogComponent);
 customElements.define('blog-view', BlogComponent);
 
-var css_248z$a = ":host{display:block}";
-styleInject(css_248z$a);
+var css_248z$b = ":host{display:block}";
+styleInject(css_248z$b);
 
-var template$a = "<v-nav></v-nav>\n<v-scroll-sync scale=\"{{scale}}\">\n    <v-stage>\n      <v-scroll-view>\n        <v-section data-index=\"1\">\n            <t-post theme=\"is--light\">\n              <h2>Resume</h2>\n            </t-post>\n          </v-section>\n      </v-scroll-view>\n     </v-stage>\n</v-scroll-sync>";
+var template$b = "<v-nav></v-nav>\n<v-scroll-sync scale=\"{{scale}}\">\n    <v-stage>\n      <v-scroll-view>\n        <v-section data-index=\"1\">\n            <t-post theme=\"is--light\">\n              <h2>Resume</h2>\n            </t-post>\n          </v-section>\n      </v-scroll-view>\n     </v-stage>\n</v-scroll-sync>";
 
 let ResumeComponent = class ResumeComponent extends CustomElement {
     constructor() {
@@ -1262,17 +1292,45 @@ __decorate([
 ResumeComponent = __decorate([
     Component({
         selector: 'resume-view',
-        style: css_248z$a,
-        template: template$a
+        style: css_248z$b,
+        template: template$b
     }),
     __metadata("design:paramtypes", [])
 ], ResumeComponent);
 customElements.define('resume-view', ResumeComponent);
 
-var css_248z$b = ":host{display:block}";
-styleInject(css_248z$b);
+var template$c = "<v-nav></v-nav>\n<v-scroll-sync scale=\"{{scale}}\">\n    <v-stage>\n      <v-scroll-view>\n        <v-section data-index=\"1\">\n            <t-post theme=\"is--light\">\n              <h2>CV</h2>\n            </t-post>\n          </v-section>\n      </v-scroll-view>\n     </v-stage>\n</v-scroll-sync>";
 
-var template$b = "<v-nav></v-nav>\n<v-scroll-sync scale=\"{{scale}}\">\n    <v-stage>\n      <v-scroll-view>\n        <v-section data-index=\"1\">\n            <t-post theme=\"is--light\">\n                <h2>Gallery</h2>\n            </t-post>\n          </v-section>\n      </v-scroll-view>\n     </v-stage>\n</v-scroll-sync>";
+let CVComponent = class CVComponent extends CustomElement {
+    constructor() {
+        super();
+    }
+    getState() {
+        return {
+            scale: 1.0
+        };
+    }
+};
+__decorate([
+    State(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], CVComponent.prototype, "getState", null);
+CVComponent = __decorate([
+    Component({
+        selector: 'cv-view',
+        style: css_248z$b,
+        template: template$c
+    }),
+    __metadata("design:paramtypes", [])
+], CVComponent);
+customElements.define('cv-view', CVComponent);
+
+var css_248z$c = ":host{display:block}";
+styleInject(css_248z$c);
+
+var template$d = "<v-nav></v-nav>\n<v-scroll-sync scale=\"{{scale}}\">\n    <v-stage>\n      <v-scroll-view>\n        <v-section data-index=\"1\">\n            <t-post theme=\"is--light\">\n                <h2>Gallery</h2>\n            </t-post>\n          </v-section>\n      </v-scroll-view>\n     </v-stage>\n</v-scroll-sync>";
 
 let GalleryComponent = class GalleryComponent extends CustomElement {
     constructor() {
@@ -1293,8 +1351,8 @@ __decorate([
 GalleryComponent = __decorate([
     Component({
         selector: 'gallery-view',
-        style: css_248z$b,
-        template: template$b
+        style: css_248z$c,
+        template: template$d
     }),
     __metadata("design:paramtypes", [])
 ], GalleryComponent);
@@ -1308,7 +1366,8 @@ global['observer$'] = {
 const routes = [{ path: '/', component: HomeComponent },
     { path: '/blog', component: BlogComponent },
     { path: '/resume', component: ResumeComponent },
+    { path: '/cv', component: CVComponent },
     { path: '/gallery', component: GalleryComponent }];
 document.body.classList.add('is--init');
 
-export { BlogComponent, CardComponent, GalleryComponent, HomeComponent, NavComponent, PostComponent, ProfileComponent, ResumeComponent, ScrollSync, ScrollView, SectionComponent, StageComponent, routes };
+export { BlogComponent, CVComponent, CardComponent, GalleryComponent, HomeComponent, MarketingComponent, NavComponent, PostComponent, ProfileComponent, ResumeComponent, ScrollSync, ScrollView, SectionComponent, StageComponent, routes };

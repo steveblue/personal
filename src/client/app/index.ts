@@ -15,6 +15,7 @@ import {
 import { HomeComponent } from './view/home';
 import { BlogComponent } from './view/blog';
 import { ResumeComponent } from './view/resume';
+import { CVComponent } from './view/cv';
 import { GalleryComponent } from './view/gallery';
 
 // router
@@ -34,5 +35,6 @@ export { StageComponent,
          HomeComponent,
          BlogComponent,
          ResumeComponent,
+         CVComponent,
          GalleryComponent,
          rdrouter };
