@@ -12,8 +12,13 @@ const indexPath = path.resolve(process.cwd(), 'dist', 'client', 'index.html');
 export default async (req, res) => {
   let template = class {};
   const dom = fs.readFileSync(indexPath).toString();
-  template = routes.find(route => route.path === url.parse(req.url).pathname)
-    .component;
+  const rte = routes.find(route => route.path === url.parse(req.url).pathname);
+  if (rte == undefined) {
+    res.redirect(301, '/404');
+    return;
+  } else {
+    template = rte.component;
+  }
   if (template) {
     render(new template()).then(tmpl => {
       const index = dom

@@ -1358,16 +1358,50 @@ GalleryComponent = __decorate([
 ], GalleryComponent);
 customElements.define('gallery-view', GalleryComponent);
 
+var css_248z$d = ":host{display:block;position:absolute;left:50%;top:50%;transform:translateX(-50%) translateY(-50%)}:host h1{font-size:72px}";
+styleInject(css_248z$d);
+
+var template$e = "<h1>404</h1>\n<p>File Not Found</p>\n<p><a href=\"/\">Go Home</a></p>";
+
+let FileNotFoundComponent = class FileNotFoundComponent extends CustomElement {
+    constructor() {
+        super();
+    }
+    getState() {
+        return {
+            scale: 1.0
+        };
+    }
+};
+__decorate([
+    State(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], FileNotFoundComponent.prototype, "getState", null);
+FileNotFoundComponent = __decorate([
+    Component({
+        selector: 'not-found-view',
+        style: css_248z$d,
+        template: template$e
+    }),
+    __metadata("design:paramtypes", [])
+], FileNotFoundComponent);
+customElements.define('not-found-view', FileNotFoundComponent);
+
 function BroadcastChannel$1(channel) { }
 global['BroadcastChannel'] = BroadcastChannel$1;
 global['observer$'] = {
     observe: () => { }
 };
-const routes = [{ path: '/', component: HomeComponent },
+const routes = [
+    { path: '/', component: HomeComponent },
     { path: '/blog', component: BlogComponent },
     { path: '/resume', component: ResumeComponent },
     { path: '/cv', component: CVComponent },
-    { path: '/gallery', component: GalleryComponent }];
+    { path: '/404', component: FileNotFoundComponent }
+    //{ path: '/gallery', component: GalleryComponent }
+];
 document.body.classList.add('is--init');
 
 export { BlogComponent, CVComponent, CardComponent, GalleryComponent, HomeComponent, MarketingComponent, NavComponent, PostComponent, ProfileComponent, ResumeComponent, ScrollSync, ScrollView, SectionComponent, StageComponent, routes };

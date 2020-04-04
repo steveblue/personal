@@ -21,12 +21,16 @@ import { BlogComponent } from './app/view/blog';
 import { ResumeComponent } from './app/view/resume';
 import { CVComponent } from './app/view/cv';
 import { GalleryComponent } from './app/view/gallery';
+import { FileNotFoundComponent } from 'app/view/not-found';
 
-const routes = [{ path: '/', component: HomeComponent },
+const routes = [
+                { path: '/', component: HomeComponent },
                 { path: '/blog', component: BlogComponent },
                 { path: '/resume', component: ResumeComponent },
                 { path: '/cv', component: CVComponent },
-                { path: '/gallery', component: GalleryComponent }];
+                { path: '/404', component: FileNotFoundComponent }
+                //{ path: '/gallery', component: GalleryComponent }
+              ];
 
 document.body.classList.add('is--init');
 

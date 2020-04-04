@@ -17,6 +17,7 @@ import { BlogComponent } from './view/blog';
 import { ResumeComponent } from './view/resume';
 import { CVComponent } from './view/cv';
 import { GalleryComponent } from './view/gallery';
+import { FileNotFoundComponent } from './view/not-found';
 
 // router
 import { rdrouter } from './router';
@@ -37,4 +38,5 @@ export { StageComponent,
          ResumeComponent,
          CVComponent,
          GalleryComponent,
+         FileNotFoundComponent,
          rdrouter };

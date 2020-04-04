@@ -1,0 +1,1 @@
+export { FileNotFoundComponent } from './404';

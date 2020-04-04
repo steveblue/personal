@@ -4,7 +4,8 @@ const routing = [
     { path: '/', component: 'home-view' },
     { path: '/blog', component: 'blog-view' },
     { path: '/resume', component: 'resume-view' },
-    { path: '/cv', component: 'cv-view' }
+    { path: '/cv', component: 'cv-view' },
+    { path: '/404', component: 'not-found-view' }
     // { path: '/gallery', component: 'gallery-view' }
 ];
 
