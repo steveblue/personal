@@ -4,6 +4,7 @@ dist/
 out-tsc/
 src/client/index.js
 src/server/config.ts
+src/server/config.js
 .cache
 .parcel-cache
 

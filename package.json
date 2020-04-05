@@ -8,7 +8,8 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "NODE_ENV=development parcel src/client/index.html --hmr-port 1235 --port 4443",
-    "prod": "NODE_ENV=production rimraf dist && npm run build:prod",
+    "prod": "NODE_ENV=production rimraf dist && npm run serve:config && npm run build:prod",
+    "serve:config": "tsc ./src/server/config.js --outDir ./dist --module CommonJS --allowJS && mkdir -p ./dist/server/src/server && cp ./dist/config.js ./dist/server/src/server/config.js",
     "serve:dev": "NODE_ENV=development node dist/server",
     "serve": "NODE_ENV=production node dist/server",
     "build:prod": "npm run prod:ssr && npm run prod:index && concurrently \"npm run prod:client\" \"npm run prod:server\"",
@@ -49,6 +50,7 @@
     "node-sass": "^4.13.1",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-css-as-string": "^1.0.0",
+    "parcel-plugin-externals": "^0.4.0-pre.20200405.1",
     "prettier": "^1.19.1",
     "rollup": "2.3.2",
     "rollup-plugin-postcss": "^2.5.0",
@@ -62,5 +64,8 @@
     "Edge > 14",
     "Firefox > 63",
     "Chrome > 67"
+  ],
+  "externals": [
+    "./src/server/config.js"
   ]
 }

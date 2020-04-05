@@ -5287,6 +5287,11 @@ parcel-plugin-css-as-string@^1.0.0:
   resolved "https://registry.yarnpkg.com/parcel-plugin-css-as-string/-/parcel-plugin-css-as-string-1.0.1.tgz#f5aa5c19455078cc9c0c1a80343030313f47b7aa"
   integrity sha512-wt6/364VvJPatfWg24Efkh3iLDtO0WCpsj4j+alN0dg4B3Zq+sXCnbhnPjKuDENM9m+zTCa4RdmlZXoxdj1qcQ==
 
+parcel-plugin-externals@^0.4.0-pre.20200405.1:
+  version "0.4.0-pre.20200405.1"
+  resolved "https://registry.yarnpkg.com/parcel-plugin-externals/-/parcel-plugin-externals-0.4.0-pre.20200405.1.tgz#89e3c82a76d34a634b242e36ee6ce9bbf2171db5"
+  integrity sha512-GS/NmBTB75lsmIzOiU1ts7Coc+lvzK9wc4MitrKM3BDQx+0e4ayhFRjpECbSX6S6btPPryEdHhYw/VTLHKVzSw==
+
 parent-module@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/parent-module/-/parent-module-1.0.1.tgz#691d2709e78c79fae3a156622452d00762caaaa2"
