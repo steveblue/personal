@@ -3,6 +3,7 @@ node_modules/
 dist/
 out-tsc/
 src/client/index.js
+src/server/config.ts
 .cache
 .parcel-cache
 

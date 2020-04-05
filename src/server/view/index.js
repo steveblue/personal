@@ -1240,7 +1240,7 @@ customElements.define('home-view', HomeComponent);
 var css_248z$a = ":host{display:block;width:100vw;height:100vh}:host p{font-size:1.4em}";
 styleInject(css_248z$a);
 
-var template$a = "<v-nav></v-nav>\n<v-scroll-sync scale=\"{{scale}}\">\n  <v-stage>\n    <v-scroll-view>\n      <v-section data-index=\"1\">\n        <t-post theme=\"is--light\">\n          <h2>Headline</h2>\n          <p>I'm a fullstack JavaScript engineer who specializes in UI library architecture and design. I've made a career out of developing web apps for Nike, Lexus, NBCUniversal and Ubiquiti Networks. I'm currently employed at Workday in the role of Senior Software Development Engineer.</p>\n        </t-post>\n      </v-section>\n    </v-scroll-view>\n  </v-stage>\n</v-scroll-sync>\n";
+var template$a = "<v-nav></v-nav>\n<v-scroll-sync scale=\"{{scale}}\">\n  <v-stage>\n    <v-scroll-view>\n    </v-scroll-view>\n  </v-stage>\n</v-scroll-sync>\n";
 
 let BlogComponent = class BlogComponent extends CustomElement {
     constructor() {
@@ -1250,6 +1250,38 @@ let BlogComponent = class BlogComponent extends CustomElement {
         return {
             scale: 1.0
         };
+    }
+    connectedCallback() {
+        if (!fetch)
+            return;
+        fetch('http://localhost:4444/api/blog')
+            .then((data) => {
+            return data.json();
+        })
+            .then((json) => {
+            this.displayPosts(json);
+        })
+            .catch((error) => console.error(error));
+    }
+    displayPosts(data) {
+        if (!this.shadowRoot || !this.shadowRoot.querySelector)
+            return;
+        if (data && data.length) {
+            const wrapper = this.shadowRoot.querySelector('v-scroll-view');
+            data.forEach((article, index) => {
+                const section = document.createElement('v-section');
+                const post = document.createElement('t-post');
+                const h2 = document.createElement('h2');
+                const p = document.createElement('p');
+                section.setAttribute('data-index', (index + 1).toString());
+                h2.innerHTML = article.title;
+                p.innerHTML = article.description;
+                post.appendChild(h2);
+                post.appendChild(p);
+                section.appendChild(post);
+                wrapper.appendChild(section);
+            });
+        }
     }
 };
 __decorate([
@@ -1394,6 +1426,7 @@ global['BroadcastChannel'] = BroadcastChannel$1;
 global['observer$'] = {
     observe: () => { }
 };
+global['fetch'] = undefined;
 const routes = [
     { path: '/', component: HomeComponent },
     { path: '/blog', component: BlogComponent },

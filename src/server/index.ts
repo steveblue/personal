@@ -7,6 +7,7 @@ import http from 'http';
 import https from 'https';
 import cors from 'cors';
 
+import apiRouter from './middleware/router';
 import errorHandler from './middleware/errorHandler';
 import ssr from './middleware/ssr';
 
@@ -35,18 +36,17 @@ app.use(errorHandler);
 
 if (env === 'production') {
   app.use(compression());
+  app.use('/dist/client', express.static(path.resolve(process.cwd(), 'dist', 'client')));
+  // app.get("/*", (req, res) => {
+  //   res.sendFile(path.resolve(process.cwd(), "dist", "client", "index.html"));
+  // });
+  app.get('/', ssr);
+  app.get('/blog', ssr);
+  app.get('/resume', ssr);
+  app.get('/cv', ssr);
 }
 
-app.use(
-  '/dist/client',
-  express.static(path.resolve(process.cwd(), 'dist', 'client'))
-);
-
-// app.get("/*", (req, res) => {
-//   res.sendFile(path.resolve(process.cwd(), "dist", "client", "index.html"));
-// });
-
-app.get('/*', ssr);
+app.use('/api', apiRouter);
 
 server.listen(port, (): void => {
   const addr = `${protocol === 'HTTPS' ? 'https' : 'http'}://localhost:${port}`;

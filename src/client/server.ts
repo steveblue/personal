@@ -4,6 +4,8 @@ global['observer$'] = {
   observe: () => {}
 };
 
+global['fetch'] = undefined;
+
 import {
   StageComponent,
   CardComponent,
