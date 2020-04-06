@@ -9,6 +9,7 @@ src/server/config.js
 .parcel-cache
 
 *.log
+DB
 
 .DS_Store*
 ehthumbs.db

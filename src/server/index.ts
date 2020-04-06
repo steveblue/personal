@@ -10,6 +10,7 @@ import cors from 'cors';
 import apiRouter from './middleware/router';
 import errorHandler from './middleware/errorHandler';
 import ssr from './middleware/ssr';
+import { init } from './init';
 
 const app: express.Application = express();
 const env: string = process.env.NODE_ENV || 'development';
@@ -50,11 +51,13 @@ app.use('/api', apiRouter);
 
 server.listen(port, (): void => {
   const addr = `${protocol === 'HTTPS' ? 'https' : 'http'}://localhost:${port}`;
-  process.stdout.write(
-    `\n [${new Date().toISOString()}] ${chalk.green(
-      'Server running:'
-    )} ${chalk.blue(addr)} \n`
-  );
+  init().then(() => {
+    process.stdout.write(
+      `\n [${new Date().toISOString()}] ${chalk.green(
+        'Server running:'
+      )} ${chalk.blue(addr)} \n`
+    );
+  });
 });
 
 export default app;

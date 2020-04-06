@@ -9,7 +9,7 @@
     "start": "npm run dev",
     "dev": "NODE_ENV=development parcel src/client/index.html --hmr-port 1235 --port 4443",
     "prod": "NODE_ENV=production rimraf dist && npm run build:prod",
-    "serve:watch": "node watch.js",
+    "dev:server": "NODE_ENV=development node watch.js",
     "serve:config": "tsc ./src/server/config.js --outDir ./dist --module CommonJS --allowJS && mkdir -p ./dist/server/src/server && cp ./dist/config.js ./dist/server/src/server/config.js",
     "serve:dev": "NODE_ENV=development node dist/server",
     "serve": "NODE_ENV=production node dist/server",
