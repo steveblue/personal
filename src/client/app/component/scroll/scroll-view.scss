@@ -1,6 +1,7 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 100vw;
-  height: 40000px;
+  height: auto;
 }

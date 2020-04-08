@@ -39,8 +39,9 @@ class BlogComponent extends CustomElement {
         const h2 = document.createElement('h2');
         const p = document.createElement('p');
         section.setAttribute('data-index', (index + 1).toString());
-        h2.innerHTML = article.title;
-        p.innerHTML = article.description;
+        post.setAttribute('theme', 'is--light');
+        h2.innerText = article.title;
+        p.innerText = article.description;
         post.appendChild(h2);
         post.appendChild(p);
         section.appendChild(post);
