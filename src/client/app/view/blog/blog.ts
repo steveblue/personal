@@ -2,6 +2,7 @@ import { CustomElement, Component, State } from '@readymade/core';
 
 import style from './blog.scss';
 import template from './blog.html';
+import { posts } from 'init';
 
 @Component({
   selector: 'blog-view',
@@ -36,14 +37,17 @@ class BlogComponent extends CustomElement {
       data.forEach((article: any, index: number) => {
         const section = document.createElement('v-section');
         const post = document.createElement('t-post');
+        const postWrapper = document.createElement('div');
         const h2 = document.createElement('h2');
         const p = document.createElement('p');
         section.setAttribute('data-index', (index + 1).toString());
         post.setAttribute('theme', 'is--light');
         h2.innerText = article.title;
         p.innerText = article.description;
-        post.appendChild(h2);
-        post.appendChild(p);
+        postWrapper.appendChild(h2);
+        postWrapper.appendChild(p);
+        postWrapper.style.overflow = 'hidden';
+        post.appendChild(postWrapper);
         section.appendChild(post);
         wrapper.appendChild(section);
       });
