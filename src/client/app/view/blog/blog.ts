@@ -32,7 +32,7 @@ class BlogComponent extends CustomElement {
   displayPosts(data) {
     if (!this.shadowRoot || !this.shadowRoot.querySelector) return;
     if (data && data.length) {
-      const wrapper = this.shadowRoot.querySelector('v-scroll-view');
+      const wrapper = this.shadowRoot.querySelector('v-stage');
       data.forEach((article: any, index: number) => {
         const section = document.createElement('v-section');
         const post = document.createElement('t-post');
