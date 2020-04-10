@@ -1,9 +1,55 @@
+@import 'template/responsive';
+
 :host {
   display: block;
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
+  position: relative;
+  .post__wrapper {
+    overflow: hidden;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  h1 {
+    font-size: 4em;
+  }
   p {
     font-size: 1.4em;
+  }
+}
+@include portrait {
+  :host {
+      .post__wrapper {
+          max-width: 640px;
+      }
+      h1 {
+        font-size: 3em;
+      }
+  }
+}
+
+@include landscape {
+  :host {
+      .post__wrapper {
+          max-width: 720px;
+      }
+  }
+}
+
+@include desktop {
+  :host {
+      .post__wrapper {
+          max-width: 840px;
+      }
+  }
+}
+
+@include monitor {
+  :host {
+      .post__wrapper {
+          max-width: 840px;
+      }
   }
 }

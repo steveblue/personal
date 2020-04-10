@@ -20,7 +20,7 @@
                 }
             }
             &:last-child {
-                margin-bottom: 60px;
+                margin-bottom: 120px;
             }
         }
         h1 {
@@ -38,7 +38,7 @@
             max-width: 300px;
             h1 {
                 font-size: 3em;
-           }
+            }
         }
     }
 }
@@ -68,5 +68,9 @@
 }
 
 @include monitor {
-
+    :host {
+        .resume__wrapper {
+            max-width: 840px;
+        }
+    }
 }

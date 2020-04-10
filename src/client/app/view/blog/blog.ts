@@ -50,12 +50,11 @@ class BlogComponent extends CustomElement {
 
         postWrapper.appendChild(h2);
         postWrapper.appendChild(p);
-        postWrapper.style.overflow = 'hidden';
-
+        postWrapper.classList.add('post__wrapper');
         post.appendChild(postWrapper);
         section.appendChild(post);
         wrapper.appendChild(section);
-        
+
       });
     }
   }
