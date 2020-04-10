@@ -45,13 +45,14 @@ $transition-duration: 0.7s;
         height: 44px;
         border-radius: 0% 0% 0% 0%;
         background: rgba(0,0,0,0.0);
-        margin: 12px;
+        margin: 0px;
         .nav__wrapper {
             position: absolute;
             right: 0px;
             top: 0px;
             width: 44px;
             height: 44px;
+            transform: translateX(-16px) translateY(12px);
             .nav__button {
                 width: 44px;
                 height: 44px;

@@ -35,21 +35,27 @@ class BlogComponent extends CustomElement {
     if (data && data.length) {
       const wrapper = this.shadowRoot.querySelector('v-stage');
       data.forEach((article: any, index: number) => {
+
         const section = document.createElement('v-section');
         const post = document.createElement('t-post');
         const postWrapper = document.createElement('div');
         const h2 = document.createElement('h2');
         const p = document.createElement('p');
+
         section.setAttribute('data-index', (index + 1).toString());
         post.setAttribute('theme', 'is--light');
+
         h2.innerText = article.title;
         p.innerText = article.description;
+
         postWrapper.appendChild(h2);
         postWrapper.appendChild(p);
         postWrapper.style.overflow = 'hidden';
+
         post.appendChild(postWrapper);
         section.appendChild(post);
         wrapper.appendChild(section);
+        
       });
     }
   }
