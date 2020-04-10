@@ -5,8 +5,13 @@
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
+  h2 {
+    font-family: var(--headline-font);
+    font-size: 2em;
+    font-weight: 700;
+  }
   p {
-    font-size: 1.4em;
+      font-size: 1.4em;
   }
 }
 
