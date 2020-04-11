@@ -2,7 +2,48 @@ import { CustomElement, Component, State } from '@readymade/core';
 
 import style from './blog.scss';
 import template from './blog.html';
-import { posts } from 'init';
+
+interface DevUser {
+  name: string;
+  username: string;
+  twitter_username: string;
+  github_username: string;
+  website_url: string;
+  profile_image: string;
+  profile_image_90: string;
+}
+
+interface DevMeta {
+  revision: number;
+  created: number;
+  version: number;
+}
+interface DevPost {
+  type_of: string;
+  id: number;
+  title: string;
+  description: string;
+  cover_image: string;
+  readable_publish_date: string;
+  social_image: string;
+  slug: string;
+  path: string;
+  url: string;
+  canonical_url: string;
+  comments_count: number;
+  positive_reactions_count: number;
+  collection_id: string;
+  created_at: string;
+  edited_at: string;
+  crossposted_at: string;
+  published_at: string;
+  last_comment_at: string;
+  published_timestamp: string;
+  tag_list: string[];
+  tags: string;
+  user: DevUser;
+  meta: DevMeta;
+}
 
 @Component({
   selector: 'blog-view',
@@ -34,11 +75,12 @@ class BlogComponent extends CustomElement {
     if (!this.shadowRoot || !this.shadowRoot.querySelector) return;
     if (data && data.length) {
       const wrapper = this.shadowRoot.querySelector('v-stage');
-      data.forEach((article: any, index: number) => {
+      data.forEach((article: DevPost, index: number) => {
 
         const section = document.createElement('v-section');
         const post = document.createElement('t-post');
         const postWrapper = document.createElement('div');
+        const img = document.createElement('img');
         const h2 = document.createElement('h2');
         const p = document.createElement('p');
 
@@ -47,6 +89,11 @@ class BlogComponent extends CustomElement {
 
         h2.innerText = article.title;
         p.innerText = article.description;
+
+        if (article.cover_image) {
+          img.src = article.cover_image;
+          postWrapper.appendChild(img);
+        }
 
         postWrapper.appendChild(h2);
         postWrapper.appendChild(p);
