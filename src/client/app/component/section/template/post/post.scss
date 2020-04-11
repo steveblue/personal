@@ -12,17 +12,17 @@
         width: 100%;
         height: 100%;
         &.is--light {
-            color: var(--body-color);
-            background: var(--font-color);
+            color: var(--c-body);
+            background: var(--c-font);
             .post__background {
-                background: var(--font-color);
+                background: var(--c-font);
             }
         }
         &.is--dark {
-            color: var(--font-color);
-            background: var(--body-color);
+            color: var(--c-font);
+            background: var(--c-body);
             .post__background {
-                background: var(--body-color);
+                background: var(--c-body);
             }
         }
     }

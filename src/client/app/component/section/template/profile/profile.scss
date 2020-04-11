@@ -3,7 +3,7 @@
 :host {
     position: relative;
     perspective: 1000px;
-    color: var(--font-color);
+    color: var(--c-font);
     left: 50%;
     top: 50%;
     .profile__avatar {
@@ -15,13 +15,13 @@
         height: 320px;
         -webkit-clip-path: polygon(5% 0, 100% 60%, 20% 100%);
         clip-path: polygon(5% 0, 100% 60%, 20% 100%);
-        background: var(--font-color);
+        background: var(--c-font);
         box-sizing: border-box;
         img {
 
             -webkit-clip-path: polygon(5% 0, 100% 60%, 20% 100%);
             clip-path: polygon(5% 0, 100% 60%, 20% 100%);
-            background: var(--body-color);
+            background: var(--c-body);
             box-sizing: border-box;
         }
     }
@@ -38,7 +38,7 @@
             h1 {
                 display: block;
                 position: relative;
-                font-family: var(--headline-font);
+                font-family: var(--f-headline);
                 font-size: 74px;
                 font-weight: 900;
                 transform: rotate3d(0px, 32px);
@@ -48,7 +48,7 @@
             p {
                 display: block;
                 position: relative;
-                font-family: var(--body-font);
+                font-family: var(--f-body);
                 font-size: 28px;
                 font-weight: 400;
                 transform: rotate(0px, 32px);
@@ -209,5 +209,5 @@
 }
 
 a:link, a:visited {
-    color: var(--cta-color);
+    color: var(--c-cta);
 }
