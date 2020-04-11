@@ -86,7 +86,7 @@ class BlogComponent extends CustomElement {
 
         section.setAttribute('data-index', (index + 1).toString());
         post.setAttribute('theme', 'is--light');
-        console.log(article.description);
+
         h2.innerText = article.title;
         p.innerText = article.description.replace(/\n\n/, '');
 

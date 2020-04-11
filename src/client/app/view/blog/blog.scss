@@ -20,38 +20,146 @@
   p {
     font-size: 1.4em;
   }
+  .blog__header {
+    position: relative;
+    .header__background {
+      position: absolute;
+      height: 540px;
+      width: 100%;
+      background: var(--c-body);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 50%);
+    }
+    .header__content {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      height: 540px;
+      h1 {
+        display: block;
+        align-self: flex-end;
+        padding-left: calc((100vw -  720px) / 2);
+      }
+      .quote {
+        flex: 1;
+        align-self: center;
+        color: var(--c-font);
+        max-width: 640px;
+        padding-right: 60px;
+        blockquote {
+          font-size: 1em;
+        }
+        p {
+          text-align: right;
+          padding-right: 40px;
+        }
+      }
+    }
+  }
 }
+
+@include phone {
+  :host {
+    .blog__header {
+      .header__background {
+        height: 300px;
+      }
+      .header__content {
+        height: 300px;
+        h1 {
+          display: block;
+          padding-left: calc((100vw -  300px) / 2);
+        }
+        .quote {
+          display: none;
+        }
+      }
+    }
+    .post__wrapper {
+        max-width: 300px;
+    }
+    h1 {
+      font-size: 3em;
+    }
+  }
+}
+
 @include portrait {
   :host {
-      .post__wrapper {
-          max-width: 640px;
+    .blog__header {
+      .header__background {
+        height: 480px;
       }
-      h1 {
-        font-size: 3em;
+      .header__content {
+        height: 480px;
+        h1 {
+          padding-left: calc((100vw -  480px) / 2);
+        }
       }
+    }
+    .post__wrapper {
+        max-width: 480px;
+    }
+    h1 {
+      font-size: 3em;
+    }
   }
 }
 
 @include landscape {
   :host {
-      .post__wrapper {
-          max-width: 720px;
+    .blog__header {
+      .header__background {
+        height: 680px;
       }
+      .header__content {
+        height: 680px;
+        h1 {
+          padding-left: calc((100vw -  680px) / 2);
+        }
+      }
+    }
+    .post__wrapper {
+        max-width: 680px;
+    }
   }
 }
 
 @include desktop {
   :host {
-      .post__wrapper {
-          max-width: 840px;
+    .blog__header {
+
+      .header__background {
+        height: 680px;
       }
+      .header__content {
+        height: 680px;
+        h1 {
+          padding-left: calc((100vw -  680px) / 2);
+        }
+      }
+
+    }
+    .post__wrapper {
+        max-width: 680px;
+    }
   }
 }
 
 @include monitor {
   :host {
-      .post__wrapper {
-          max-width: 840px;
+    .blog__header {
+      .header__background {
+        height: 680px;
       }
+      .header__content {
+        height: 680px;
+        h1 {
+          padding-left: calc((100vw -  840px) / 2);
+        }
+      }
+    }
+    .post__wrapper {
+        max-width: 680px;
+    }
   }
 }
