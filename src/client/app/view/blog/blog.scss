@@ -85,6 +85,9 @@
     font-size: 1.25em;
     font-weight: 400;
   }
+  .blog__title {
+    color: var(--c-font);
+  }
   .blog__header {
     position: relative;
     .header__background {
@@ -98,7 +101,6 @@
       position: relative;
       display: flex;
       justify-content: space-between;
-      height: 540px;
       h1 {
         display: block;
         align-self: flex-end;
@@ -146,9 +148,6 @@
           padding-left: 20px;
           transform: translateY(-20px);
         }
-        .blog__title {
-          color: var(--c-font);
-        }
         .quote {
           display: none;
         }
@@ -173,7 +172,7 @@
         height: 580px;
       }
       .header__content {
-        height: 580px;
+        height: 374px;
         .quote {
           transform: translateY(-24px);
           blockquote {
@@ -204,11 +203,12 @@
   :host {
     .blog__header {
       .header__background {
-        height: 680px;
+        height: 580px;
       }
       .header__content {
-        height: 680px;
+        height: 390px;
         .quote {
+          transform: translateY(40px);
           blockquote {
             font-size: 2em;
           }
@@ -233,12 +233,14 @@
 @include desktop {
   :host {
     .blog__header {
-
       .header__background {
         height: 680px;
       }
       .header__content {
-        height: 680px;
+        height: 460px;
+        .quote {
+          transform: translateX(-60px) translateY(40px);
+        }
         h1 {
           padding-left: calc((100vw -  680px) / 2);
         }
@@ -261,7 +263,10 @@
         height: 680px;
       }
       .header__content {
-        height: 680px;
+        height: 460px;
+        .quote {
+          transform: translateX(-60px) translateY(40px);
+        }
         h1 {
           padding-left: calc((100vw -  840px) / 2);
         }
