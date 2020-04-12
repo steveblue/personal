@@ -27,7 +27,7 @@ class SectionComponent extends CustomElement {
 
   @Listen('entry')
   onIntersect(ev: any) {
-    console.log('bang!', ev.detail);
+   // console.log('bang!', ev.detail);
   }
 
 }

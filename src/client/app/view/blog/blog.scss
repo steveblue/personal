@@ -6,19 +6,84 @@
   height: 100vh;
   overflow-y: scroll;
   position: relative;
+  padding-bottom: 60px;
   .post__wrapper {
-    overflow: hidden;
+    overflow-y: hidden;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+  }
+  .post__thumbnail {
+    width: 100%;
+    overflow: hidden;
+  }
+  .post__footer {
+    p {
+      color: var(--c-black);
+      margin-bottom: 40px;
+    }
+    &.is--last {
+      p {
+        margin-bottom: 320px;
+      }
+    }
+  }
+  .post__meta {
+    display: flex;
+    justify-content: space-between;
+    ul {
+      box-sizing: border-box;
+      list-style-type: none;
+      padding-inline-start: 0px;
+      margin-block-start: 0em;
+      margin-block-end: 0em;
+      display: block;
+      max-width: 62%;
+      li {
+        display: inline-block;
+        margin-top: 8px;
+        margin-right: 8px;
+        background: var(--c-gray-500);
+        color: var(--c-font);
+        border-radius: 4px;
+        padding: 4px 8px;
+      }
+    }
+    > span {
+      margin-top: 8px;
+      margin-right: 0px;
+      padding: 4px 0px;
+      color: var(--c-gray-500);
+    }
+  }
+  .headline__bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(50,50,50,0.7);
   }
   h1 {
     font-family: var(--f-headline);
     font-size: 4em;
     font-weight: 900;
   }
+  h2 {
+    display: block;
+    box-sizing: border-box;
+    height: 100%;
+    font-family: var(--f-headline);
+    font-size: 4.25em;
+    line-height: 1.22em;
+    font-weight: 700;
+    color: var(--c-white);
+    padding-left: 0.2em;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background: rgba(25,25,25,0.5);
+  }
   p {
-    font-size: 1.4em;
+    font-size: 1.25em;
+    font-weight: 400;
   }
   .blog__header {
     position: relative;
@@ -46,9 +111,11 @@
         max-width: 640px;
         padding-right: 60px;
         blockquote {
-          font-size: 1em;
+          font-size: 2.5em;
+          font-style: italic;
         }
         p {
+          font-size: 2.5em;
           text-align: right;
           padding-right: 40px;
         }
@@ -59,15 +126,28 @@
 
 @include phone {
   :host {
+    .header__section {
+      margin-bottom: -6px;
+    }
+    h2 {
+      font-size: 1.775em;
+    }
+    p {
+      font-size: 1.0em;
+    }
     .blog__header {
       .header__background {
-        height: 300px;
+        height: 320px;
       }
       .header__content {
-        height: 300px;
+        height: 200px;
         h1 {
           display: block;
-          padding-left: calc((100vw -  300px) / 2);
+          padding-left: 20px;
+          transform: translateY(-20px);
+        }
+        .blog__title {
+          color: var(--c-font);
         }
         .quote {
           display: none;
@@ -75,7 +155,10 @@
       }
     }
     .post__wrapper {
-        max-width: 300px;
+        max-width: calc(100vw - 40px);
+    }
+    .post__thumbnail {
+      height: calc((100vw - 40px) * 0.42068966);
     }
     h1 {
       font-size: 3em;
@@ -87,17 +170,29 @@
   :host {
     .blog__header {
       .header__background {
-        height: 480px;
+        height: 580px;
       }
       .header__content {
-        height: 480px;
+        height: 580px;
+        .quote {
+          transform: translateY(-24px);
+          blockquote {
+            font-size: 1.75em;
+          }
+          p {
+            font-size: 1.75em;
+          }
+        }
         h1 {
-          padding-left: calc((100vw -  480px) / 2);
+          padding-left: calc((100vw -  580px) / 2);
         }
       }
     }
     .post__wrapper {
-        max-width: 480px;
+        max-width: 580px;
+    }
+    .post__thumbnail {
+      height: 244px;
     }
     h1 {
       font-size: 3em;
@@ -113,6 +208,14 @@
       }
       .header__content {
         height: 680px;
+        .quote {
+          blockquote {
+            font-size: 2em;
+          }
+          p {
+            font-size: 2em;
+          }
+        }
         h1 {
           padding-left: calc((100vw -  680px) / 2);
         }
@@ -120,6 +223,9 @@
     }
     .post__wrapper {
         max-width: 680px;
+    }
+    .post__thumbnail {
+      height: 286px;
     }
   }
 }
@@ -142,6 +248,9 @@
     .post__wrapper {
         max-width: 680px;
     }
+    .post__thumbnail {
+      height: 286px;
+    }
   }
 }
 
@@ -160,6 +269,9 @@
     }
     .post__wrapper {
         max-width: 680px;
+    }
+    .post__thumbnail {
+      height: 286px;
     }
   }
 }

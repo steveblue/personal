@@ -3,7 +3,7 @@ import { CustomElement, Component, State } from '@readymade/core';
 import style from './blog.scss';
 import template from './blog.html';
 
-interface DevUser {
+export interface DevUser {
   name: string;
   username: string;
   twitter_username: string;
@@ -13,12 +13,12 @@ interface DevUser {
   profile_image_90: string;
 }
 
-interface DevMeta {
+export interface DevMeta {
   revision: number;
   created: number;
   version: number;
 }
-interface DevPost {
+export interface DevPost {
   type_of: string;
   id: number;
   title: string;
@@ -53,6 +53,7 @@ interface DevPost {
 class BlogComponent extends CustomElement {
   constructor() {
     super();
+    document.body.classList.add('is--light');
   }
   @State()
   getState() {
@@ -71,33 +72,75 @@ class BlogComponent extends CustomElement {
     })
     .catch((error) => console.error(error));
   }
+  disconnectedCallback() {
+    document.body.classList.remove('is--light');
+  }
   displayPosts(data) {
     if (!this.shadowRoot || !this.shadowRoot.querySelector) return;
     if (data && data.length) {
       const wrapper = this.shadowRoot.querySelector('v-stage');
       data.forEach((article: DevPost, index: number) => {
-
         const section = document.createElement('v-section');
         const post = document.createElement('t-post');
         const postWrapper = document.createElement('div');
-        const img = document.createElement('img');
+        const img = document.createElement('div');
         const h2 = document.createElement('h2');
+        const footer = document.createElement('footer');
+        const meta = document.createElement('div');
+        const dateSpan = document.createElement('span');
         const p = document.createElement('p');
 
+        const date: Date = new Date(article.published_timestamp);
+        const formattedDate: string = date.toLocaleString('en-US', {
+          month: 'long', // "June"
+          day: '2-digit', // "01"
+          year: 'numeric' // "2019"
+        });
+
         section.setAttribute('data-index', (index + 1).toString());
-        post.setAttribute('theme', 'is--light');
+
+        if (index !== 0) {
+          post.setAttribute('theme', 'is--light');
+        } else {
+          post.setAttribute('theme', 'is--trans');
+        }
+
+        if (index === data.length - 1) {
+          footer.classList.add('is--last');
+        }
+
+        postWrapper.classList.add('post__wrapper');
+        img.classList.add('post__thumbnail');
+        meta.classList.add('post__meta');
+        footer.classList.add('post__footer');
 
         h2.innerText = article.title;
         p.innerText = article.description.replace(/\n\n/, '');
-
+        dateSpan.innerText = formattedDate;
         if (article.cover_image) {
-          img.src = article.cover_image;
+          img.style.background = `url(${article.cover_image})`;
+          img.style.backgroundRepeat = 'no-repeat';
+          img.style.backgroundSize = 'contain';
+          postWrapper.appendChild(img);
+        } else {
           postWrapper.appendChild(img);
         }
 
-        postWrapper.appendChild(h2);
-        postWrapper.appendChild(p);
-        postWrapper.classList.add('post__wrapper');
+        if (article.tag_list && article.tag_list.length) {
+          const ul = document.createElement('ul');
+          article.tag_list.forEach(tag => {
+            const li = document.createElement('li');
+            li.innerText = tag;
+            ul.appendChild(li);
+          });
+          meta.appendChild(ul);
+        }
+
+        meta.appendChild(dateSpan);
+        img.appendChild(h2);
+        footer.appendChild(meta);
+        footer.appendChild(p);
+        postWrapper.appendChild(footer);
         post.appendChild(postWrapper);
         section.appendChild(post);
         wrapper.appendChild(section);
