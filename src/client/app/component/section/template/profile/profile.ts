@@ -2,7 +2,7 @@ import { CustomElement, Component, Listen } from '@readymade/core';
 import {
   animate,
   AnimationPlayer,
-  zoomInAnimation
+  slideInAnimation
 } from './../../../../util/anim';
 import { WebAnimation } from './../../../../util/anim/interface';
 import style from './profile.scss';
@@ -23,16 +23,14 @@ class ProfileComponent extends CustomElement {
 
   private wrapper!: HTMLElement;
   private isVisible: boolean | null = null;
-  private animIn: AnimationPlayer;
-  private in: WebAnimation = zoomInAnimation;
-  private animations: { [key: string]: WebAnimation } = {
-    zoomIn: zoomInAnimation
+  private animIn: AnimationPlayer[];
+  private animations: { [key: string]: (options: any) => WebAnimation } = {
+    slideIn: slideInAnimation
   };
 
   constructor() {
     super();
-    this.in = this.animations.zoomIn;
-    this.animIn = animate((<unknown>this) as HTMLElement, this.in);
+    this.animIn = [];
   }
 
   connectedCallback() {
@@ -40,17 +38,24 @@ class ProfileComponent extends CustomElement {
     this.setAttribute('data-index', 'profile-0');
     if (this.shadowRoot && this.shadowRoot.querySelector) {
       const root = this.shadowRoot as ShadowRoot;
-      this.animIn = animate((<unknown>root.querySelector('.profile')) as HTMLElement, this.in);
-      this.animIn.pause();
+      Array.from(root.querySelectorAll('.title')).forEach((h1, index) => {
+        const options = index === 0 ? 'left' : 'right';
+        const anim = this.animations.slideIn(options);
+        this.animIn[index] = animate(h1 as HTMLElement, anim);
+        this.animIn[index].pause();
+      });
+ 
       this.wrapper = root.querySelector('.profile__description') as HTMLElement;
-      window.addEventListener('mousemove', this.onMouseMove.bind(this));
-      window.addEventListener('mouseout', this.onMouseOut.bind(this));
+      // window.addEventListener('mousemove', this.onMouseMove.bind(this));
+      // window.addEventListener('mouseout', this.onMouseOut.bind(this));
       if (window && window.observer$) {
         window.observer$.observe(this);
       }
     }
     if (this.isVisible === null) {
-      this.animIn.play();
+      this.animIn.forEach((anim: AnimationPlayer, index: number) => {
+        anim.play();
+      });
     }
     this.isVisible = true;
   }
@@ -73,17 +78,17 @@ class ProfileComponent extends CustomElement {
 
   @Listen('touchend')
   public onClick(ev) {
-    if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
-    DeviceOrientationEvent.requestPermission()
-        .then(response => {
-            if (response == 'granted') {
-                window.addEventListener('deviceorientation', this.onOrientationChange.bind(this), true);
-            }
-        })
-        .catch(console.error);
-      } else if (window.DeviceOrientationEvent) {
-        window.addEventListener('deviceorientation', this.onOrientationChange.bind(this), true);
-      }
+    // if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
+    // DeviceOrientationEvent.requestPermission()
+    //     .then(response => {
+    //         if (response == 'granted') {
+    //             window.addEventListener('deviceorientation', this.onOrientationChange.bind(this), true);
+    //         }
+    //     })
+    //     .catch(console.error);
+    //   } else if (window.DeviceOrientationEvent) {
+    //     window.addEventListener('deviceorientation', this.onOrientationChange.bind(this), true);
+    //   }
   }
 
   onMouseMove(ev: MouseEvent) {

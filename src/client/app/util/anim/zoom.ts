@@ -28,9 +28,8 @@ const zoomOutAnimation: WebAnimation = {
   }
 };
 
-const perspectiveAnimation = function(index): WebAnimation {
+const perspectiveAnimation= function(index): WebAnimation {
   const zoom = index * -100;
-  console.log(zoom);
   return {
     keyframes: [
       {
@@ -47,5 +46,6 @@ const perspectiveAnimation = function(index): WebAnimation {
     }
   };
 };
+
 
 export { zoomInAnimation, zoomOutAnimation, perspectiveAnimation };

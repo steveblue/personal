@@ -4,46 +4,60 @@
     position: relative;
     perspective: 1000px;
     color: var(--c-font);
-    left: 50%;
-    top: 50%;
     .profile__avatar {
         display: none;
         position: absolute;
-        top: 0px;
-        right: 0px;
         width: 320px;
         height: 320px;
-        -webkit-clip-path: polygon(5% 0, 100% 60%, 20% 100%);
-        clip-path: polygon(5% 0, 100% 60%, 20% 100%);
-        background: var(--c-font);
-        box-sizing: border-box;
-        img {
-
+        h2 {
+            position: relative;
+            left: 120px;
+        }
+        .avatar__background {
+            position: absolute;
             -webkit-clip-path: polygon(5% 0, 100% 60%, 20% 100%);
             clip-path: polygon(5% 0, 100% 60%, 20% 100%);
-            background: var(--c-body);
+            background: var(--c-font);
             box-sizing: border-box;
+            width: 320px;
+            height: 320px;
         }
     }
     .profile {
         position: relative;
-        opacity: 0;
-        transform: translate3D(0%, 0%, -50px);
         display: flex;
         transition: transform 30ms ease-out;
         justify-content: flex-start;
         align-content: flex-end;
         perspective: 1000px;
         .profile__description {
+            flex: 1;
+            align-self: center;
+            text-align: left;
+            text-transform: uppercase;
+            font-weight: 900;
+            height: 100%;
             h1 {
                 display: block;
                 position: relative;
                 font-family: var(--f-headline);
-                font-size: 74px;
                 font-weight: 900;
-                transform: rotate3d(0px, 32px);
+                //opacity: 0;
                 margin-block-start: 0em;
                 margin-block-end: 0em;
+                top: 50%;
+                transform: translate3D(0%, -50%, 0px);
+                .title {
+                    position: absolute;
+                    display: block;
+                    box-sizing: border-box;
+                    &.is--left {
+                        left: 0px;
+                    }
+                    &.is--right {
+                        right: 0px;
+                    }
+                }
             }
             p {
                 display: block;
@@ -59,33 +73,33 @@
     }
 
     @include phone {
-        display: block;
-        width: calc(100vw - 40px);
-        left: 0px;
+        width: 100%;
         .profile {
-            height: 640px;
+            height: 80vh;
             width: 100%;
             justify-content: flex-start;
             align-content: flex-end;
             .profile__avatar {
+                bottom: 0;
+                left: 0;
                 width: 280px;
                 height: 280px;
+                transform: translateY(112px);
                 img {
                     width: 280px;
                     height: 280px;
                 }
             }
             .profile__description {
-                flex: 1;
-                align-self: flex-end;
-                margin-left: 10px;
-                margin-right: 10px;
-                margin-bottom: 60px;
                 h1 {
-                    font-size: 48px;
-                }
-                p {
-                    font-size: 18px;
+                    height: 200px;
+                    font-size: 72px;
+                    line-height: 120px;
+                    .title {
+                        &.is--right {
+                            margin-top: 72px;
+                        }
+                    }
                 }
             }
         }
@@ -93,116 +107,128 @@
     }
 
     @include portrait {
-        transform: translateX(-50%);
         width: 100%;
         .profile {
-            height: 720px;
+            height: 640px;
             width: 100%;
             .profile__avatar {
+                bottom: 0;
+                left: 0;
                 width: 320px;
                 height: 320px;
-                position: relative;
-                left: 50%;
-                transform: translateX(-50%) translateY(-20px);
+                transform: translateX(4px) translateY(130px);
                 img {
                     width: 320px;
                     height: 320px;
                 }
             }
             .profile__description {
-                flex: 1;
-                align-self: flex-end;
-                margin-left: 20px;
-                margin-right: 20px;
-                margin-bottom: 60px;
                 h1 {
-                    font-size: 64px;
-                }
-                p {
-                    font-size: 24px;
+                    height: 280px;
+                    font-size: 140px;
+                    line-height: 180px;
+                    .title {
+                        &.is--right {
+                            margin-top: 140px;
+                        }
+                    }
                 }
             }
         }
     }
 
     @include landscape {
-        left: 50%;
-        transform: translateX(-50%);
         width: 100%;
         .profile {
-            height: 90vh;
-            width: 720px;
+            height: 640px;
+            width: 100vw;
             .profile__avatar {
-                align-self: center;
+                bottom: 0;
+                left: 0;
                 width: 320px;
                 height: 320px;
+                transform: translateX(4px) translateY(130px);
                 img {
                     width: 320px;
                     height: 320px;
                 }
             }
             .profile__description {
-                flex: 1;
-                align-self: flex-end;
-                margin-left: 40px;
-                margin-bottom: 60px;
                 h1 {
-                    font-size: 64px;
-                }
-                p {
-                    font-size: 24px;
+                    height: 280px;
+                    font-size: 200px;
+                    line-height: 180px;
+                    .title {
+                        &.is--right {
+                            margin-top: 200px;
+                        }
+                    }
                 }
             }
         }
     }
 
     @include desktop {
-        left: 50%;
-        transform: translateX(-50%);
         width: 100%;
         .profile {
             height: 90vh;
-            width: 720px;
+            width: 100vw;
             .profile__avatar {
-                align-self: center;
+                bottom: 0;
+                left: 0;
                 width: 320px;
                 height: 320px;
+                transform: translateX(4px) translateY(130px);
                 img {
                     width: 320px;
                     height: 320px;
                 }
             }
             .profile__description {
-                flex: 1;
-                align-self: flex-end;
-                margin-left: 40px;
-                margin-bottom: 60px;
+                h1 {
+                    height: 320px;
+                    font-size: 240px;
+                    line-height: 288px;
+                    top: 25%;
+                    .title {
+                        &.is--right {
+                            margin-top: 240px;
+                        }
+                    }
+                }
             }
         }
 
     }
 
     @include monitor {
-        left: 50%;
-        transform: translateX(-50%);
         width: 100%;
         .profile {
             height: 90vh;
-            width: 720px;
+            width: 100vw;
             .profile__avatar {
-                align-self: center;
+                bottom: 0;
+                left: 0;
                 width: 360px;
                 height: 360px;
+                transform: translateX(4px) translateY(130px);
                 img {
                     width: 360px;
                     height: 360px;
                 }
             }
             .profile__description {
-                flex: 1;
-                align-self: flex-end;
-                margin-left: 40px;
-                margin-bottom: 60px;
+                h1 {
+                    height: 320px;
+                    font-size: 240px;
+                    line-height: 288px;
+                    top: 25%;
+                    .title {
+                        &.is--right {
+                            margin-top: 240px;
+                        }
+                    }
+                }
             }
         }
     }

@@ -12,4 +12,27 @@ const slideUpAnimation: WebAnimation = {
   }
 };
 
-export { slideUpAnimation };
+
+const slideInAnimation = function(options: 'left' | 'right'): WebAnimation {
+  const from = (options === 'left') ? 'translate3D(-100vw, 0%, -50px)' : 'translate3D(100vw, 0%, -50px)';
+  console.log(from);
+  return {
+    keyframes: [
+      {
+        transform: from,
+        opacity: '0'
+      },
+      {
+        transform: 'translate3D(0%, 0%, 0px)',
+        opacity: '1'
+      }
+    ],
+    options: {
+      fill: 'both',
+      easing: 'ease-in',
+      duration: 500
+    }
+  }
+};
+
+export { slideUpAnimation, slideInAnimation };
