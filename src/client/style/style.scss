@@ -26,6 +26,9 @@ body {
   opacity: 0;
   transition: opacity 1s ease-out;
   transition-delay: 0.1s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   &.is--init {
     opacity: 1;
   }

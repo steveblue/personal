@@ -12,12 +12,6 @@ class HomeComponent extends CustomElement {
   constructor() {
     super();
   }
-  @State()
-  getState() {
-    return {
-      scale: 1.0
-    };
-  }
 }
 
 customElements.define('home-view', HomeComponent);

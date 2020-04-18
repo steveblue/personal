@@ -6,7 +6,6 @@ const routing = [
     { path: '/resume', component: 'resume-view' },
     { path: '/cv', component: 'cv-view' },
     { path: '/404', component: 'not-found-view' }
-    // { path: '/gallery', component: 'gallery-view' }
 ];
 
 const rdrouter = new RdRouter('#root', routing);
