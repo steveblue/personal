@@ -6,6 +6,7 @@ src/client/index.js
 src/server/config.ts
 src/server/config.js
 src/server/view/index.js
+src/client/asset
 .cache
 .parcel-cache
 

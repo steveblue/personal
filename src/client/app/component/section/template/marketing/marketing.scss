@@ -18,6 +18,12 @@
                 background: var(--c-dk-gray);
             }
         }
+        &.is--workday {
+            color: #ffffff;
+            .post__background {
+                background: rgb(0, 109, 182);
+            }
+        }
     }
     .post__background {
         position: absolute;
@@ -34,6 +40,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+        ::slotted(.meta) {
+            position: absolute;
+            right: 0px;
+            display: grid;
+            grid-template-columns: 33.33336% 33.33336% 33.33336%;
+            grid-template-rows: 33.33336% 33.33336% 33.33336%;
         }
         ::slotted(.is--dark) {
             background: var(--c-dk-gray);
@@ -60,6 +73,10 @@
                 width: calc(100vw - 20px);
                 height: calc(100vw - 20px);
             }
+            ::slotted(.meta) {
+                width: 100vw;
+                transform: translateY(-320px);
+            }
             ::slotted(.is--left.is--top) {
                 position: relative;
                 left: 50%;
@@ -77,6 +94,10 @@
                 width: 50vw;
                 height: 50vw;
             }
+            ::slotted(.meta) {
+                width: 50vw;
+                transform: translateY(-320px);
+            }
             ::slotted(.is--left.is--top) {
                 transform: translateX(16px) translateY(-100px);
             }
@@ -91,6 +112,10 @@
                 padding: 44px;
                 width: 33.33336vw;
                 height: 33.33336vw;
+            }
+            ::slotted(.meta) {
+                width: 50vw;
+                transform: translateY(-320px);
             }
             ::slotted(.is--left.is--top) {
                 transform: translateX(15%) translateY(-120px);
@@ -107,6 +132,10 @@
                 width: 33.33336vw;
                 height: 33.33336vw;
             }
+            ::slotted(.meta) {
+                width: 50vw;
+                transform: translateY(-480px);
+            }
             ::slotted(.is--left.is--top) {
                 transform: translateX(25%) translateY(-240px);
             }
@@ -121,6 +150,10 @@
                 padding: 44px;
                 width: 33.33336vw;
                 height: 33.33336vw;
+            }
+            ::slotted(.meta) {
+                width: 50vw;
+                transform: translateY(-480px);
             }
             ::slotted(.is--left.is--top) {
                 transform: translateX(25%) translateY(-30vh);

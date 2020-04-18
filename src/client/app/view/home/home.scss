@@ -40,6 +40,40 @@
   @include i--center;
 }
 
+.is--dark {
+  background: var(--c-dk-gray);
+  color: var(--c-lt-gray);
+}
+
+.is--circle {
+  border-radius: 50%;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 80%;
+  }
+  &:nth-child(1) {
+    grid-column: 3 / span 1;
+    grid-row:  1 / span 1;
+  }
+  &:nth-child(2) {
+    grid-column: 2 / span 1;
+    grid-row:  2 / span 1;
+  }
+  &:nth-child(3) {
+    grid-column: 2 / span 1;
+    grid-row:  3 / span 1;
+  }
+  &:nth-child(3) {
+    grid-column: 1 / span 1;
+    grid-row:  3 / span 1;
+  }
+}
+
 @include phone {
   :host {
     h2 {
@@ -49,6 +83,10 @@
       font-size: 1.0em;
       margin-left: 40px;
       margin-right: 40px;
+    }
+    .icon {
+      width: 120px;
+      height: 120px;
     }
   }
 }
@@ -61,6 +99,10 @@
     p {
       font-size: 1.33em;
     }
+    .icon {
+      width: 144px;
+      height: 144px;
+    }
   }
 }
 
@@ -71,6 +113,10 @@
     }
     p {
       font-size: 1.25em;
+    }
+    .icon {
+      width: 180px;
+      height: 180px;
     }
   }
 }
@@ -83,6 +129,10 @@
     p {
       font-size: 1.4em;
     }
+    .icon {
+      width: 180px;
+      height: 180px;
+    }
   }
 }
 
@@ -93,6 +143,10 @@
     }
     p {
       font-size: 1.4em;
+    }
+    .icon {
+      width: 180px;
+      height: 180px;
     }
   }
 }
