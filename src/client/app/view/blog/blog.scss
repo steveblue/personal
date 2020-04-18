@@ -44,7 +44,7 @@
         margin-top: 8px;
         margin-right: 8px;
         background: var(--c-gray-500);
-        color: var(--c-font);
+        color: var(--c-lt-gray);
         border-radius: 4px;
         padding: 4px 8px;
       }
@@ -86,7 +86,7 @@
     font-weight: 400;
   }
   .blog__title {
-    color: var(--c-font);
+    color: var(--c-lt-gray);
   }
   .blog__header {
     position: relative;
@@ -94,7 +94,7 @@
       position: absolute;
       height: 540px;
       width: 100%;
-      background: var(--c-body);
+      background: var(--c-dk-gray);
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 50%);
     }
     .header__content {
@@ -109,7 +109,7 @@
       .quote {
         flex: 1;
         align-self: center;
-        color: var(--c-font);
+        color: var(--c-lt-gray);
         max-width: 640px;
         padding-right: 60px;
         blockquote {

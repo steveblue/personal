@@ -1,4 +1,5 @@
 @import 'theme/card';
+@import 'template/responsive';
 
 :host {
   display: block;
@@ -8,14 +9,90 @@
   overflow-x: hidden;
   h2 {
     font-family: var(--f-headline);
-    font-size: 2em;
     font-weight: 700;
+    &.is--center {
+      text-align: center;
+    }
   }
-  p {
-      font-size: 1.4em;
+  a:link, a:visited {
+    color: var(--c-cta);
+    text-decoration: none;
+    &:after {
+      content: '';
+      display: inline-block;
+      transform: translateX(7px) translateY(1px);
+      width: 0;
+      height: 0;
+      border-left: 7px solid var(--c-cta);
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+    }
+    &:hover {
+      color: rgba(251, 97, 7, 1.0);
+      &:after {
+        border-left: 7px solid rgba(251, 97, 7, 1.0);
+      }
+    }
   }
 }
 
 .i--center {
   @include i--center;
+}
+
+@include phone {
+  :host {
+    h2 {
+      font-size: 2.0em;
+    }
+    p {
+      font-size: 1.0em;
+      margin-left: 40px;
+      margin-right: 40px;
+    }
+  }
+}
+
+@include portrait {
+  :host {
+    h2 {
+      font-size: 3.2em;
+    }
+    p {
+      font-size: 1.33em;
+    }
+  }
+}
+
+@include landscape {
+  :host {
+    h2 {
+      font-size: 3.2em;
+    }
+    p {
+      font-size: 1.25em;
+    }
+  }
+}
+
+@include desktop {
+  :host {
+    h2 {
+      font-size: 4em;
+    }
+    p {
+      font-size: 1.4em;
+    }
+  }
+}
+
+@include monitor {
+  :host {
+    h2 {
+      font-size: 4em;
+    }
+    p {
+      font-size: 1.4em;
+    }
+  }
 }

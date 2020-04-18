@@ -12,17 +12,17 @@
         width: 100%;
         height: 100%;
         &.is--light {
-            color: var(--c-body);
-            background: var(--c-font);
+            color: var(--c-dk-gray);
+            background: var(--c-lt-gray);
             .post__background {
-                background: var(--c-font);
+                background: var(--c-lt-gray);
             }
         }
         &.is--dark {
-            color: var(--c-font);
-            background: var(--c-body);
+            color: var(--c-lt-gray);
+            background: var(--c-dk-gray);
             .post__background {
-                background: var(--c-body);
+                background: var(--c-dk-gray);
             }
         }
     }

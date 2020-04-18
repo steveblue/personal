@@ -15,21 +15,20 @@ const slideUpAnimation: WebAnimation = {
 
 const slideInAnimation = function(options: 'left' | 'right'): WebAnimation {
   const from = (options === 'left') ? 'translate3D(-100vw, 0%, -50px)' : 'translate3D(100vw, 0%, -50px)';
-  console.log(from);
   return {
     keyframes: [
       {
         transform: from,
-        opacity: '0'
+        opacity: '0',
       },
       {
         transform: 'translate3D(0%, 0%, 0px)',
-        opacity: '1'
+        opacity: '1',
       }
     ],
     options: {
-      fill: 'both',
-      easing: 'ease-in',
+      fill: 'forwards',
+      easing: 'cubic-bezier(0, 0.15, 0.77, 1)',
       duration: 500
     }
   }

@@ -3,26 +3,8 @@
 :host {
     position: relative;
     perspective: 1000px;
-    color: var(--c-font);
-    .profile__avatar {
-        display: none;
-        position: absolute;
-        width: 320px;
-        height: 320px;
-        h2 {
-            position: relative;
-            left: 120px;
-        }
-        .avatar__background {
-            position: absolute;
-            -webkit-clip-path: polygon(5% 0, 100% 60%, 20% 100%);
-            clip-path: polygon(5% 0, 100% 60%, 20% 100%);
-            background: var(--c-font);
-            box-sizing: border-box;
-            width: 320px;
-            height: 320px;
-        }
-    }
+    color: var(--c-lt-gray);
+    background: var(--c-cta);
     .profile {
         position: relative;
         display: flex;
@@ -45,12 +27,15 @@
                 //opacity: 0;
                 margin-block-start: 0em;
                 margin-block-end: 0em;
+                margin-left: 16px;
+                margin-right: 16px;
                 top: 50%;
                 transform: translate3D(0%, -50%, 0px);
                 .title {
                     position: absolute;
                     display: block;
                     box-sizing: border-box;
+                    opacity: 0;
                     &.is--left {
                         left: 0px;
                     }
@@ -79,22 +64,13 @@
             width: 100%;
             justify-content: flex-start;
             align-content: flex-end;
-            .profile__avatar {
-                bottom: 0;
-                left: 0;
-                width: 280px;
-                height: 280px;
-                transform: translateY(112px);
-                img {
-                    width: 280px;
-                    height: 280px;
-                }
-            }
             .profile__description {
                 h1 {
                     height: 200px;
                     font-size: 72px;
                     line-height: 120px;
+                    margin-left: 4px;
+                    margin-right: 4px;
                     .title {
                         &.is--right {
                             margin-top: 72px;
@@ -111,20 +87,9 @@
         .profile {
             height: 640px;
             width: 100%;
-            .profile__avatar {
-                bottom: 0;
-                left: 0;
-                width: 320px;
-                height: 320px;
-                transform: translateX(4px) translateY(130px);
-                img {
-                    width: 320px;
-                    height: 320px;
-                }
-            }
             .profile__description {
                 h1 {
-                    height: 280px;
+                    height: 340px;
                     font-size: 140px;
                     line-height: 180px;
                     .title {
@@ -142,20 +107,9 @@
         .profile {
             height: 640px;
             width: 100vw;
-            .profile__avatar {
-                bottom: 0;
-                left: 0;
-                width: 320px;
-                height: 320px;
-                transform: translateX(4px) translateY(130px);
-                img {
-                    width: 320px;
-                    height: 320px;
-                }
-            }
             .profile__description {
                 h1 {
-                    height: 280px;
+                    height: 410px;
                     font-size: 200px;
                     line-height: 180px;
                     .title {
@@ -173,17 +127,6 @@
         .profile {
             height: 90vh;
             width: 100vw;
-            .profile__avatar {
-                bottom: 0;
-                left: 0;
-                width: 320px;
-                height: 320px;
-                transform: translateX(4px) translateY(130px);
-                img {
-                    width: 320px;
-                    height: 320px;
-                }
-            }
             .profile__description {
                 h1 {
                     height: 320px;
@@ -206,17 +149,6 @@
         .profile {
             height: 90vh;
             width: 100vw;
-            .profile__avatar {
-                bottom: 0;
-                left: 0;
-                width: 360px;
-                height: 360px;
-                transform: translateX(4px) translateY(130px);
-                img {
-                    width: 360px;
-                    height: 360px;
-                }
-            }
             .profile__description {
                 h1 {
                     height: 320px;
