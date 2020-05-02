@@ -20,7 +20,7 @@
     &:after {
       content: '';
       display: inline-block;
-      transform: translateX(7px) translateY(1px);
+      transform: translateX(7px) translateY(0px);
       width: 0;
       height: 0;
       border-left: 7px solid var(--c-cta);
@@ -31,6 +31,18 @@
       color: rgba(251, 97, 7, 1.0);
       &:after {
         border-left: 7px solid rgba(251, 97, 7, 1.0);
+      }
+    }
+    &.is--blue {
+      color: var(--c-blue);
+      &:after {
+        border-left: 7px solid var(--c-blue);
+      }
+      &:hover {
+        color: var(--c-green);
+        &:after {
+          border-left: 7px solid var(--c-green);
+        }
       }
     }
   }
@@ -81,8 +93,8 @@
     }
     p {
       font-size: 1.0em;
-      margin-left: 40px;
-      margin-right: 40px;
+      // margin-left: 40px;
+      // margin-right: 40px;
     }
     .icon {
       width: 120px;
