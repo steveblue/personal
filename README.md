@@ -1,4 +1,9 @@
-# Readymade Starter
+# Steve Belovarich's Personal Site
+
+I made this site with Readymade, a microlibrary for web components I coded to make developing with custom elements easier.
+
+
+### Made With The Readymade Starter
 
 Starter code for developing Readymade projects built with Parcel.
 
