@@ -4,7 +4,7 @@
     position: relative;
     perspective: 1000px;
     color: var(--c-lt-gray);
-    background: var(--c-cta);
+    background: linear-gradient(0deg, var(--c-red) 0%, var(--c-orange) 100%);
     .profile {
         position: relative;
         display: flex;
