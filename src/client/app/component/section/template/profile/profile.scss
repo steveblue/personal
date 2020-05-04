@@ -72,7 +72,7 @@
                     margin-left: 4px;
                     margin-right: 4px;
                     margin-top: 0px;
-                    transform: translate3D(0%, -75%, 0px);
+                    transform: translate3D(0%, -60%, 0px);
                     .title {
                         &.is--right {
                             margin-top: 72px;
@@ -166,6 +166,31 @@
             }
         }
     }
+
+
+    @include phone-landscape {
+        .profile {
+            height: 90vh;
+            width: 100%;
+            justify-content: flex-start;
+            align-content: flex-end;
+        }
+    }
+
+    @include legacy-iphone-landscape {
+        .profile {
+            height: 74vh;
+            width: 100%;
+            justify-content: flex-start;
+            align-content: flex-end;
+            .profile__description {
+                h1 {
+                    font-size: 80px;
+                }
+            }
+        }
+    }
+
 }
 
 a:link, a:visited {

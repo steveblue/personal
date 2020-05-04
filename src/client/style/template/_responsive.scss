@@ -5,31 +5,52 @@ $desktop-width: 1360px;
 $monitor-width: 1880px;
 
 @mixin phone {
-    @media (max-width: #{$portrait-width - 1px}) {
+    @media only screen and (max-width: #{$portrait-width - 1px}) {
       @content;
     }
 }
 
+@mixin phone-landscape {
+  @media only screen
+    and (min-device-width : 375px)
+    and (max-device-width : 812px)
+    and (-webkit-device-pixel-ratio : 3)
+    and (orientation : landscape) {
+    @content;
+  }
+}
+
+@mixin legacy-iphone-landscape {
+  @media only screen
+    and (min-device-width : 375px)
+    and (max-device-width : 667px)
+    and (-webkit-device-pixel-ratio : 2)
+    and (orientation : landscape) {
+      @content;
+  }
+}
+
+
 @mixin portrait {
-    @media (min-width: #{$portrait-width}) and (max-width: #{$landscape-width - 1px}) {
+    @media only screen and (min-width: #{$portrait-width}) and (max-width: #{$landscape-width - 1px}) {
       @content;
     }
 }
 
 @mixin landscape {
-    @media (min-width: #{$landscape-width}) and (max-width: #{$desktop-width - 1px}) {
+    @media only screen and (min-width: #{$landscape-width}) and (max-width: #{$desktop-width - 1px}) {
       @content;
     }
 }
 
 @mixin desktop {
-    @media (min-width: #{$desktop-width}) and (max-width: #{$monitor-width - 1px}) {
+    @media only screen and (min-width: #{$desktop-width}) and (max-width: #{$monitor-width - 1px}) {
       @content;
     }
 }
 
 @mixin monitor {
-    @media (min-width: #{$monitor-width}) {
+    @media only screen and (min-width: #{$monitor-width}) {
       @content;
     }
 }

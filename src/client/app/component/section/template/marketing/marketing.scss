@@ -168,7 +168,14 @@
                 height: 480px;
             }
             &.is--tall {
-                height: 680px;
+                height: 620px;
+            }
+            &.has--camera-top {
+                .post__background {
+                    margin-top: -21px;
+                    height: 641px;
+                    clip-path: polygon(0 20px, 0 100%, 100% 100%, 100% 20px, 90% 20px, 88% 14px, 80% 14px, 78% 20px, 63% 20px, 62% 0, 39% 0, 38% 20px, 24% 20px, 24% 10px, 10% 10px, 10% 20px, 0 20px);
+                }
             }
         }
         .post__bgimage {
@@ -203,17 +210,6 @@
                 max-width: 80%;
                 width: 80%;
             }
-            ::slotted(.blurb) {
-                position: relative;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 240px;
-                height: 240px;
-                max-width: 240px;
-                padding: 60px;
-                margin-left: 0px;
-                margin-right: 0px;
-            }
             ::slotted(.meta.is--bubbles) {
                 position: static;
                 margin-top: 0px;
@@ -229,9 +225,10 @@
                 max-width: 100%;
                 margin-left: 0px;
                 margin-right: 0px;
-                margin-top: 0px;
+                margin-top: 20px;
                 padding: 10px;
                 background: var(--c-white);
+                clip-path: polygon(0 0, 0 94%, 100% 100%, 100% 0%, 0 5%);
             }
             ::slotted(.graphic) {
                 padding: 0px;
@@ -239,12 +236,41 @@
                 margin-right: 10%;
                 width: calc(100vw - 20%);
             }
+            ::slotted(.blurb.is--left.is--top) {
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%) translateY(-190px);
+                width: 232px;
+                height: 232px;
+                max-width: 232px;
+                padding: 60px;
+                margin-left: 0px;
+                margin-right: 0px;
+            }
         }
     }
 }
 
 @include portrait {
     :host {
+        .post__wrapper {
+            &.work {
+                height: 700px;
+            }
+            &.is--tall {
+                height: 720px;
+            }
+            &.learning {
+                height: 720px;
+            }
+            &.has--camera-top {
+                .post__background {
+                    margin-top: -21px;
+                    height: 741px;
+                    clip-path: polygon(0 20px, 0 100%, 100% 100%, 100% 20px, 90% 20px, 88% 14px, 80% 14px, 78% 20px, 63% 20px, 62% 0, 39% 0, 38% 20px, 24% 20px, 24% 4px, 10% 4px, 10% 20px, 0 20px);
+                }
+            }
+        }
         .post__content {
             &.intro {
                 height: 760px;
@@ -267,6 +293,15 @@
             ::slotted(.is--right) {
                 margin-right: 6%;
             }
+            ::slotted(.is--right.is--top) {
+                top: 100px;
+                margin-top: 20px;
+                max-width: 45%;
+
+            }
+            ::slotted(.is--center) {
+                max-width: 74%;
+            }
             ::slotted(.graphic) {
                 padding: 0px;
             }
@@ -276,6 +311,11 @@
 
 @include landscape {
     :host {
+        .post__wrapper {
+            &.work {
+                height: 740px;
+            }
+        }
         .post__content {
             &.intro {
                 height: 760px;
@@ -289,6 +329,9 @@
                 width: 50vw;
                 transform: translateY(60px);
             }
+            ::slotted(.is--center) {
+                max-width: 60%;
+            }
             ::slotted(.is--left.is--top) {
                 transform: translateX(15%) translateY(-120px);
             }
@@ -298,6 +341,11 @@
 
 @include desktop {
     :host {
+        .post__wrapper {
+            &.work {
+                height: 740px;
+            }
+        }
         .post__content {
             &.intro {
                 height: 760px;
@@ -309,7 +357,7 @@
             }
             ::slotted(.meta) {
                 width: 50vw;
-                transform: translateY(0px);
+                transform: translateY(60px);
             }
             ::slotted(.is--left.is--top) {
                 transform: translateX(25%) translateY(-240px);
@@ -320,9 +368,17 @@
 
 @include monitor {
     :host {
+        .post__wrapper {
+            &.work {
+                height: 740px;
+            }
+        }
         .post__content {
             &.intro {
                 height: 760px;
+            }
+            &.work {
+                height: 700px;
             }
             ::slotted(.blurb) {
                 padding: 60px;
@@ -331,10 +387,52 @@
             }
             ::slotted(.meta) {
                 width: 50vw;
-                transform: translateY(0px);
+                transform: translateY(60px);
             }
             ::slotted(.is--left.is--top) {
                 transform: translateX(25%) translateY(-30vh);
+            }
+        }
+    }
+}
+
+
+@include phone-landscape {
+    :host {
+        .post__content {
+            ::slotted(.blurb.is--left.is--top) {
+                transform: translateX(16px) translateY(-40px);
+            }
+            ::slotted(.meta) {
+                transform: translateY(260px);
+            }
+        }
+    }
+}
+
+@include legacy-iphone-landscape {
+    :host {
+        .post__wrapper {
+            &.is--tall {
+                height: 820px;
+            }
+            &.has--camera-top {
+                .post__background {
+                    height: 842px;
+                }
+            }
+        }
+        .post__content {
+            ::slotted(.blurb.is--left.is--top) {
+                transform: translateX(-50%) translateY(-80px);
+            }
+            ::slotted(.meta.is--bubbles) {
+                transform: translateX(120px) translateY(-240px);
+            }
+            ::slotted(.meta.is--photo) {
+                margin-top: 20px;
+                // position: absolute;
+                // bottom: 80px;
             }
         }
     }
