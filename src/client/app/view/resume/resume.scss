@@ -37,9 +37,16 @@
 @include phone {
     :host {
         .resume__wrapper {
-            max-width: 300px;
+            max-width: calc(100vw - 40px);
             h1 {
                 font-size: 3em;
+                margin-block-start: 0em;
+            }
+            header {
+                p {
+                    text-align: right;
+                    transform: translateY(4px);
+                }
             }
         }
     }
