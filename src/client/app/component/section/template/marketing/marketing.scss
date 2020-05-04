@@ -159,6 +159,25 @@
 
 @include phone {
     :host {
+        .post__wrapper {
+            height: 580px;
+            &.intro {
+                height: 540px;
+            }
+            &.learning {
+                height: 480px;
+            }
+            &.is--tall {
+                height: 680px;
+            }
+        }
+        .post__bgimage {
+            ::slotted(.is--tri) {
+                clip-path: polygon(0 0, 101% 101%, 0 101%);
+                height: 480px;
+            }
+            height: 480px;
+        }
         .post__content {
             display: flex;
             flex-direction: column;
@@ -178,27 +197,47 @@
                 transform: initial;
                 margin-left: 10%;
                 max-width: 80%;
+                margin-top: 40px;
+            }
+            ::slotted(.is--center) {
+                max-width: 80%;
+                width: 80%;
             }
             ::slotted(.blurb) {
                 position: relative;
                 left: 50%;
                 transform: translateX(-50%);
-                width: calc(100vw - 140px);
-                height: calc(100vw - 140px);
-                max-width: calc(100vw - 140px);
+                width: 240px;
+                height: 240px;
+                max-width: 240px;
                 padding: 60px;
+                margin-left: 0px;
+                margin-right: 0px;
             }
             ::slotted(.meta.is--bubbles) {
                 position: static;
+                margin-top: 0px;
+                transform: translateX(40px) translateY(-260px);
+            }
+            ::slotted(.meta.is--photo) {
+                margin-top: 80px;
+                position: absolute;
+                bottom: 80px;
+            }
+            ::slotted(.is--mobileblock) {
+                position: relative;
+                max-width: 100%;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding: 10px;
+                background: var(--c-white);
             }
             ::slotted(.graphic) {
                 padding: 0px;
                 margin-left: 10%;
                 margin-right: 10%;
                 width: calc(100vw - 20%);
-                img, svg {
-                    width: 100%;
-                }
             }
         }
     }
@@ -207,6 +246,9 @@
 @include portrait {
     :host {
         .post__content {
+            &.intro {
+                height: 760px;
+            }
             ::slotted(.blurb) {
                 padding: 60px;
                 width: 50vw;
@@ -219,6 +261,15 @@
             ::slotted(.is--left.is--top) {
                 transform: translateX(16px) translateY(-100px);
             }
+            ::slotted(.is--left) {
+                margin-left: 6%;
+            }
+            ::slotted(.is--right) {
+                margin-right: 6%;
+            }
+            ::slotted(.graphic) {
+                padding: 0px;
+            }
         }
     }
 }
@@ -226,6 +277,9 @@
 @include landscape {
     :host {
         .post__content {
+            &.intro {
+                height: 760px;
+            }
             ::slotted(.blurb) {
                 padding: 44px;
                 width: 33.33336vw;
@@ -233,7 +287,7 @@
             }
             ::slotted(.meta) {
                 width: 50vw;
-                transform: translateY(0px);
+                transform: translateY(60px);
             }
             ::slotted(.is--left.is--top) {
                 transform: translateX(15%) translateY(-120px);
@@ -245,8 +299,11 @@
 @include desktop {
     :host {
         .post__content {
+            &.intro {
+                height: 760px;
+            }
             ::slotted(.blurb) {
-                padding: 44px;
+                padding: 60px;
                 width: 33.33336vw;
                 height: 33.33336vw;
             }
@@ -264,8 +321,11 @@
 @include monitor {
     :host {
         .post__content {
+            &.intro {
+                height: 760px;
+            }
             ::slotted(.blurb) {
-                padding: 44px;
+                padding: 60px;
                 width: 33.33336vw;
                 height: 33.33336vw;
             }

@@ -60,7 +60,7 @@
     @include phone {
         width: 100%;
         .profile {
-            height: 80vh;
+            height: 70vh;
             width: 100%;
             justify-content: flex-start;
             align-content: flex-end;
@@ -71,6 +71,8 @@
                     line-height: 120px;
                     margin-left: 4px;
                     margin-right: 4px;
+                    margin-top: 0px;
+                    transform: translate3D(0%, -75%, 0px);
                     .title {
                         &.is--right {
                             margin-top: 72px;
