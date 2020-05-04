@@ -1,4 +1,4 @@
-import { CustomElement, Component, Listen } from '@readymade/core';
+import { CustomElement, Component, Listen, Emitter } from '@readymade/core';
 
 import style from './section.scss';
 import template from './section.html';
@@ -24,10 +24,18 @@ class SectionComponent extends CustomElement {
       window.observer$.observe(this);
     }
   }
-
+  @Emitter('load', {}, 'lazy')
   @Listen('entry')
   onIntersect(ev: any) {
-   // console.log('bang!', ev.detail);
+    this.emitter.broadcast(
+      new CustomEvent('load', {
+        detail: {
+          type: 'load',
+          index: this.getAttribute('data-index')
+        }
+      }),
+      'lazy'
+    );
   }
 
 }

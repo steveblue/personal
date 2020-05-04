@@ -94,7 +94,6 @@
             margin-top: 60px;
             grid-template-columns: repeat(7, 14.2857142%);
             grid-template-rows: repeat(5, 20%);
-            grid-gap: 4% 4%;
         }
         ::slotted(.meta.is--photo) {
             position: absolute;
@@ -104,7 +103,6 @@
             display: grid;
             grid-template-columns: repeat(3, 25%);
             grid-template-rows: repeat(4, auto);
-            grid-gap: 1px 1px;
         }
         ::slotted(.is--dark) {
             background: var(--c-dk-gray);
