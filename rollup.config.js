@@ -1,5 +1,6 @@
 import nodeResolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
+import replace from '@rollup/plugin-replace';
 import postcss from 'rollup-plugin-postcss';
 import { string } from 'rollup-plugin-string';
 
@@ -11,6 +12,7 @@ export default [{
         format: 'esm'
     },
     plugins: [
+        replace({ 'http://localhost:4444': 'https://stephenbelovarich.com' }),
         nodeResolve({
             mainFields: ['module', 'jsnext'],
             extensions: ['.ts', '.js']

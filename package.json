@@ -28,6 +28,7 @@
   "dependencies": {
     "@corpuscule/custom-builtin-elements": "^0.3.0",
     "@readymade/core": "1.0.2",
+    "@rollup/plugin-replace": "^2.3.2",
     "@skatejs/ssr": "^0.19.11",
     "@types/node-fetch": "^2.5.5",
     "broadcastchannel-polyfill": "^1.0.0",
