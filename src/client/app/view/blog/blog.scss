@@ -1,4 +1,5 @@
 @import 'template/responsive';
+@import 'component/link';
 
 :host {
   display: block;
@@ -7,6 +8,9 @@
   overflow-y: scroll;
   position: relative;
   padding-bottom: 60px;
+  a:link, a:visited {
+    @include link();
+  }
   .post__wrapper {
     overflow-y: hidden;
     position: relative;
@@ -16,6 +20,7 @@
   .post__thumbnail {
     width: 100%;
     overflow: hidden;
+    background: var(--c-black);
   }
   .post__footer {
     p {
@@ -24,7 +29,7 @@
     }
     &.is--last {
       p {
-        margin-bottom: 320px;
+        margin-bottom: 60px;
       }
     }
   }
@@ -67,23 +72,34 @@
     font-size: 4em;
     font-weight: 900;
   }
-  h2 {
+  h2, h3 {
     display: block;
     box-sizing: border-box;
     height: 100%;
     font-family: var(--f-headline);
-    font-size: 4.25em;
-    line-height: 1.22em;
+    font-size: 3.75em;
+    line-height: 1.1em;
     font-weight: 700;
     color: var(--c-white);
-    padding-left: 0.2em;
+    padding-left: 0em;
+    padding-top: 0em;
+    padding-right: 0em;
     margin-top: 0px;
     margin-bottom: 0px;
-    background: rgba(25,25,25,0.5);
+  }
+  h3 {
+    background: rgba(25,25,25,0.6);
+    padding-left: 0.2em;
+    padding-right: 0.2em;
   }
   p {
     font-size: 1.25em;
     font-weight: 400;
+  }
+  a:link, a:visited {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
   }
   .blog__title {
     color: var(--c-lt-gray);
@@ -105,6 +121,7 @@
         display: block;
         align-self: flex-end;
         padding-left: calc((100vw -  720px) / 2);
+        font-family: var(--f-body);
       }
       .quote {
         flex: 1;
@@ -113,8 +130,10 @@
         max-width: 640px;
         padding-right: 60px;
         blockquote {
+          font-family: var(--f-body);
           font-size: 2.5em;
-          font-style: italic;
+          font-weight: 700;
+          //font-style: italic;
         }
         p {
           font-size: 2.5em;

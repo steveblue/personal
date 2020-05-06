@@ -84,11 +84,13 @@ class BlogComponent extends CustomElement {
         const post = document.createElement('t-post');
         const postWrapper = document.createElement('div');
         const img = document.createElement('div');
-        const h2 = document.createElement('h2');
+        const h3 = document.createElement('h3');
+        const h3Link = document.createElement('a');
         const footer = document.createElement('footer');
         const meta = document.createElement('div');
         const dateSpan = document.createElement('span');
         const p = document.createElement('p');
+        const pLink = document.createElement('a');
 
         const date: Date = new Date(article.published_timestamp);
         const formattedDate: string = date.toLocaleString('en-US', {
@@ -114,8 +116,12 @@ class BlogComponent extends CustomElement {
         meta.classList.add('post__meta');
         footer.classList.add('post__footer');
 
-        h2.innerText = article.title;
+        h3.innerText = article.title;
+        h3Link.setAttribute('href', article.url);
+        h3Link.setAttribute('target', '_blank');
         p.innerText = article.description.replace(/\n\n/, '');
+        pLink.setAttribute('href', article.url);
+        pLink.setAttribute('target', '_blank');
         dateSpan.innerText = formattedDate;
         if (article.cover_image) {
           img.style.background = `url(${article.cover_image})`;
@@ -137,9 +143,11 @@ class BlogComponent extends CustomElement {
         }
 
         meta.appendChild(dateSpan);
-        img.appendChild(h2);
+        h3Link.appendChild(h3);
+        img.appendChild(h3Link);
         footer.appendChild(meta);
-        footer.appendChild(p);
+        pLink.appendChild(p);
+        footer.appendChild(pLink);
         postWrapper.appendChild(footer);
         post.appendChild(postWrapper);
         section.appendChild(post);
