@@ -211,7 +211,7 @@
             ::slotted(.meta.is--bubbles) {
                 position: static;
                 margin-top: 0px;
-                transform: translateX(40px) translateY(-260px);
+                transform: translateX(60px) translateY(124px);
                 height: 620px;
             }
             ::slotted(.meta.is--photo) {
@@ -236,7 +236,7 @@
                 width: calc(100vw - 20%);
             }
             ::slotted(.blurb.is--left.is--top) {
-                position: relative;
+                position: absolute;
                 left: 50%;
                 transform: translateX(-50%) translateY(-190px);
                 width: 232px;
