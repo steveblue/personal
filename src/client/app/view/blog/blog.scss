@@ -143,10 +143,10 @@
       }
     }
   }
-}
+
 
 @include phone {
-  :host {
+
     .header__section {
       margin-bottom: -6px;
     }
@@ -177,15 +177,18 @@
     }
     .post__thumbnail {
       height: calc((100vw - 40px) * 0.42068966);
+      h3 {
+        font-size: 2.5em;
+      }
     }
     h1 {
       font-size: 3em;
     }
-  }
+
 }
 
 @include portrait {
-  :host {
+
     .blog__header {
       .header__background {
         height: 580px;
@@ -215,11 +218,11 @@
     h1 {
       font-size: 3em;
     }
-  }
+
 }
 
 @include landscape {
-  :host {
+
     .blog__header {
       .header__background {
         height: 580px;
@@ -246,11 +249,11 @@
     .post__thumbnail {
       height: 286px;
     }
-  }
+
 }
 
 @include desktop {
-  :host {
+
     .blog__header {
       .header__background {
         height: 680px;
@@ -272,11 +275,11 @@
     .post__thumbnail {
       height: 286px;
     }
-  }
+
 }
 
 @include monitor {
-  :host {
+
     .blog__header {
       .header__background {
         height: 680px;
@@ -297,5 +300,5 @@
     .post__thumbnail {
       height: 286px;
     }
-  }
+}
 }

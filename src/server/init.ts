@@ -1,4 +1,5 @@
 import loki from 'lokijs';
+import chalk from 'chalk';
 import fetch from 'node-fetch';
 import { config } from './config';
 
@@ -21,6 +22,14 @@ function init() {
         json.forEach(post => posts.insert(post));
     });
 }
-
-
+if (process.argv.includes('--update')) {
+    init().then(() => {
+        process.stdout.write(
+          `\n [${new Date().toISOString()}] ${chalk.green(
+            'import complete'
+          )}\n`
+        );
+        process.exit(0);
+      });;
+}
 export { db, init, posts };

@@ -38,4 +38,26 @@ export default [{
         console.log(message);
 
     }
+},
+{
+    input: 'src/server/init.ts',
+    treeshake: true,
+    external: ['lokijs', 'node-fetch', 'chalk'],
+    output: {
+        file: 'dist/fetch-posts.js',
+        format: 'cjs'
+    },
+    plugins: [
+        replace({ 'dist/DB': 'DB' }),
+        nodeResolve({
+            mainFields: ['main', 'module'],
+            extensions: ['.ts', '.js']
+        }),
+        typescript()
+    ],
+    onwarn: function (message) {
+
+        console.log(message);
+
+    }
 }]
