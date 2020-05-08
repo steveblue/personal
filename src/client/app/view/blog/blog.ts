@@ -3,6 +3,12 @@ import { CustomElement, Component, State } from '@readymade/core';
 import style from './blog.scss';
 import template from './blog.html';
 
+declare global {
+  interface Window {
+    observer$: IntersectionObserver;
+  }
+}
+
 export interface DevUser {
   name: string;
   username: string;
@@ -124,9 +130,10 @@ class BlogComponent extends CustomElement {
         pLink.setAttribute('target', '_blank');
         dateSpan.innerText = formattedDate;
         if (article.cover_image) {
-          img.style.background = `url(${article.cover_image})`;
-          img.style.backgroundRepeat = 'no-repeat';
-          img.style.backgroundSize = 'contain';
+          // img.style.background = `url(${article.cover_image})`;
+          // img.style.backgroundRepeat = 'no-repeat';
+          // img.style.backgroundSize = 'contain';
+          img.setAttribute('lazy-url', `url(${article.cover_image})`);
           postWrapper.appendChild(img);
         } else {
           postWrapper.appendChild(img);
@@ -152,6 +159,13 @@ class BlogComponent extends CustomElement {
         post.appendChild(postWrapper);
         section.appendChild(post);
         wrapper.appendChild(section);
+
+        img.addEventListener('entry', (ev) => {
+          img.style.background = img.getAttribute('lazy-url');
+          img.style.backgroundRepeat = 'no-repeat';
+          img.style.backgroundSize = 'contain';
+        });
+        window.observer$.observe(img);
 
       });
     }
