@@ -22,11 +22,11 @@ import { CVComponent } from './app/view/cv';
 import { FileNotFoundComponent } from 'app/view/not-found';
 
 const routes = [
-                { path: '/', component: HomeComponent },
-                { path: '/blog', component: BlogComponent },
-                { path: '/resume', component: ResumeComponent },
-                { path: '/cv', component: CVComponent },
-                { path: '/404', component: FileNotFoundComponent }
+                { path: '/', component: HomeComponent, title: 'Stephen Belovarich, Web Engineer and Digital Artist in Portland, OR' },
+                { path: '/blog', component: BlogComponent, title: 'Stephen Belovarich Web Development Blog' },
+                { path: '/resume', component: ResumeComponent, title: 'Stephen Belovarich Resume' },
+                { path: '/cv', component: CVComponent, title: 'Stephen Belovarich Curriculum Vitae, CV' },
+                { path: '/404', component: FileNotFoundComponent, title: 'File Not Found' }
               ];
 
 document.body.classList.add('is--init');
