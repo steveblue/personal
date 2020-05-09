@@ -211,13 +211,13 @@
             ::slotted(.meta.is--bubbles) {
                 position: static;
                 margin-top: 0px;
-                transform: translateX(60px) translateY(124px);
+                transform: translateX(60px) translateY(138px);
                 height: 620px;
             }
             ::slotted(.meta.is--photo) {
-                margin-top: 80px;
-                position: absolute;
-                bottom: 80px;
+                margin-top: 0px;
+                position: static;
+                transform: translateX(60px) translateY(40px);
             }
             ::slotted(.is--mobileblock) {
                 position: relative;
@@ -227,7 +227,7 @@
                 margin-top: 20px;
                 padding: 10px;
                 background: var(--c-white);
-                clip-path: polygon(0 0, 0 94%, 100% 100%, 100% 0%, 0 5%);
+                clip-path: polygon(0 0, 0 96%, 100% 100%, 100% 0%, 0 4%);
             }
             ::slotted(.graphic) {
                 padding: 0px;
@@ -285,7 +285,7 @@
             }
             ::slotted(.meta.is--bubbles) {
                 transform: translateX(40px) translateY(284px);
-                gap: 6px 6px;
+                gap: 12px 12px;
             }
             ::slotted(.is--left.is--top) {
                 transform: translateX(16px) translateY(-100px);
@@ -323,7 +323,7 @@
                 height: 760px;
             }
             ::slotted(.blurb) {
-                padding: 44px;
+                padding: 68px;
                 width: 33.33336vw;
                 height: 33.33336vw;
             }

@@ -133,7 +133,7 @@ class BlogComponent extends CustomElement {
           // img.style.background = `url(${article.cover_image})`;
           // img.style.backgroundRepeat = 'no-repeat';
           // img.style.backgroundSize = 'contain';
-          img.setAttribute('lazy-url', `url(${article.cover_image})`);
+          img.setAttribute('data-bg', `url(${article.cover_image})`);
           postWrapper.appendChild(img);
         } else {
           postWrapper.appendChild(img);
@@ -161,7 +161,7 @@ class BlogComponent extends CustomElement {
         wrapper.appendChild(section);
 
         img.addEventListener('entry', (ev) => {
-          img.style.background = img.getAttribute('lazy-url');
+          img.style.background = img.getAttribute('data-bg');
           img.style.backgroundRepeat = 'no-repeat';
           img.style.backgroundSize = 'contain';
         });

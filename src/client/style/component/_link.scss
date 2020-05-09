@@ -1,23 +1,26 @@
+@import 'template/responsive';
+
 @mixin link() {
     color: var(--c-cta);
     text-decoration: none;
     &.is--cta {
-        &:after {
-            content: '';
-            display: inline-block;
-            transform: translateX(7px) translateY(0px);
-            width: 0;
-            height: 0;
-            border-left: 7px solid var(--c-cta);
-            border-top: 7px solid transparent;
-            border-bottom: 7px solid transparent;
+      display: block;
+      &:after {
+          content: '';
+          display: inline-block;
+          transform: translateX(7px) translateY(1px);
+          width: 0;
+          height: 0;
+          border-left: 7px solid var(--c-cta);
+          border-top: 7px solid transparent;
+          border-bottom: 7px solid transparent;
+        }
+        &:hover {
+          color: rgba(251, 97, 7, 1.0);
+          &:after {
+            border-left: 7px solid rgba(251, 97, 7, 1.0);
           }
-          &:hover {
-            color: rgba(251, 97, 7, 1.0);
-            &:after {
-              border-left: 7px solid rgba(251, 97, 7, 1.0);
-            }
-          }
+        }
     }
     &.is--blue {
       color: var(--c-blue);
@@ -35,4 +38,34 @@
         }
       }
     }
+    @include phone {
+      &.is--cta {
+        margin-top: 1.0em;
+      }
+    }
+
+    @include portrait {
+      &.is--cta {
+        margin-top: 1.33em;
+      }
+    }
+
+    @include landscape {
+      &.is--cta {
+        margin-top: 1.25em;
+      }
+    }
+
+    @include desktop {
+      &.is--cta {
+        margin-top: 1.0em;
+      }
+    }
+
+    @include monitor {
+      &.is--cta {
+        margin-top: 1.0em;
+      }
+    }
 }
+
