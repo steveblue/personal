@@ -6,7 +6,7 @@
   "author": "Steve Belovarich <steveblue@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "npm run dev",
+    "start": "concurrently \"npm run dev\" \"npm run dev:server\"",
     "dev": "NODE_ENV=development parcel src/client/index.html --port 4443",
     "prod": "NODE_ENV=production npm run clean:dist && npm run prod:asset && npm run build:prod",
     "dev:server": "NODE_ENV=development node watch.js",
