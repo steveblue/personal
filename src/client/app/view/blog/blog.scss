@@ -236,7 +236,7 @@
       .header__content {
         height: 390px;
         .quote {
-          transform: translateY(40px);
+          transform: translateY(32px);
           blockquote {
             font-size: 2em;
           }
@@ -246,6 +246,7 @@
         }
         h1 {
           padding-left: calc((100vw -  680px) / 2);
+          transform: translateY(-20px);
         }
       }
     }
