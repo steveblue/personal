@@ -12,7 +12,7 @@ export default [{
         format: 'esm'
     },
     plugins: [
-        replace({ 'http://localhost:4444': 'https://stephenbelovarich.com' }),
+        (process.env.EMULATE_API) ? replace() : replace({ 'http://localhost:4444': 'https://stephenbelovarich.com' }),
         nodeResolve({
             mainFields: ['module', 'jsnext'],
             extensions: ['.ts', '.js']
