@@ -68,23 +68,27 @@ class BlogComponent extends CustomElement {
     };
   }
   connectedCallback() {
-    if (!fetch) return;
-    fetch('http://localhost:4444/api/blog')
-    .then((data) => {
-      return data.json();
-    })
-    .then((json) => {
-      this.displayPosts(json);
-    })
-    .catch((error) => console.error(error));
+    this.getModel();
   }
   disconnectedCallback() {
     document.body.classList.remove('is--light');
   }
+  getModel() {
+    return new Promise((res) => {
+      fetch('http://localhost:4444/api/blog')
+      .then((data) => {
+        return data.json();
+      })
+      .then((json) => {
+        this.displayPosts(json);
+        res();
+      })
+      .catch((error) => console.error(error));
+    })
+  }
   displayPosts(data) {
-    if (!this.shadowRoot || !this.shadowRoot.querySelector) return;
     if (data && data.length) {
-      const wrapper = this.shadowRoot.querySelector('v-stage');
+      const wrapper = this.shadowRoot.children[2];
       data.forEach((article: DevPost, index: number) => {
         const section = document.createElement('v-section');
         const post = document.createElement('t-post');
@@ -122,17 +126,14 @@ class BlogComponent extends CustomElement {
         meta.classList.add('post__meta');
         footer.classList.add('post__footer');
 
-        h3.innerText = article.title;
+        h3.innerHTML = article.title;
         h3Link.setAttribute('href', article.url);
         h3Link.setAttribute('target', '_blank');
-        p.innerText = article.description.replace(/\n\n/, '');
+        p.innerHTML = article.description.replace(/\n\n/, '');
         pLink.setAttribute('href', article.url);
         pLink.setAttribute('target', '_blank');
-        dateSpan.innerText = formattedDate;
+        dateSpan.innerHTML = formattedDate;
         if (article.cover_image) {
-          // img.style.background = `url(${article.cover_image})`;
-          // img.style.backgroundRepeat = 'no-repeat';
-          // img.style.backgroundSize = 'contain';
           img.setAttribute('data-bg', `url(${article.cover_image})`);
           postWrapper.appendChild(img);
         } else {
@@ -143,7 +144,7 @@ class BlogComponent extends CustomElement {
           const ul = document.createElement('ul');
           article.tag_list.forEach(tag => {
             const li = document.createElement('li');
-            li.innerText = tag;
+            li.innerHTML = tag;
             ul.appendChild(li);
           });
           meta.appendChild(ul);
@@ -166,7 +167,6 @@ class BlogComponent extends CustomElement {
           img.style.backgroundSize = 'contain';
         });
         window.observer$.observe(img);
-
       });
     }
   }

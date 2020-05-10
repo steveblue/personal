@@ -1,10 +1,12 @@
+import fetch from 'node-fetch';
+
 function BroadcastChannel(channel) {}
 global['BroadcastChannel'] = BroadcastChannel;
 global['observer$'] = {
   observe: () => {}
 };
 
-global['fetch'] = undefined;
+global['fetch'] = fetch;
 
 import {
   StageComponent,
@@ -32,6 +34,7 @@ const routes = [
 document.body.classList.add('is--init');
 
 export {
+  fetch,
   StageComponent,
   SectionComponent,
   ProfileComponent,

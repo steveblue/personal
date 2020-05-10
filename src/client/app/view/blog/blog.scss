@@ -135,7 +135,7 @@
         blockquote {
           font-family: var(--f-body);
           font-size: 2.5em;
-          font-weight: 700;
+          font-weight: 400;
           //font-style: italic;
         }
         p {
@@ -199,16 +199,21 @@
       .header__content {
         height: 374px;
         .quote {
-          transform: translateY(-24px);
+          transform: translateX(40px) translateY(-24px);
+          h2 {
+            font-size: 2.5em;
+          }
           blockquote {
-            font-size: 1.75em;
+            font-size: 1.25em;
           }
           p {
-            font-size: 1.75em;
+            font-size: 1.25em;
           }
         }
         h1 {
           padding-left: calc((100vw -  580px) / 2);
+          transform: translateY(-32px);
+          font-size: 3.25em;
         }
       }
     }
@@ -308,4 +313,16 @@
       height: 286px;
     }
   }
+
+  @include phone-landscape {
+    .blog__header {
+      .header__content {
+        height: 200px;
+        .quote {
+          display: none;
+        }
+      }
+    }
+  }
 }
+

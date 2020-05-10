@@ -6,6 +6,7 @@ import { string } from 'rollup-plugin-string';
 export default [{
     input: 'src/client/server.ts',
     treeshake: true,
+    external: ['node-fetch'],
     output: {
         file: 'src/server/view/index.js',
         format: 'esm'
