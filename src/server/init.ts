@@ -1,5 +1,4 @@
 import loki from 'lokijs';
-import chalk from 'chalk';
 import fetch from 'node-fetch';
 import { config } from './config';
 
@@ -30,7 +29,9 @@ function init(posts) {
   .then(res => res.json())
   .then(json => {
       json.forEach(article => {
-        posts.insert(article);
+        if (!posts.findOne({'id': article.id})) {
+          posts.insert(article);
+        }
       });
   });
 }
