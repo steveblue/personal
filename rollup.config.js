@@ -44,7 +44,7 @@ export default [{
     treeshake: true,
     external: ['lokijs', 'node-fetch', 'chalk'],
     output: {
-        file: 'dist/fetch-posts.js',
+        file: 'dist/init.js',
         format: 'cjs'
     },
     plugins: [

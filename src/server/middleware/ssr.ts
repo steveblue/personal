@@ -9,6 +9,15 @@ const { routes } = require('./../view/index.js');
 
 const indexPath = path.resolve(process.cwd(), 'dist', 'client', 'index.html');
 
+function generateIndex(template, route, dom){
+  return new Promise((res) => {
+    res(dom
+      .replace(`<title></title>`, `<title>${route.title}</title>`)
+      .replace(`<div id="root"></div>`, `<div id="root">${template}</div>`)
+      .replace(/__ssr\(\)/g, ''));
+  })
+}
+
 export default async (req, res) => {
   let template: any = class {};
   const dom = fs.readFileSync(indexPath).toString();
@@ -21,25 +30,14 @@ export default async (req, res) => {
   }
   if (template) {
     const temp = new template();
-    if (temp.getModel) {
-      temp.getModel().then(() => {
-        render(temp).then(tmpl => {
-          const index = dom
-            .replace(`<title></title>`, `<title>${route.title}</title>`)
-            .replace(`<div id="root"></div>`, `<div id="root">${tmpl}</div>`)
-            .replace(/__ssr\(\)/g, '');
-          res.send(index);
-        });
-      });
-    } else {
-      render(temp).then(tmpl => {
-        const index = dom
-          .replace(`<title></title>`, `<title>${route.title}</title>`)
-          .replace(`<div id="root"></div>`, `<div id="root">${tmpl}</div>`)
-          .replace(/__ssr\(\)/g, '');
-        res.send(index);
-      });
-    }
+    (async() => {
+      if (temp.getModel) {
+        await temp.getModel();
+      }
+      const tmpl = await render(temp);
+      const index = await generateIndex(tmpl, route, dom);
+      await res.send(index);
+    })();
   } else {
     res.send(dom);
   }
