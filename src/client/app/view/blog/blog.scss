@@ -124,7 +124,8 @@
         display: block;
         align-self: flex-end;
         padding-left: calc((100vw -  720px) / 2);
-        font-family: var(--f-body);
+        font-family: var(--f-headline);
+        font-weight: 900;
       }
       .quote {
         flex: 1;
@@ -213,7 +214,7 @@
         h1 {
           padding-left: calc((100vw -  580px) / 2);
           transform: translateY(-32px);
-          font-size: 3.25em;
+          font-size: 5em;
         }
       }
     }
@@ -252,6 +253,7 @@
         h1 {
           padding-left: calc((100vw -  680px) / 2);
           transform: translateY(-20px);
+          font-size: 5em;
         }
       }
     }
@@ -277,6 +279,7 @@
         }
         h1 {
           padding-left: calc((100vw -  680px) / 2);
+          font-size: 6em;
         }
       }
 
@@ -303,6 +306,7 @@
         }
         h1 {
           padding-left: calc((100vw -  840px) / 2);
+          font-size: 6em;
         }
       }
     }

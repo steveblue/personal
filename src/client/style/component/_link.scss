@@ -4,7 +4,9 @@
     color: var(--c-cta);
     text-decoration: none;
     &.is--cta {
-      display: block;
+      &:not(.is--inline) {
+        display: block;
+      }
       &:after {
           content: '';
           display: inline-block;
@@ -39,31 +41,31 @@
       }
     }
     @include phone {
-      &.is--cta {
+      &.is--cta:not(.is--inline) {
         margin-top: 1.0em;
       }
     }
 
     @include portrait {
-      &.is--cta {
+      &.is--cta:not(.is--inline) {
         margin-top: 1.33em;
       }
     }
 
     @include landscape {
-      &.is--cta {
+      &.is--cta:not(.is--inline) {
         margin-top: 1.25em;
       }
     }
 
     @include desktop {
-      &.is--cta {
+      &.is--cta:not(.is--inline) {
         margin-top: 1.0em;
       }
     }
 
     @include monitor {
-      &.is--cta {
+      &.is--cta:not(.is--inline) {
         margin-top: 1.0em;
       }
     }
