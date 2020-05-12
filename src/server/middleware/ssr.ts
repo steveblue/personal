@@ -8,6 +8,7 @@ const fs = require('fs');
 const { routes } = require('./../view/index.js');
 
 const indexPath = path.join(process.cwd(), 'dist', 'client', 'index.html');
+const dom = fs.readFileSync(indexPath).toString();
 
 function generateIndex(template, route, dom){
   return dom
@@ -18,7 +19,6 @@ function generateIndex(template, route, dom){
 
 export default async(req, res) => {
   let component: any = class {};
-  const dom = fs.readFileSync(indexPath).toString();
   const route = routes.find(rt => rt.path === url.parse(req.url).pathname);
   if (route == undefined) {
     res.redirect(301, '/404');
@@ -27,13 +27,17 @@ export default async(req, res) => {
     component = route.component;
   }
   if (component) {
-    const template = new component();
-    if (template.getModel) {
-      await template.getModel();
+    const preRender = new component();
+    if (preRender.getModel) {
+      try {
+        await preRender.getModel();
+      } catch(e) {
+        res.error(e);
+      }
     }
-    const tmpl = await render(template);
-    res.send(generateIndex(tmpl, route, dom));
+    const template = await render(preRender);
+    res.send(generateIndex(template, route, dom));
   } else {
     res.send(dom);
   }
-};
+}

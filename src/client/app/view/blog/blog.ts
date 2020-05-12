@@ -74,19 +74,17 @@ class BlogComponent extends CustomElement {
     document.body.classList.remove('is--light');
   }
   getModel() {
-    return new Promise((res) => {
+    return new Promise((res, rej) => {
       fetch('http://localhost:4444/api/blog')
-      .then((data) => {
-        return data.json();
-      })
+      .then(data => data.json())
       .then((json) => {
-        this.displayPosts(json);
+        this.render(json);
         res();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => rej(error));
     })
   }
-  displayPosts(data) {
+  render(data) {
     if (data && data.length) {
       const wrapper = this.shadowRoot.children[2];
       data.forEach((article: DevPost, index: number) => {

@@ -11,10 +11,13 @@ import apiRouter from './middleware/router';
 import errorHandler from './middleware/errorHandler';
 import ssr from './middleware/ssr';
 
+import { config } from './config';
+
 const app: express.Application = express();
 const env: string = process.env.NODE_ENV || 'development';
 const port: string = process.env.PORT || '4444';
 const protocol: string = process.env.PROTOCOL || 'HTTP';
+const corsOptions = env === 'production' ? { origin : `${config.protocol}://${config.host}` } : {};
 let server: http.Server | https.Server;
 
 if (protocol === 'HTTPS') {
@@ -31,7 +34,7 @@ if (protocol === 'HTTPS') {
   server = http.createServer(app);
 }
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(errorHandler);
 
 if (env === 'production') {

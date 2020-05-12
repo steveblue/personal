@@ -10,7 +10,7 @@ function startServer() {
         serve.kill();
     }
     exec('yarn prod:server', {stdio: 'inherit'});
-    serve = spawn('yarn', ['serve'], {stdio: 'inherit'});
+    serve = spawn('yarn', ['serve:dev'], {stdio: 'inherit'});
 }
 
 watcher.on('ready', startServer);
