@@ -7,7 +7,7 @@ const fs = require('fs');
 
 const { routes } = require('./../view/index.js');
 
-const indexPath = path.resolve(process.cwd(), 'dist', 'client', 'index.html');
+const indexPath = path.join(process.cwd(), 'dist', 'client', 'index.html');
 
 function generateIndex(template, route, dom){
   return dom
@@ -15,32 +15,24 @@ function generateIndex(template, route, dom){
   .replace(`<div id="root"></div>`, `<div id="root">${template}</div>`)
   .replace(/__ssr\(\)/g, '')
 }
-// TODO: convert to async/await
-export default (req, res) => {
-  let template: any = class {};
+
+export default async(req, res) => {
+  let component: any = class {};
   const dom = fs.readFileSync(indexPath).toString();
   const route = routes.find(rt => rt.path === url.parse(req.url).pathname);
   if (route == undefined) {
     res.redirect(301, '/404');
     return;
   } else {
-    template = route.component;
+    component = route.component;
   }
-  if (template) {
-    const temp = new template();
-    if (temp.getModel) {
-      temp.getModel().then(() => {
-        render(temp).then(tmpl => {
-          const index = generateIndex(tmpl, route, dom);
-          res.send(index);
-        });
-      });
-    } else {
-      render(temp).then(tmpl => {
-        const index = generateIndex(tmpl, route, dom);
-        res.send(index);
-      });
+  if (component) {
+    const template = new component();
+    if (template.getModel) {
+      await template.getModel();
     }
+    const tmpl = await render(template);
+    res.send(generateIndex(tmpl, route, dom));
   } else {
     res.send(dom);
   }
