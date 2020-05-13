@@ -149,10 +149,10 @@
         font-family: var(--f-headline);
         font-size: 2em;
         font-weight: 700;
-      }
-      p {
-          font-size: 1.4em;
-      }
+    }
+    p {
+        font-size: 1.4em;
+    }
 }
 
 @include phone {
@@ -353,6 +353,12 @@
                 height: 640px;
             }
         }
+        .post__bgimage {
+            ::slotted(.is--tri) {
+                clip-path: polygon(0 0, 50% 100%, 0 100%);
+                height: 640px;
+            }
+        }
         .post__content {
             &.intro {
                 height: 760px;
@@ -384,6 +390,12 @@
                 height: 740px;
             }
             &.learning {
+                height: 640px;
+            }
+        }
+        .post__bgimage {
+            ::slotted(.is--tri) {
+                clip-path: polygon(0 0, 40% 100%, 0 100%);
                 height: 640px;
             }
         }

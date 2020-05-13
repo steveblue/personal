@@ -8,6 +8,20 @@
   overflow-y: scroll;
   position: relative;
   padding-bottom: 60px;
+  h4 {
+    display: block;
+    box-sizing: border-box;
+    height: 100%;
+    font-family: var(--f-headline);
+    font-size: 3.75em;
+    line-height: 1.1em;
+    font-weight: 700;
+    padding-left: 0em;
+    padding-top: 0em;
+    padding-right: 0em;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
   a:link, a:visited {
     @include link();
   }

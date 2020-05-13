@@ -15,6 +15,20 @@
       text-align: center;
     }
   }
+  h4 {
+    display: block;
+    box-sizing: border-box;
+    height: 100%;
+    font-family: var(--f-headline);
+    font-size: 3.75em;
+    line-height: 1.1em;
+    font-weight: 700;
+    padding-left: 0em;
+    padding-top: 0em;
+    padding-right: 0em;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
   a:link, a:visited {
    @include link();
    display: block;
@@ -153,7 +167,7 @@
 @include portrait {
   :host {
     h2 {
-      font-size: 2.75em;
+      font-size: 3.25em;
     }
     p {
       font-size: 1.33em;
@@ -183,7 +197,7 @@
 @include landscape {
   :host {
     h2 {
-      font-size: 2.75em;
+      font-size: 3.25em;
     }
     p {
       font-size: 1.25em;
