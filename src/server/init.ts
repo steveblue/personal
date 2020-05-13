@@ -30,10 +30,13 @@ function init(posts) {
   .then(json => {
       json.forEach(article => {
         if (!posts.findOne({'id': article.id})) {
+          console.log('adding:', JSON.parse(JSON.stringify(article, null, 4)));
           posts.insert(article);
         }
       });
   });
 }
+
+databaseInitialize();
 
 export { db, init };
