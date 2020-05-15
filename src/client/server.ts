@@ -23,11 +23,15 @@ import { ResumeComponent } from './app/view/resume';
 import { CVComponent } from './app/view/cv';
 import { FileNotFoundComponent } from 'app/view/not-found';
 
+import { personSchema } from './meta/person';
+import { blogSchema } from './meta/blog';
+import { indexSchema } from './meta/index';
+
 const routes = [
-                { path: '/', component: HomeComponent, title: 'Stephen Belovarich, Web Engineer and Digital Artist in Portland, OR' },
-                { path: '/blog', component: BlogComponent, title: 'Stephen Belovarich Web Development Blog' },
-                { path: '/resume', component: ResumeComponent, title: 'Stephen Belovarich Resume' },
-                { path: '/cv', component: CVComponent, title: 'Stephen Belovarich Curriculum Vitae, CV' },
+                { path: '/', component: HomeComponent, title: 'Stephen Belovarich, Web Engineer and Digital Artist in Portland, OR', schema: JSON.stringify(indexSchema) },
+                { path: '/blog', component: BlogComponent, title: 'Stephen Belovarich Web Development Blog', schema: JSON.stringify(blogSchema) },
+                { path: '/resume', component: ResumeComponent, title: 'Stephen Belovarich Resume', schema: JSON.stringify(personSchema) },
+                { path: '/cv', component: CVComponent, title: 'Stephen Belovarich Curriculum Vitae, CV', schema: JSON.stringify(personSchema) },
                 { path: '/404', component: FileNotFoundComponent, title: 'File Not Found' }
               ];
 

@@ -11,10 +11,16 @@ const indexPath = path.join(process.cwd(), 'dist', 'client', 'index.html');
 const dom = fs.readFileSync(indexPath).toString();
 
 function generateIndex(template, route, dom){
-  return dom
+  let index = dom
   .replace(`<title></title>`, `<title>${route.title}</title>`)
   .replace(`<div id="root"></div>`, `<div id="root">${template}</div>`)
-  .replace(/__ssr\(\)/g, '')
+  .replace(/__ssr\(\)/g, '');
+  if (route.schema) {
+    index = index.replace(`<script type="application/ld+json"></script>`, `<script type="application/ld+json">${route.schema}</script>`);
+  } else {
+    index = index.replace(`<script type="application/ld+json"></script>`, ``);
+  }
+  return index;
 }
 
 export default async(req, res) => {
