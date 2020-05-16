@@ -56,65 +56,60 @@
             margin-block-end: 0px;
         }
     }
-}
+
 
 @include phone {
-    :host {
-        .resume__wrapper {
-            max-width: calc(100vw - 40px);
-            h1 {
-                font-size: 3em;
-            }
-            header {
-                p {
-                    text-align: right;
-                    transform: translateY(4px);
-                }
+    h4 {
+        font-size: 2.75em;
+    }
+    .resume__wrapper {
+        max-width: calc(100vw - 40px);
+        h1 {
+            font-size: 3em;
+        }
+        header {
+            p {
+                text-align: right;
+                transform: translateY(4px);
             }
         }
     }
 }
 
 @include portrait {
-    :host {
-        .resume__wrapper {
-            max-width: 640px;
-            h1 {
-                font-size: 5em;
-            }
+    .resume__wrapper {
+        max-width: 640px;
+        h1 {
+            font-size: 5em;
         }
     }
 }
 
 @include landscape {
-    :host {
-        .resume__wrapper {
-            max-width: 720px;
-            h1 {
-                font-size: 5em;
-            }
+    .resume__wrapper {
+        max-width: 720px;
+        h1 {
+            font-size: 5em;
         }
     }
 }
 
 @include desktop {
-    :host {
-        .resume__wrapper {
-            max-width: 840px;
-            h1 {
-                font-size: 6em;
-            }
+    .resume__wrapper {
+        max-width: 840px;
+        h1 {
+            font-size: 6em;
         }
     }
 }
 
 @include monitor {
-    :host {
-        .resume__wrapper {
-            max-width: 840px;
-            h1 {
-                font-size: 6em;
-            }
+    .resume__wrapper {
+        max-width: 840px;
+        h1 {
+            font-size: 6em;
         }
     }
+}
+
 }
