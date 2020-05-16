@@ -1,4 +1,5 @@
 import nodeResolve from '@rollup/plugin-node-resolve';
+import commonjsResolve from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import replace from '@rollup/plugin-replace';
 import postcss from 'rollup-plugin-postcss';
@@ -31,7 +32,8 @@ export default [{
         string({
             include: ['**/*.html'],
         }),
-        typescript()
+        typescript(),
+        commonjsResolve()
     ],
     onwarn: function (message) {
 
@@ -40,15 +42,15 @@ export default [{
     }
 },
 {
-    input: 'src/server/init.ts',
+    input: 'src/server/db.ts',
     treeshake: true,
-    external: ['lokijs', 'node-fetch', 'chalk'],
+    external: ['nedb', 'node-fetch', 'chalk', 'path'],
     output: {
-        file: 'dist/init.js',
+        file: 'dist/db.js',
         format: 'cjs'
     },
     plugins: [
-        replace({ 'dist/DB': 'DB' }),
+        replace({ 'dist/db.json': 'db.json' }),
         nodeResolve({
             mainFields: ['main', 'module'],
             extensions: ['.ts', '.js']

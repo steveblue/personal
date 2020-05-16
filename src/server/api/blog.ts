@@ -1,17 +1,15 @@
-
 import { IRoute } from 'express';
-import { db } from './../init';
+import { join } from 'path';
 
-function sortByDate(a,b){
-    return new Date(a.created_at).getTime() - new Date(b.created_at).getTime() ? 1 : -1;
-}
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('dist/db.json');
+const db = low(adapter);
 
 class BlogController implements IRoute {
-    constructor() {
-
-    }
+    constructor() {}
     getPosts(req, res) {
-        const data = db.getCollection('posts').data.sort(sortByDate);
+        const data = db.get('posts').orderBy('created_at', 'desc').value();
         res.status(200).send(data);
     }
 }

@@ -13,6 +13,7 @@
     "serve:config": "tsc ./src/server/config.js --outDir ./dist --module CommonJS --allowJS && mkdir -p ./dist/server/src/server && cp ./dist/config.js ./dist/server/src/server/config.js",
     "serve:dev": "NODE_ENV=development node dist/server",
     "serve": "NODE_ENV=production node dist/server",
+    "db:init": "NODE_ENV=production cd dist && node db",
     "clean:dist": "rimraf dist",
     "build:prod": "npm run prod:ssr && npm run prod:index && concurrently \"npm run prod:client\" \"npm run prod:server\"",
     "print:asset": "ls -l dist/client/asset/img",
@@ -38,13 +39,13 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "https": "^1.0.0",
-    "lokijs": "^1.5.8",
+    "lowdb": "^1.0.0",
     "node-fetch": "^2.6.0",
     "rimraf": "^3.0.2",
     "web-animations-js": "^2.3.2"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@rollup/plugin-typescript": "^4.0.0",
     "@types/node": "^13.7.4",
