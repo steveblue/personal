@@ -37,10 +37,17 @@ if (protocol === 'HTTPS') {
 app.use(cors(corsOptions));
 app.use(errorHandler);
 
+const staticOptions = {
+  dotfiles: 'ignore',
+  extensions: ['htm', 'html'],
+  index: false,
+  redirect: false
+}
+
 if (env === 'production') {
   app.use(compression());
-  app.use('/', express.static(path.resolve(process.cwd(), 'dist', 'client')));
-  app.use('/asset', express.static(path.resolve(process.cwd(), 'dist',  'client', 'asset')));
+  app.use(express.static(path.resolve(process.cwd(), 'dist', 'client'), staticOptions));
+  app.use(express.static(path.resolve(process.cwd(), 'dist',  'client', 'asset')));
   // commented out code enables non ssr server
   // app.get("/*", (req, res) => {
   //   res.sendFile(path.resolve(process.cwd(), "dist", "client", "index.html"));
