@@ -5,7 +5,7 @@ import { join } from 'path';
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 
-const adapter = new FileSync(join('dist', 'db.json'));
+const adapter = new FileSync(join('db.json'));
 const db = low(adapter);
 
 function databaseInitialize() {

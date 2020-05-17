@@ -13,7 +13,7 @@
     "serve:config": "tsc ./src/server/config.js --outDir ./dist --module CommonJS --allowJS && mkdir -p ./dist/server/src/server && cp ./dist/config.js ./dist/server/src/server/config.js",
     "serve:dev": "NODE_ENV=development node dist/server",
     "serve": "NODE_ENV=production node dist/server",
-    "db:init": "NODE_ENV=production node dist/db",
+    "db:init": "NODE_ENV=production node dist/db && mv db.json dist/db.json",
     "clean:dist": "rimraf dist",
     "build:prod": "npm run prod:ssr && npm run prod:index && concurrently \"npm run prod:client\" \"npm run prod:server\"",
     "print:asset": "ls -l dist/client/asset/img",
