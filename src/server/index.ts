@@ -39,8 +39,8 @@ app.use(errorHandler);
 
 if (env === 'production') {
   app.use(compression());
-  app.use('/dist/client', express.static(path.resolve(process.cwd(), 'dist', 'client')));
-  app.use('/asset', express.static(path.resolve(process.cwd(), 'dist', 'client', 'asset')));
+  app.use('/', express.static(path.resolve(process.cwd(), 'dist', 'client')));
+  app.use('/asset', express.static(path.resolve(process.cwd(), 'dist',  'client', 'asset')));
   // commented out code enables non ssr server
   // app.get("/*", (req, res) => {
   //   res.sendFile(path.resolve(process.cwd(), "dist", "client", "index.html"));

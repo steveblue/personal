@@ -3,7 +3,7 @@ import { join } from 'path';
 
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync('dist/db.json');
+const adapter = new FileSync(join(process.cwd(), 'dist', 'db.json'));
 const db = low(adapter);
 
 class BlogController implements IRoute {
