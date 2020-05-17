@@ -13,6 +13,7 @@ const dom = fs.readFileSync(indexPath).toString();
 function generateIndex(template, route, dom){
   let index = dom
   .replace(`<title></title>`, `<title>${route.title}</title>`)
+  .replace(`<meta name="Description" content="">`, `<meta name="Description" content="${route.description}">`)
   .replace(`<div id="root"></div>`, `<div id="root">${template}</div>`)
   .replace(/__ssr\(\)/g, '');
   if (route.schema) {

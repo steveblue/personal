@@ -127,9 +127,11 @@ class BlogComponent extends CustomElement {
         h3.innerHTML = article.title;
         h3Link.setAttribute('href', article.url);
         h3Link.setAttribute('target', '_blank');
+        h3Link.setAttribute('rel', 'noreferrer');
         p.innerHTML = article.description.replace(/\n\n/, '');
         pLink.setAttribute('href', article.url);
         pLink.setAttribute('target', '_blank');
+        pLink.setAttribute('rel', 'noreferrer');
         dateSpan.innerHTML = formattedDate;
         if (article.cover_image) {
           img.setAttribute('data-bg', `url(${article.cover_image})`);

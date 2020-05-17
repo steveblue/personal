@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /api/
+Disallow: /asset/
+Sitemap: https://stephenbelovarich.com/sitemap.xml

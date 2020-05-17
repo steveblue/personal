@@ -1,9 +1,9 @@
 import fetch from 'node-fetch';
 
-function BroadcastChannel(channel) {}
+function BroadcastChannel(channel) { }
 global['BroadcastChannel'] = BroadcastChannel;
 global['observer$'] = {
-  observe: () => {}
+  observe: () => { }
 };
 
 global['fetch'] = fetch;
@@ -28,12 +28,12 @@ import { blogSchema } from './meta/blog';
 import { indexSchema } from './meta/index';
 
 const routes = [
-                { path: '/', component: HomeComponent, title: 'Stephen Belovarich, Web Engineer and Digital Artist in Portland, OR', schema: JSON.stringify(indexSchema) },
-                { path: '/blog', component: BlogComponent, title: 'Stephen Belovarich Web Development Blog', schema: JSON.stringify(blogSchema) },
-                { path: '/resume', component: ResumeComponent, title: 'Stephen Belovarich Resume', schema: JSON.stringify(personSchema) },
-                { path: '/cv', component: CVComponent, title: 'Stephen Belovarich Curriculum Vitae, CV', schema: JSON.stringify(personSchema) },
-                { path: '/404', component: FileNotFoundComponent, title: 'File Not Found' }
-              ];
+  { path: '/', component: HomeComponent, title: 'Stephen Belovarich, Web Engineer and Digital Artist in Portland, OR', description: indexSchema.description, schema: JSON.stringify(indexSchema) },
+  { path: '/blog', component: BlogComponent, title: 'Stephen Belovarich Web Development Blog', description: blogSchema.description, schema: JSON.stringify(blogSchema) },
+  { path: '/resume', component: ResumeComponent, title: 'Stephen Belovarich Resume', description: indexSchema.description, schema: JSON.stringify(personSchema) },
+  { path: '/cv', component: CVComponent, title: 'Stephen Belovarich Curriculum Vitae, CV', description: indexSchema.description, schema: JSON.stringify(personSchema) },
+  { path: '/404', component: FileNotFoundComponent, title: 'File Not Found' }
+];
 
 document.body.classList.add('is--init');
 

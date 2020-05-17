@@ -4,7 +4,7 @@ const { join } = require('path');
 const generator = SitemapGenerator('https://stephenbelovarich.com', {
   stripQuerystring: true,
   ignoreHreflang: true,
-  filepath: join(process.cwd(), 'sitemap.xml'),
+  filepath: join(process.cwd(), 'src', 'client', 'sitemap.xml'),
 });
 
 // register event listeners
