@@ -9,10 +9,10 @@ const navInAnimation: WebAnimation = {
       right: '0%'
     },
     {
-      transform: 'translateX(50%) translateY(-50%)',
+      transform: 'translateX(0%) translateY(0%)',
       width: '44px',
-      top: '50%',
-      right: '50%'
+      top: '0%',
+      right: '0%'
     },
     {
       transform: 'translateX(50%) translateY(-50%)',
@@ -30,7 +30,7 @@ const navInAnimation: WebAnimation = {
   options: {
     fill: 'forwards',
     easing: 'ease-in-out',
-    duration: 700
+    duration: 500
   }
 };
 
@@ -54,12 +54,6 @@ const navOutAnimation: WebAnimation = {
       top: '0%',
       right: '0%'
     },
-    {
-      transform: 'translateX(0%) translateY(0%)',
-      width: '44px',
-      top: '0%',
-      right: '0%'
-    }
   ],
   options: {
     fill: 'forwards',
