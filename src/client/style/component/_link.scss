@@ -24,6 +24,23 @@
           }
         }
     }
+    &.is--dark {
+      color: var(--c-dk-gray);
+      background: transparent;
+      &.is--cta {
+        &:after {
+            border-left: 7px solid var(--c-dk-gray);
+        }
+      }
+      &:hover {
+        color: var(--c-cta);
+        &.is--cta {
+            &:after {
+            border-left: 7px solid var(--c-cta);
+            }
+        }
+      }
+    }
     &.is--blue {
       color: var(--c-blue);
       &.is--cta {
