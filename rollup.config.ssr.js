@@ -3,12 +3,12 @@ import commonjsResolve from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
 import replace from '@rollup/plugin-replace';
-import { string } from 'rollup-plugin-string';
+import html from 'rollup-plugin-string-html';
 
 export default [{
     input: 'src/client/server.ts',
     treeshake: true,
-    external: ['node-fetch', 'lowdb', 'lowdb/adapters/FileSync', 'path'],
+    external: ['node-fetch', 'lowdb', 'lowdb/adapters/FileSync', 'path', 'html-minifier-terser'],
     output: {
         file: 'src/server/view/index.js',
         format: 'esm'
@@ -30,8 +30,10 @@ export default [{
             minimize: true,
             extensions: ['.scss','.css']
         }),
-        string({
-            include: ['**/*.html'],
+        html({
+            include: ["**/*.html"],
+            exclude: ["**/index.html"],
+            minifier: {}
         }),
         typescript(),
         commonjsResolve()

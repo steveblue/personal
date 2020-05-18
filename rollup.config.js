@@ -3,7 +3,7 @@ import commonjsResolve from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import replace from '@rollup/plugin-replace';
 import postcss from 'rollup-plugin-postcss';
-import { string } from 'rollup-plugin-string';
+import html from 'rollup-plugin-string-html';
 
 export default [{
     input: 'src/client/index.ts',
@@ -29,8 +29,10 @@ export default [{
             minimize: true,
             extensions: ['.scss','.css']
         }),
-        string({
-            include: ['**/*.html'],
+        html({
+            include: ["**/*.html"],
+            exclude: ["**/index.html"],
+            minifier: {}
         }),
         typescript(),
         commonjsResolve()

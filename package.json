@@ -39,6 +39,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "html-minifier": "^4.0.0",
+    "html-minifier-terser": "^5.1.1",
     "https": "^1.0.0",
     "lowdb": "^1.0.0",
     "node-fetch": "^2.6.0",
@@ -69,6 +70,7 @@
     "rollup": "2.3.2",
     "rollup-plugin-postcss": "^2.5.0",
     "rollup-plugin-string": "^3.0.0",
+    "rollup-plugin-string-html": "^1.0.0",
     "sass": "^1.26.3",
     "tslib": "^1.11.1",
     "typescript": "^3.5.0"

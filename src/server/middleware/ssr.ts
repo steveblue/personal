@@ -1,6 +1,6 @@
 require('@skatejs/ssr/register');
 const render = require('@skatejs/ssr');
-
+const minify = require('html-minifier-terser').minify;
 const url = require('url');
 const path = require('path');
 const fs = require('fs');
@@ -21,6 +21,10 @@ function generateIndex(template, route, dom){
   } else {
     index = index.replace(`<script type="application/ld+json"></script>`, ``);
   }
+  index = minify(index, {
+    minifyCSS: true,
+    removeComments: true
+  });
   return index;
 }
 
