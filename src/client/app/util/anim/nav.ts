@@ -6,25 +6,29 @@ const navInAnimation: WebAnimation = {
       transform: 'translateX(0%) translateY(0%)',
       width: '44px',
       top: '0%',
-      right: '0%'
+      right: '0%',
+      opacity: '0'
     },
     {
       transform: 'translateX(0%) translateY(0%)',
       width: '44px',
       top: '0%',
-      right: '0%'
+      right: '0%',
+      opacity: '0'
     },
     {
       transform: 'translateX(50%) translateY(-50%)',
       width: '320px',
       top: '50%',
-      right: '50%'
+      right: '50%',
+      opacity: '1'
     },
     {
       transform: 'translateX(50%) translateY(-50%)',
       width: '320px',
       top: '50%',
-      right: '50%'
+      right: '50%',
+      opacity: '1'
     }
   ],
   options: {
@@ -39,12 +43,6 @@ const navOutAnimation: WebAnimation = {
     {
       transform: 'translateX(50%) translateY(-50%)',
       width: '320px',
-      top: '50%',
-      right: '50%'
-    },
-    {
-      transform: 'translateX(50%) translateY(-50%)',
-      width: '120px',
       top: '50%',
       right: '50%'
     },

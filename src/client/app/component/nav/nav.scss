@@ -77,8 +77,9 @@ $transition-duration: 0.7s;
                     li {
                         opacity: 1;
                         transform: translateY(0%) scaleY(0.3);
-                        transition: $transition-duration, opacity;
+                        transition: all $transition-duration;
                         margin-bottom: 0px;
+                        height: 18px;
                         &:nth-child(n + 4) {
                             opacity: 0;
                         }
@@ -100,6 +101,9 @@ $transition-duration: 0.7s;
                 a:link, a:visited {
                     text-transform: uppercase;
                     text-decoration: none;
+                    opacity: 0;
+                    transition: opacity 0.5s ease-out;
+                    transition-delay: 0.3s;
                 }
                 a {
                     display: inline-block;
@@ -108,9 +112,6 @@ $transition-duration: 0.7s;
                     line-height: 1.0em;
                 }
                 span {
-                    display: none;
-                }
-                a + span + a {
                     display: none;
                 }
             }
@@ -123,6 +124,7 @@ $transition-duration: 0.7s;
             background: rgba(0,122,255,1.0);
             animation: containerIn $transition-duration;
             animation-fill-mode: both;
+            animation-delay: 0.1s;
             margin: 0px;
             .nav__wrapper {
                 width: 100vw;
@@ -173,8 +175,8 @@ $transition-duration: 0.7s;
                             background: transparent;
                             animation: linkIn $transition-duration;
                             animation-fill-mode: both;
-                            transition: $transition-duration, opacity;
                             margin-bottom: 32px;
+                            height: 32px;
                             &:nth-child(n + 4) {
                                 opacity: 1;
                             }
@@ -189,12 +191,13 @@ $transition-duration: 0.7s;
                                 display: inline-block;
                                 opacity: 1;
                             }
+                            a:link, a:visited {
+                                opacity: 1;
+                            }
                             a {
                                 display: inline-block;
                                 color: rgba(255,255,255,1.0);
-                            }
-                            a + span + a {
-                                display: inline-block;
+                                opacity: 1;
                             }
                             a + span {
                                 margin-left: 10px;
