@@ -52,6 +52,12 @@ const navOutAnimation: WebAnimation = {
       top: '0%',
       right: '0%'
     },
+    {
+      transform: 'translateX(0%) translateY(0%)',
+      width: '44px',
+      top: '0%',
+      right: '0%'
+    },
   ],
   options: {
     fill: 'forwards',
