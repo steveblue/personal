@@ -15,7 +15,7 @@ import { config } from './config';
 
 const app: express.Application = express();
 const env: string = process.env.NODE_ENV || 'development';
-const port: string = process.env.PORT || '4444';
+const port: string = process.env.PORT || config.port || '4443';
 const protocol: string = process.env.PROTOCOL || 'HTTP';
 const corsOptions = env === 'production' ? { origin : `${config.protocol}://${config.host}` } : {};
 let server: http.Server | https.Server;

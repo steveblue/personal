@@ -14,7 +14,7 @@ export default [{
         format: 'esm'
     },
     plugins: [
-        replace({ 'dist/db.json': 'db.json' }),
+        (process.env.EMULATE_API) ? replace({ 'http://localhost:4443': 'http://localhost:4444', 'dist/db.json': 'db.json' }) : replace({ 'http://localhost:4443': 'https://stephenbelovarich.com', 'dist/db.json': 'db.json' }),
         nodeResolve({
             mainFields: ['module', 'jsnext'],
             extensions: ['.ts', '.js']

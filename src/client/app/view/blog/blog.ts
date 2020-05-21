@@ -75,7 +75,7 @@ class BlogComponent extends CustomElement {
   }
   getModel() {
     return new Promise((res, rej) => {
-      fetch('http://localhost:4444/api/blog')
+      fetch('http://localhost:4443/api/blog')
       .then(data => data.json())
       .then((json) => {
         this.render(json);

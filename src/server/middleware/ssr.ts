@@ -28,7 +28,7 @@ function generateIndex(template, route, dom){
   return index;
 }
 
-export default async(req, res) => {
+export default async(req, res, next) => {
   let component: any = class {};
   const route = routes.find(rt => rt.path === url.parse(req.url).pathname);
   if (route == undefined) {
@@ -43,7 +43,7 @@ export default async(req, res) => {
       try {
         await preRender.getModel();
       } catch(e) {
-        res.error(e);
+        next(e);
       }
     }
     const template = await render(preRender);
