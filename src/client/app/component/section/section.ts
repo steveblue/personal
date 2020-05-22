@@ -23,7 +23,7 @@ class SectionComponent extends CustomElement {
     if (window && window.observer$) {
       window.observer$.observe(this);
     }
-  }
+  } 
   @Emitter('load', {}, 'lazy')
   @Listen('entry')
   onIntersect(ev: any) {

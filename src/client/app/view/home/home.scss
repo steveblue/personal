@@ -52,33 +52,49 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  img {
-    width: 80%;
-  }
-  &:nth-child(1) {
-    grid-column: 2 / span 1;
-    grid-row:  2 / span 1;
-    transform: translateX(60px) translateY(-20px);
-  }
-  &:nth-child(2) {
-    grid-column: 1 / span 1;
-    grid-row:  1 / span 1;
-    transform: translateX(-60px);
-  }
-  &:nth-child(3) {
-    grid-column: 1 / span 1;
-    grid-row:  2 / span 1;
-    transform: translateX(-30px) translateY(20px);
-  }
-  &:nth-child(4) {
-    grid-column: 3 / span 1;
-    grid-row:  3 / span 1;
-    transform: translateX(-60px);
-  }
-  &:nth-child(5) {
-    grid-column: 4 / span 1;
-    grid-row:  4 / span 1;
-    transform: translateX(20px) translateY(-60px);
+}
+
+.meta.is--bubbles {
+  .icon {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    transition: all 0.5s ease-out;
+
+    img {
+      width: 80%;
+    }
+
+    &.is--visible {
+      opacity: 1;
+    }
+
+    &:nth-child(1) {
+      grid-column: 1 / span 1;
+      grid-row:  1 / span 1;
+      transform: translateX(-60px);
+    }
+    &:nth-child(2) {
+      grid-column: 1 / span 1;
+      grid-row:  2 / span 1;
+      transform: translateX(-30px) translateY(20px);
+    }
+    &:nth-child(3) {
+      grid-column: 2 / span 1;
+      grid-row:  2 / span 1;
+      transform: translateX(60px) translateY(-20px);
+    }
+    &:nth-child(4) {
+      grid-column: 3 / span 1;
+      grid-row:  3 / span 1;
+      transform: translateX(-60px);
+    }
+    &:nth-child(5) {
+      grid-column: 4 / span 1;
+      grid-row:  4 / span 1;
+      transform: translateX(20px) translateY(-60px);
+    }
+
   }
 }
 
@@ -150,9 +166,11 @@
       font-size: 1.0em;
     }
     .icon {
-      width: 72px;
-      height: 72px;
       padding: 16px;
+      &.is--visible {
+        width: 72px;
+        height: 72px;
+      }
     }
     .image {
       &.dev {
@@ -176,9 +194,11 @@
       font-size: 1.33em;
     }
     .icon {
-      width: 110px;
-      height: 110px;
       padding: 12px;
+      &.is--visible {
+        width: 110px;
+        height: 110px;
+      }
       &:nth-child(5) {
         transform: translateX(20px) translateY(-120px);
       }
@@ -206,9 +226,11 @@
       font-size: 1.25em;
     }
     .icon {
-      width: 140px;
-      height: 140px;
       padding: 20px;
+      &.is--visible {
+        width: 120px;
+        height: 120px;
+      }
     }
     .blurb {
       a:link, a:visited {
@@ -227,9 +249,11 @@
       font-size: 1.4em;
     }
     .icon {
-      width: 140px;
-      height: 140px;
       padding: 20px;
+      &.is--visible {
+        width: 130px;
+        height: 130px;
+      }
     }
     .blurb {
       h2 {
@@ -252,9 +276,11 @@
       font-size: 1.4em;
     }
     .icon {
-      width: 140px;
-      height: 140px;
       padding: 20px;
+      &.is--visible {
+        width: 140px;
+        height: 140px;
+      }
     }
     .blurb {
       h2 {

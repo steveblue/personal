@@ -16,6 +16,12 @@ class HomeComponent extends CustomElement {
   @Listen('load', 'lazy')
   onLazyload(ev: any) {
     if (!this.shadowRoot.querySelectorAll) return;
+    if (ev.detail.index === '2') {
+      let items: HTMLElement[] = [];
+      const blurb: HTMLElement = this.shadowRoot.querySelector(`.blurb`);
+      items = items.concat([blurb]).concat(Array.from(this.shadowRoot.querySelectorAll(`.icon`)));
+      items.forEach((item, index) => this.stagger(index, item));
+    }
     if (ev.detail.index === '3' || ev.detail.index === '5') {
       const photos = Array.from(this.shadowRoot.querySelectorAll(`[lazy-index="${ev.detail.index}"]`));
       if (photos.length && photos.filter(img => !img.getAttribute('src')).length) {
@@ -25,6 +31,9 @@ class HomeComponent extends CustomElement {
         });
       }
     }
+  }
+  stagger(step: number, item: HTMLElement) {
+    setTimeout(() => item.classList.add('is--visible'), step * 50);
   }
 }
 
