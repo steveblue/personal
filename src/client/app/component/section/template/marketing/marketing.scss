@@ -238,12 +238,20 @@
                 position: absolute;
                 left: 50%;
                 transform: translateX(-50%) translateY(-190px);
-                width: 232px;
-                height: 232px;
                 max-width: 232px;
-                padding: 60px;
+                padding: 70px;
                 margin-left: 0px;
                 margin-right: 0px;
+            }
+            ::slotted(.blurb) {
+                padding: 70px;
+                width: 200px;
+                height: 200px;
+                transition: all 0.5s ease-out;
+            }
+            ::slotted(.blurb.is--visible) {
+                width: 232px;
+                height: 232px;
             }
         }
     }
@@ -275,8 +283,8 @@
             }
             ::slotted(.blurb) {
                 padding: 60px;
-                width: 40vw;
-                height: 40vw;
+                width: 44vw;
+                height: 44vw;
                 transition: all 0.5s ease-out;
             }
             ::slotted(.blurb.is--visible) {
@@ -328,8 +336,8 @@
             }
             ::slotted(.blurb) {
                 padding: 68px;
-                width: 22.33336vw;
-                height: 22.33336vw;
+                width: 28.33336vw;
+                height: 28.33336vw;
                 transition: all 0.5s ease-out;
             }
             ::slotted(.blurb.is--visible) {
@@ -375,8 +383,8 @@
             }
             ::slotted(.blurb) {
                 padding: 60px;
-                width: 22.33336vw;
-                height: 22.33336vw;
+                width: 28.33336vw;
+                height: 28.33336vw;
                 transition: all 0.5s ease-out;
             }
             ::slotted(.blurb.is--visible) {
@@ -423,8 +431,8 @@
             }
             ::slotted(.blurb) {
                 padding: 60px;
-                width: 22.33336vw;
-                height: 22.33336vw;
+                width: 28.33336vw;
+                height: 28.33336vw;
                 transition: all 0.5s ease-out;
             }
             ::slotted(.blurb.is--visible) {

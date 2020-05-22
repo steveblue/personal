@@ -39,7 +39,7 @@ class ProfileComponent extends CustomElement {
     if (this.shadowRoot && this.shadowRoot.querySelector) {
       const root = this.shadowRoot as ShadowRoot;
       Array.from(root.querySelectorAll('.title')).forEach((h1, index) => {
-        const options = index === 0 ? 'left' : 'right';
+        const options = 'bottom';
         const anim = this.animations.slideIn(options);
         this.animIn[index] = animate(h1 as HTMLElement, anim);
         this.animIn[index].pause();
