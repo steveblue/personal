@@ -120,6 +120,8 @@
   }
   .blog__title {
     color: var(--c-lt-gray);
+    transform: translateY(320px);
+    transition: all 0.5s cubic-bezier(0.0,0.0,0.58,1.0);
   }
   .blog__header {
     position: relative;
@@ -186,7 +188,9 @@
         h1 {
           display: block;
           padding-left: 20px;
-          transform: translateY(-20px);
+          &.is--visible {
+            transform: translateY(-20px);
+          }
         }
         .quote {
           display: none;
@@ -230,8 +234,10 @@
         }
         h1 {
           padding-left: calc((100vw -  580px) / 2);
-          transform: translateY(-32px);
           font-size: 5em;
+          &.is--visible {
+            transform: translateY(-32px);
+          }
         }
       }
     }
@@ -269,8 +275,10 @@
         }
         h1 {
           padding-left: calc((100vw -  680px) / 2);
-          transform: translateY(-20px);
           font-size: 5em;
+          &.is--visible {
+            transform: translateY(-20px);
+          }
         }
       }
     }
@@ -297,6 +305,9 @@
         h1 {
           padding-left: calc((100vw -  680px) / 2);
           font-size: 6em;
+          &.is--visible {
+            transform: translateY(0px);
+          }
         }
       }
 
@@ -324,6 +335,9 @@
         h1 {
           padding-left: calc((100vw -  840px) / 2);
           font-size: 6em;
+          &.is--visible {
+            transform: translateY(0px);
+          }
         }
       }
     }

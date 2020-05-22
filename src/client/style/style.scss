@@ -29,9 +29,9 @@ body {
   color: var(--c-dk-gray);
   max-height: 100vh;
   overflow: hidden;
-  opacity: 1;
-  // transition: opacity 0.1s ease-in;
-  // transition-delay: 0.01s;
+  opacity: 0;
+  transition: opacity 0.1s linear;
+  transition-delay: 0.1s;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

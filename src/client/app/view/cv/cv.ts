@@ -18,6 +18,10 @@ class CVComponent extends CustomElement {
       scale: 1.0
     };
   }
+  connectedCallback() {
+    if (!this.shadowRoot.querySelectorAll) return;
+    setTimeout(() => this.shadowRoot.querySelector('.title').classList.add('is--visible'), 0);
+  }
 }
 
 customElements.define('cv-view', CVComponent);

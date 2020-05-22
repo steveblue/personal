@@ -69,6 +69,8 @@ class BlogComponent extends CustomElement {
   }
   connectedCallback() {
     this.getModel();
+    if (!this.shadowRoot.querySelectorAll) return;
+    setTimeout(() => this.shadowRoot.querySelector('.blog__title').classList.add('is--visible'), 0);
   }
   disconnectedCallback() {
     document.body.classList.remove('is--light');
