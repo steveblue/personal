@@ -326,6 +326,6 @@ class ScrollSync extends CustomElement {
   }
 }
 
-customElements.define('v-scroll-sync', ScrollSync);
+// customElements.define('v-scroll-sync', ScrollSync);
 
 export { ScrollSync };

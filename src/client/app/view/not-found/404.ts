@@ -20,6 +20,6 @@ class FileNotFoundComponent extends CustomElement {
   }
 }
 
-customElements.define('not-found-view', FileNotFoundComponent);
+// customElements.define('not-found-view', FileNotFoundComponent);
 
 export { FileNotFoundComponent };

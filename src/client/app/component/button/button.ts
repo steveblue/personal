@@ -16,6 +16,7 @@ class ButtonState {
 
 @Component({
   selector: 'rd-button',
+  custom: { extends: 'button' },
   style: style,
   template: template
 })
@@ -53,6 +54,6 @@ class RdButtonComponent extends ButtonComponent {
   }
 }
 
-customElements.define('rd-button', RdButtonComponent, { extends: 'button' });
+// customElements.define('rd-button', RdButtonComponent, { extends: 'button' });
 
 export { RdButtonComponent };

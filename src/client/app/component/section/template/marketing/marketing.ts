@@ -33,6 +33,6 @@ class MarketingComponent extends CustomElement {
 
 }
 
-customElements.get('t-market') || customElements.define('t-market', MarketingComponent);
+// customElements.define('t-market', MarketingComponent);
 
 export { MarketingComponent };

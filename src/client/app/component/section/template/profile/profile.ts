@@ -122,6 +122,6 @@ class ProfileComponent extends CustomElement {
 
 }
 
-customElements.define('t-profile', ProfileComponent);
+// customElements.define('t-profile', ProfileComponent);
 
 export { ProfileComponent };

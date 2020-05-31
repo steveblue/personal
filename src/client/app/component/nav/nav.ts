@@ -54,6 +54,6 @@ class NavComponent extends CustomElement {
   }
 }
 
-customElements.define('v-nav', NavComponent);
+// customElements.define('v-nav', NavComponent);
 
 export { NavComponent };

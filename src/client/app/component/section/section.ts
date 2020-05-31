@@ -40,6 +40,6 @@ class SectionComponent extends CustomElement {
 
 }
 
-customElements.define('v-section', SectionComponent);
+// customElements.define('v-section', SectionComponent);
 
 export { SectionComponent };

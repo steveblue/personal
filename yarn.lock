@@ -929,10 +929,10 @@
     "@parcel/utils" "^1.11.0"
     physical-cpu-count "^2.0.0"
 
-"@readymade/core@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@readymade/core/-/core-1.0.2.tgz#5b9dce89fbf7bff22426881ea14e0dfef9705b69"
-  integrity sha512-nl75L0o3kK+cbCNRcZzehF893AGz8WEA1ivNZ0hq7h6lYVB7AuDaRo2QsFC9HwvuNJHayJh40prPqWrYXnhFCg==
+"@readymade/core@~1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@readymade/core/-/core-1.1.0.tgz#4796131973e48eadf75e362a88b38c1b8e32e106"
+  integrity sha512-ud9jaTl4Nijj+WrLmbNj0VROqUGD/BDBrqiJXUy0xOfO9PM5IgGSbR3kSRHQO0TNVXPAa9gk8NhaX078cgX/RQ==
 
 "@rollup/plugin-commonjs@^11.1.0":
   version "11.1.0"

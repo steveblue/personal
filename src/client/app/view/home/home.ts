@@ -37,6 +37,6 @@ class HomeComponent extends CustomElement {
   }
 }
 
-customElements.define('home-view', HomeComponent);
+// customElements.define('home-view', HomeComponent);
 
 export { HomeComponent };

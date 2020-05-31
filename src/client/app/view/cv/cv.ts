@@ -24,6 +24,6 @@ class CVComponent extends CustomElement {
   }
 }
 
-customElements.define('cv-view', CVComponent);
+// customElements.define('cv-view', CVComponent);
 
 export { CVComponent };

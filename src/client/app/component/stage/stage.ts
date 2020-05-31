@@ -16,6 +16,6 @@ class StageComponent extends CustomElement {
   connectedCallback() {}
 }
 
-customElements.define('v-stage', StageComponent);
+// customElements.define('v-stage', StageComponent);
 
 export { StageComponent };

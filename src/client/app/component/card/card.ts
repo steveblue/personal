@@ -80,6 +80,6 @@ class CardComponent extends CustomElement {
   }
 }
 
-customElements.define('v-card', CardComponent);
+// customElements.define('v-card', CardComponent);
 
 export { CardComponent };

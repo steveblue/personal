@@ -174,6 +174,6 @@ class BlogComponent extends CustomElement {
   }
 }
 
-customElements.define('blog-view', BlogComponent);
+// customElements.define('blog-view', BlogComponent);
 
 export { BlogComponent };

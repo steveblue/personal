@@ -24,6 +24,6 @@ class ResumeComponent extends CustomElement {
   }
 }
 
-customElements.define('resume-view', ResumeComponent);
+// customElements.define('resume-view', ResumeComponent);
 
 export { ResumeComponent };

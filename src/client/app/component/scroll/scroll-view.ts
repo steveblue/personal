@@ -29,6 +29,6 @@ class ScrollView extends CustomElement {
   }
 }
 
-customElements.define('v-scroll-view', ScrollView);
+// customElements.define('v-scroll-view', ScrollView);
 
 export { ScrollView };

@@ -26,6 +26,6 @@ class PostComponent extends CustomElement {
 
 }
 
-customElements.define('t-post', PostComponent);
+// customElements.define('t-post', PostComponent);
 
 export { PostComponent };

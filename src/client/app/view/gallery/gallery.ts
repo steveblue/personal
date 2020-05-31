@@ -20,6 +20,6 @@ class GalleryComponent extends CustomElement {
   }
 }
 
-customElements.define('gallery-view', GalleryComponent);
+// customElements.define('gallery-view', GalleryComponent);
 
 export { GalleryComponent };
