@@ -930,9 +930,9 @@
     physical-cpu-count "^2.0.0"
 
 "@readymade/core@~1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@readymade/core/-/core-1.1.0.tgz#4796131973e48eadf75e362a88b38c1b8e32e106"
-  integrity sha512-ud9jaTl4Nijj+WrLmbNj0VROqUGD/BDBrqiJXUy0xOfO9PM5IgGSbR3kSRHQO0TNVXPAa9gk8NhaX078cgX/RQ==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@readymade/core/-/core-1.1.1.tgz#b65b70b87654a1436a7f3bceeb53ab1b85d1c1f0"
+  integrity sha512-ZjgxWjgzveD60Hz/p88Je8GKbd3b5jdyGfE042sUe/spEyYWhZIh/NjgvzHw43eqXQx6rX6r622horQJZyJGzg==
 
 "@rollup/plugin-commonjs@^11.1.0":
   version "11.1.0"
