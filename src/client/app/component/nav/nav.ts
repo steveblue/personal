@@ -45,8 +45,8 @@ class NavComponent extends CustomElement {
       this.navIn.play();
       this.shadowRoot.querySelector('.nav__container').classList.add('is--open');
     } else {
-      this.style.width = '68px';
-      this.style.width = '68px';
+      this.style.width = '44px';
+      this.style.width = '44px';
       this.navIn.cancel();
       this.navOut.play();
       this.shadowRoot.querySelector('.nav__container').classList.remove('is--open');
