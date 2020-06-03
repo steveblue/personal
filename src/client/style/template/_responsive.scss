@@ -20,12 +20,23 @@ $monitor-width: 1880px;
   }
 }
 
+
 @mixin legacy-iphone-landscape {
   @media only screen
     and (min-device-width : 375px)
     and (max-device-width : 667px)
     and (-webkit-device-pixel-ratio : 2)
     and (orientation : landscape) {
+      @content;
+  }
+}
+
+@mixin phone-max-landscape {
+  @media only screen
+    and (-webkit-device-pixel-ratio: 3)
+    and (max-width: 1023px)
+    and (min-width: 768px)
+    and (orientation: landscape) {
       @content;
   }
 }

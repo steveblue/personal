@@ -296,7 +296,7 @@
                 transform: translateY(220px);
             }
             ::slotted(.meta.is--bubbles) {
-                transform: translateX(40px) translateY(238px);
+                transform: translateX(40px) translateY(278px);
                 gap: 18px 18px;
             }
             ::slotted(.is--left.is--top) {
@@ -330,6 +330,13 @@
                 height: 740px;
             }
         }
+        .post__bgimage {
+            height: 640px;
+            ::slotted(.is--tri) {
+                clip-path: polygon(0 0, 50% 100%, 0 100%);
+                height: 640px;
+            }
+        }
         .post__content {
             &.intro {
                 height: 760px;
@@ -346,7 +353,7 @@
             }
             ::slotted(.meta) {
                 width: 50vw;
-                transform: translateY(60px);
+                transform: translateX(20px) translateY(60px);
             }
             ::slotted(.meta.is--bubbles) {
                 gap: 12px 12px;
@@ -485,12 +492,32 @@
                 transform: translateX(-50%) translateY(-80px);
             }
             ::slotted(.meta.is--bubbles) {
-                transform: translateX(120px) translateY(-240px);
+                transform: translateX(120px) translateY(140px);
             }
             ::slotted(.meta.is--photo) {
                 margin-top: 20px;
                 // position: absolute;
                 // bottom: 80px;
+            }
+        }
+    }
+}
+
+@include phone-max-landscape {
+    :host {
+        .post__content {
+
+            .post__bgimage {
+                height: 320px;
+                ::slotted(.is--tri) {
+                    clip-path: polygon(0 0, 100% 100%, 0 100%);
+                    height: 320px;
+                }
+            }
+
+            ::slotted(.meta.is--bubbles) {
+                transform: translateX(40px) translateY(312px);
+                gap: 10px 10px;
             }
         }
     }
