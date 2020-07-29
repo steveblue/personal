@@ -56,6 +56,7 @@ if (env === 'production') {
   app.get('/blog', ssr);
   app.get('/resume', ssr);
   app.get('/cv', ssr);
+  app.get('/art', ssr);
 }
 
 app.use('/api', apiRouter);

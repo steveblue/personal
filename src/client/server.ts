@@ -21,10 +21,12 @@ import { HomeComponent } from './app/view/home';
 import { BlogComponent } from './app/view/blog';
 import { ResumeComponent } from './app/view/resume';
 import { CVComponent } from './app/view/cv';
+import { GalleryComponent } from 'app/view/gallery';
 import { FileNotFoundComponent } from 'app/view/not-found';
 
 import { personSchema } from './meta/person';
 import { blogSchema } from './meta/blog';
+import { gallerySchema } from './meta/gallery';
 import { indexSchema } from './meta/index';
 
 const routes = [
@@ -32,6 +34,7 @@ const routes = [
   { path: '/blog', component: BlogComponent, title: 'Stephen Belovarich Web Development Blog', description: blogSchema.description, schema: JSON.stringify(blogSchema) },
   { path: '/resume', component: ResumeComponent, title: 'Stephen Belovarich Resume', description: indexSchema.description, schema: JSON.stringify(personSchema) },
   { path: '/cv', component: CVComponent, title: 'Stephen Belovarich Curriculum Vitae, CV', description: indexSchema.description, schema: JSON.stringify(personSchema) },
+  { path: '/art', component: GalleryComponent, title: 'Stephen Belovarich, Electronic Artist specializing in digital art, video and photography', description: gallerySchema.description, schema: JSON.stringify(gallerySchema) },
   { path: '/404', component: FileNotFoundComponent, title: 'File Not Found' }
 ];
 
@@ -49,5 +52,6 @@ export {
   BlogComponent,
   ResumeComponent,
   CVComponent,
+  GalleryComponent,
   routes
 };

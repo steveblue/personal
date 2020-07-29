@@ -5,6 +5,7 @@ const routing = [
     { path: '/blog', component: 'blog-view' },
     { path: '/resume', component: 'resume-view' },
     { path: '/cv', component: 'cv-view' },
+    { path: '/art', component: 'gallery-view' },
     { path: '/404', component: 'not-found-view' }
 ];
 
