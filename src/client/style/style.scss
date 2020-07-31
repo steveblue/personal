@@ -1,6 +1,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500;700;900&family=Lato:wght@300;400;700&display=swap');
 @import 'theme/card';
+@import 'template/responsive';
+
 
 :root {
   --c-dk-gray: rgba(20, 20, 20, 1.0);
@@ -18,6 +20,38 @@
   --c-space-gray: #A5ADB0;
   --f-headline: 'Exo 2', sans-serif;
   --f-body: 'Lato', sans-serif;
+
+  // grid
+  --gridWidth: 100vw;
+  --gutter: 20px;
+  --cols: 4;
+  --ratioX: 16;
+  --ratioY: 9;
+  --gutters: calc(var(--cols) - 1);
+  --factor: calc(var(--ratioY) / var(--ratioX));
+  --rh: calc(( (var(--gridWidth) - (var(--gutters) * var(--gutter)))
+      / var(--cols)) * var(--factor));
+
+  @include phone {
+    --cols: 1;
+  }
+
+  @include portrait {
+    --cols: 2;
+  }
+
+  @include landscape {
+    --cols: 2;
+  }
+
+  @include desktop {
+    --cols: 4;
+  }
+
+  @include monitor {
+    --cols: 6;
+  }
+
 }
 
 body {

@@ -1,3 +1,17 @@
+@import 'template/grid';
+
 :host {
     display: block;
+    height: 100%;
+    h1 {
+        font-size: 2em;
+        margin-left: var(--gutter);
+        margin-bottom: var(--gutter);
+    }
+    .grid {
+        @include grid;
+        .item {
+            background: #EDEDED;
+        }
+    }
 }

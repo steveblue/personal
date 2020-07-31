@@ -63,59 +63,58 @@
         }
     }
 
-
-@include phone {
-    h4 {
-        font-size: 2.75em;
-    }
-    .resume__wrapper {
-        max-width: calc(100vw - 40px);
-        h1 {
-            font-size: 3em;
+    @include phone {
+        h4 {
+            font-size: 2.75em;
         }
-        header {
-            p {
-                text-align: right;
-                transform: translateY(4px);
+        .resume__wrapper {
+            max-width: calc(100vw - 40px);
+            h1 {
+                font-size: 3em;
+            }
+            header {
+                p {
+                    text-align: right;
+                    transform: translateY(4px);
+                }
             }
         }
     }
-}
 
-@include portrait {
-    .resume__wrapper {
-        max-width: 640px;
-        h1 {
-            font-size: 5em;
+    @include portrait {
+        .resume__wrapper {
+            max-width: 640px;
+            h1 {
+                font-size: 5em;
+            }
         }
     }
-}
 
-@include landscape {
-    .resume__wrapper {
-        max-width: 720px;
-        h1 {
-            font-size: 5em;
+    @include landscape {
+        .resume__wrapper {
+            max-width: 720px;
+            h1 {
+                font-size: 5em;
+            }
         }
     }
-}
 
-@include desktop {
-    .resume__wrapper {
-        max-width: 840px;
-        h1 {
-            font-size: 6em;
+    @include desktop {
+        .resume__wrapper {
+            max-width: 840px;
+            h1 {
+                font-size: 6em;
+            }
         }
     }
-}
 
-@include monitor {
-    .resume__wrapper {
-        max-width: 840px;
-        h1 {
-            font-size: 6em;
+    @include monitor {
+        .resume__wrapper {
+            max-width: 840px;
+            h1 {
+                font-size: 6em;
+            }
         }
     }
-}
 
 }
