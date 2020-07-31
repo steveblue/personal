@@ -1,12 +1,94 @@
 @import 'template/grid';
+@import 'template/responsive';
+@import 'component/link';
 
 :host {
     display: block;
     height: 100%;
+    :after {
+        content: "";
+        display: table;
+        clear: both;
+    }
     h1 {
-        font-size: 2em;
-        margin-left: var(--gutter);
-        margin-bottom: var(--gutter);
+        font-family: var(--f-headline);
+        font-size: 4em;
+        font-weight: 900;
+    }
+    h4 {
+        display: block;
+        box-sizing: border-box;
+        height: 100%;
+        font-family: var(--f-headline);
+        font-size: 3.75em;
+        line-height: 1.1em;
+        font-weight: 700;
+        padding-left: 0em;
+        padding-top: 0em;
+        padding-right: 0em;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    p {
+        font-size: 1.25em;
+        font-weight: 400;
+    }
+    a:link, a:visited {
+        @include link();
+    }
+    v-stage {
+        min-height: 100vh;
+    }
+    .gallery__wrapper {
+        overflow-y: hidden;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .blog__title {
+        color: var(--c-lt-gray);
+        transform: translateY(320px);
+        transition: all 0.5s cubic-bezier(0.0,0.0,0.58,1.0);
+    }
+    .blog__header {
+        position: relative;
+        .header__background {
+            position: absolute;
+            height: 540px;
+            width: 100%;
+            background: #000000;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 50%);
+        }
+        .header__content {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            h1 {
+            display: block;
+            align-self: flex-end;
+            padding-left: calc((100vw -  720px) / 2);
+            font-family: var(--f-headline);
+            font-weight: 900;
+            }
+            .quote {
+            flex: 1;
+            align-self: center;
+            color: var(--c-lt-gray);
+            max-width: 640px;
+            padding-right: 60px;
+            blockquote {
+                font-family: var(--f-body);
+                font-size: 2.5em;
+                font-weight: 400;
+                //font-style: italic;
+            }
+            p {
+                font-size: 2.5em;
+                text-align: right;
+                padding-right: 40px;
+            }
+            }
+        }
     }
     .grid {
         @include grid;
@@ -14,4 +96,199 @@
             background: #EDEDED;
         }
     }
+
+    @include phone {
+
+    .header__section {
+      margin-bottom: -6px;
+    }
+    h2 {
+      font-size: 1.775em;
+    }
+    h4 {
+      font-size: 2.75em;
+    }
+    p {
+      font-size: 1.0em;
+    }
+    .blog__header {
+      .header__background {
+        height: 320px;
+      }
+      .header__content {
+        height: 200px;
+        h1 {
+          display: block;
+          padding-left: 20px;
+          &.is--visible {
+            transform: translateY(-20px);
+          }
+        }
+        .quote {
+          display: none;
+        }
+      }
+    }
+    .gallery__wrapper {
+       // max-width: calc(100vw - 40px);
+    }
+    .post__thumbnail {
+      height: calc((100vw - 40px) * 0.42068966);
+      h3 {
+        font-size: 1.8em;
+      }
+    }
+    h1 {
+      font-size: 3em;
+    }
+
+}
+
+@include portrait {
+
+    .blog__header {
+      .header__background {
+        height: 580px;
+      }
+      .header__content {
+        height: 374px;
+        .quote {
+          transform: translateX(40px) translateY(-24px);
+          h2 {
+            font-size: 2.5em;
+          }
+          blockquote {
+            font-size: 1.25em;
+          }
+          p {
+            font-size: 1.25em;
+          }
+        }
+        h1 {
+          padding-left: calc((100vw -  580px) / 2);
+          font-size: 5em;
+          &.is--visible {
+            transform: translateY(-32px);
+          }
+        }
+      }
+    }
+    .gallery__wrapper {
+       // max-width: 580px;
+    }
+    .post__thumbnail {
+      height: 244px;
+      h3 {
+        font-size: 3.25em;
+      }
+    }
+    h1 {
+      font-size: 3em;
+    }
+
+}
+
+@include landscape {
+
+    .blog__header {
+      .header__background {
+        height: 580px;
+      }
+      .header__content {
+        height: 390px;
+        .quote {
+          transform: translateY(32px);
+          blockquote {
+            font-size: 2em;
+          }
+          p {
+            font-size: 2em;
+          }
+        }
+        h1 {
+          padding-left: calc((100vw -  680px) / 2);
+          font-size: 5em;
+          &.is--visible {
+            transform: translateY(-20px);
+          }
+        }
+      }
+    }
+    .gallery__wrapper {
+       // max-width: 680px;
+    }
+    .post__thumbnail {
+      height: 286px;
+    }
+
+}
+
+@include desktop {
+
+    .blog__header {
+      .header__background {
+        height: 680px;
+      }
+      .header__content {
+        height: 460px;
+        .quote {
+          transform: translateX(-60px) translateY(40px);
+        }
+        h1 {
+          padding-left: calc((100vw -  680px) / 2);
+          font-size: 6em;
+          &.is--visible {
+            transform: translateY(0px);
+          }
+        }
+      }
+
+    }
+    .gallery__wrapper {
+       // max-width: 680px;
+    }
+    .post__thumbnail {
+      height: 286px;
+    }
+
+}
+
+@include monitor {
+
+    .blog__header {
+      .header__background {
+        height: 680px;
+      }
+      .header__content {
+        height: 460px;
+        .quote {
+          transform: translateX(-60px) translateY(40px);
+        }
+        h1 {
+          padding-left: calc((100vw -  840px) / 2);
+          font-size: 6em;
+          &.is--visible {
+            transform: translateY(0px);
+          }
+        }
+      }
+    }
+    .gallery__wrapper {
+       // max-width: 680px;
+    }
+    .post__thumbnail {
+      height: 286px;
+    }
+  }
+
+  @include phone-landscape {
+    .blog__header {
+      .header__content {
+        height: 200px;
+        .quote {
+          display: none;
+        }
+      }
+    }
+  }
 }

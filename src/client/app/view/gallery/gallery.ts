@@ -18,6 +18,11 @@ class GalleryComponent extends CustomElement {
       scale: 1.0
     };
   }
+  connectedCallback() {
+    // this.getModel();
+    if (!this.shadowRoot.querySelectorAll) return;
+    setTimeout(() => this.shadowRoot.querySelector('.blog__title').classList.add('is--visible'), 0);
+  }
 }
 
 // customElements.define('gallery-view', GalleryComponent);
