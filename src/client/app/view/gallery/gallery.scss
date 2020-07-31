@@ -94,6 +94,10 @@
         @include grid;
         .item {
             background: #EDEDED;
+            iframe, video, .thumb {
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 
