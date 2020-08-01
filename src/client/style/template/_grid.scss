@@ -3,12 +3,11 @@
 
 @mixin grid {
 
-  max-width: var(--gridWidth);
 	display: grid;
 	grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
 	grid-auto-flow: dense;
 	grid-auto-rows: minmax(var(--rh), auto);
 	grid-gap: var(--gutter);
-  margin: var(--gutter);
+	margin: var(--gutter);
 
 }
