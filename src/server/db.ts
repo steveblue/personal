@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { config } from './config';
+import { config } from '../config';
 import { join } from 'path';
 
 const low = require('lowdb');
@@ -22,7 +22,7 @@ function init(coll) {
   return fetch('https://dev.to/api/articles?username=steveblue', {
       method: 'get',
       headers: { 'Content-Type': 'application/json',
-                  'api-key': config.devApiKey
+                  'api-key': config.token.dev
                 }
   })
   .then(res => res.json())

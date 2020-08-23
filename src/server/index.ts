@@ -11,7 +11,7 @@ import apiRouter from './middleware/router';
 import errorHandler from './middleware/errorHandler';
 import ssr from './middleware/ssr';
 
-import { config } from './config';
+import { config } from '../config';
 
 const app: express.Application = express();
 const env: string = process.env.NODE_ENV || 'development';
