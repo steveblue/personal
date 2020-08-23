@@ -71,22 +71,22 @@
             font-weight: 900;
             }
             .quote {
-            flex: 1;
-            align-self: center;
-            color: var(--c-lt-gray);
-            max-width: 640px;
-            padding-right: 60px;
-            blockquote {
-                font-family: var(--f-body);
-                font-size: 2.5em;
-                font-weight: 400;
-                //font-style: italic;
-            }
-            p {
-                font-size: 2.5em;
-                text-align: right;
-                padding-right: 40px;
-            }
+              flex: 1;
+              align-self: center;
+              color: var(--c-lt-gray);
+              max-width: 640px;
+              padding-right: 60px;
+              blockquote {
+                  font-family: var(--f-body);
+                  font-size: 2.5em;
+                  font-weight: 400;
+                  //font-style: italic;
+              }
+              p {
+                  font-size: 2.5em;
+                  text-align: right;
+                  padding-right: 40px;
+              }
             }
         }
     }
@@ -94,7 +94,7 @@
         @include grid;
         .item {
             background: #EDEDED;
-            iframe, video, .thumb {
+            iframe, video, canvas, .thumb {
                 width: 100%;
                 height: 100%;
             }
