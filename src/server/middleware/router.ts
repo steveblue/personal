@@ -10,5 +10,7 @@ const trackr: TrackerController = new TrackerController();
 
 apiRouter.get('/blog', blog.getPosts);
 apiRouter.get('/track/token', trackr.getToken);
+apiRouter.get('/track/analytics', trackr.get);
+apiRouter.post('/track/save', trackr.save);
 
 export default apiRouter;

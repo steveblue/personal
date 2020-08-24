@@ -8,9 +8,16 @@ const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync(join('db.json'));
 const db = low(adapter);
 
+const analyticsAdapter = new FileSync(join('analytic.json'));
+const analytics = low(analyticsAdapter);
+
 function databaseInitialize() {
   db.defaults({ posts: [] }).write();
   init(db.get('posts'));
+}
+
+function analyticsInitialize() {
+  analytics.defaults({ stats: [] }).write();
 }
 
 function serialize(article) {
@@ -21,9 +28,10 @@ function serialize(article) {
 function init(coll) {
   return fetch('https://dev.to/api/articles?username=steveblue', {
       method: 'get',
-      headers: { 'Content-Type': 'application/json',
+      headers: { 
+                  'Content-Type': 'application/json',
                   'api-key': config.token.dev
-                }
+               }
   })
   .then(res => res.json())
   .then(json => {
@@ -41,5 +49,6 @@ function init(coll) {
 }
 
 databaseInitialize();
+analyticsInitialize();
 
 export { db, init, databaseInitialize };

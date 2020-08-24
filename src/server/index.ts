@@ -6,6 +6,7 @@ import fs from 'fs';
 import http from 'http';
 import https from 'https';
 import cors from 'cors';
+import bodyParser from 'body-parser';
 
 import apiRouter from './middleware/router';
 import errorHandler from './middleware/errorHandler';
@@ -35,6 +36,7 @@ if (protocol === 'HTTPS') {
 }
 
 app.use(cors(corsOptions));
+app.use(bodyParser.json());
 app.use(errorHandler);
 
 const staticOptions = {

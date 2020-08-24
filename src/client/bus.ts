@@ -16,8 +16,24 @@ function concatPath(path: string): string {
     },
   });
   if (ipInfo.ok) {
-    const json = await ipInfo.json();
-    console.log(json);
+    const locative = await ipInfo.json();
+    const timestamp = new Date();
+    locative.loc = locative.loc.split(',');
+    const track = {
+      utc: timestamp.toUTCString(),
+      timestamp: timestamp.getTime(),
+      locative: locative
+    };
+    const save = await fetch('http://localhost:4443/api/track/save', {
+      method: 'POST',
+      headers: {
+        'Accept': `application/json`,
+        'Content-Type': `application/json`
+      },
+      body: JSON.stringify(track)
+    });
+    const success = await save.json();
+    console.log(success);
   } else {
     console.warn(`Cannot request user location for analytics: ${ipInfo.status}.`);
   }
