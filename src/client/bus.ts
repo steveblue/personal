@@ -123,9 +123,14 @@ function osCheck() {
       utc: timestamp.toUTCString(),
       timestamp: timestamp.getTime(),
       locative: locative,
-      device: device
+      device: device,
+      page: {
+        href: window.location.href,
+        path: window.location.pathname,
+        host: window.location.host
+      }
     };
-    const save = await fetch('http://localhost:4443/api/track/save', {
+    await fetch('http://localhost:4443/api/track/save', {
       method: 'POST',
       headers: {
         'Accept': `application/json`,
@@ -133,8 +138,6 @@ function osCheck() {
       },
       body: JSON.stringify(track)
     });
-    const success = await save.json();
-    console.log(success);
   } else {
     console.warn(`Cannot request user location for analytics: ${ipInfo.status}.`);
   }
