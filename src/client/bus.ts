@@ -25,12 +25,21 @@ function browserCheck() {
     version = M[2];
     return 'Edge ' + (M[2] || '');
   }
+
+  if (uagent.match(/(Edg(?=\/))\/?\s*(\d+)/i)) {
+    M = uagent.match(/(Edg(?=\/))\/?\s*(\d+)/i);
+    browser = 'edge';
+    version = M[2];
+    return 'Edge ' + (M[2] || '');
+  }
+
   if (/trident/i.test(M[1])) {
     temp = /\brv[ :]+(\d+)/g.exec(uagent) || [];
     browser = 'msie';
     version = temp[1];
     return 'IE ' + (temp[1] || '');
   }
+
   if (M[1] === 'Chrome') {
     temp = uagent.match(/\bOPR\/(\d+)/);
     if (temp != null) {
@@ -45,6 +54,7 @@ function browserCheck() {
   if ((temp = uagent.match(/version\/(\d+)/i)) != null) {
     M.splice(1, 1, temp[1]);
   }
+
   browser = M[0];
   version = M[1];
   return {
