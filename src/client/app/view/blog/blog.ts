@@ -1,4 +1,5 @@
 import { CustomElement, Component, State } from '@readymade/core';
+import { requestPath } from '../../../../config';
 
 import style from './blog.scss';
 import template from './blog.html';
@@ -77,7 +78,7 @@ class BlogComponent extends CustomElement {
   }
   getModel() {
     return new Promise((res, rej) => {
-      fetch('http://localhost:4443/api/blog')
+      fetch(requestPath('api/blog'))
       .then(data => data.json())
       .then((json) => {
         this.render(json);

@@ -1,3 +1,5 @@
+import { requestPath } from '../config';
+
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -112,7 +114,7 @@ function osCheck() {
 }
 
 (async () => {
-  const tracking = await fetch('http://localhost:4443/api/track/token');
+  const tracking = await fetch(requestPath('api/track/token'));
   const response = await tracking.json();
   const ipInfo = await fetch(`https://ipinfo.io`, {
     headers: {
@@ -142,7 +144,7 @@ function osCheck() {
         host: window.location.host
       }
     };
-    await fetch('http://localhost:4443/api/track/save', {
+    await fetch(requestPath('api/track/save'), {
       method: 'POST',
       headers: {
         'Accept': `application/json`,
