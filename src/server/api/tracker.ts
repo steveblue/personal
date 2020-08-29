@@ -4,7 +4,11 @@ import { config } from '../../config';
 
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync(join(process.cwd(), 'dist', 'analytic.json'));
+const adapter = new FileSync(join(process.cwd(), 'dist', 'analytic.json'),
+{
+    defaultValue: { stats: [] },
+    serialize: input => JSON.stringify(input)
+});
 const db = low(adapter);
 
 class TrackerController implements IRoute {

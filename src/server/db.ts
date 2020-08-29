@@ -5,19 +5,26 @@ import { join } from 'path';
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 
-const adapter = new FileSync(join('db.json'));
+const adapter = new FileSync(join('db.json'),
+{
+  defaultValue: { posts: [] },
+  serialize: input => JSON.stringify(input)
+});
 const db = low(adapter);
 
-const analyticsAdapter = new FileSync(join('analytic.json'));
+const analyticsAdapter = new FileSync(join('analytic.json'),
+{
+  defaultValue: { stats: [] },
+  serialize: input => JSON.stringify(input)
+});
 const analytics = low(analyticsAdapter);
 
 function databaseInitialize() {
-  db.defaults({ posts: [] }).write();
   init(db.get('posts'));
 }
 
 function analyticsInitialize() {
-  analytics.defaults({ stats: [] }).write();
+
 }
 
 function serialize(article) {

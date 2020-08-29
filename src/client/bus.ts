@@ -1,9 +1,3 @@
-import { config } from '../config';
-
-function concatPath(path: string): string {
-  return `${config.protocol}://${config.host}:${config.port}/${path}`;
-}
-
 function inputCheck(os) {
   if (os === 'ios' || os === 'android' || os === 'winphone') {
     return 'touch';
@@ -81,7 +75,6 @@ function osCheck() {
     } else {
       device = 'tablet';
     }
-
   } else if (navigator.userAgent.indexOf("windows phone") > 0) {
     os = 'windows';
     device = 'mobile';
@@ -112,7 +105,7 @@ function osCheck() {
 }
 
 (async () => {
-  const tracking = await fetch(concatPath('api/track/token'));
+  const tracking = await fetch('http://localhost:4443/api/track/token');
   const response = await tracking.json();
   const ipInfo = await fetch(`https://ipinfo.io`, {
     headers: {
@@ -128,7 +121,8 @@ function osCheck() {
       browser: browserCheck(),
       input: inputCheck(osCheck().os)
     };
-    locative.loc = locative.loc.split(',');
+    locative.loc = locative.loc.split(',').map(coord => parseFloat(coord));
+    delete locative.ip;
     const track = {
       utc: timestamp.toUTCString(),
       timestamp: timestamp.getTime(),

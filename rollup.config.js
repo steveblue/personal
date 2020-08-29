@@ -44,6 +44,27 @@ export default [{
     }
 },
 {
+    input: 'src/client/bus.ts',
+    treeshake: true,
+    output: {
+        file: 'src/client/bus.js',
+        format: 'esm'
+    },
+    plugins: [
+        (process.env.EMULATE_API) ? replace({ 'http://localhost:4443': 'http://localhost:4444' }) : replace({ 'http://localhost:4443': 'https://stephenbelovarich.com' }),
+        nodeResolve({
+            mainFields: ['module', 'jsnext'],
+            extensions: ['.ts', '.js']
+        }),
+        typescript()
+    ],
+    onwarn: function (message) {
+
+        console.log(message);
+
+    }
+},
+{
     input: 'src/server/db.ts',
     treeshake: true,
     external: ['nedb', 'node-fetch', 'chalk', 'path'],
