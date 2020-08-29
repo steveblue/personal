@@ -1,3 +1,10 @@
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
 function inputCheck(os) {
   if (os === 'ios' || os === 'android' || os === 'winphone') {
     return 'touch';
@@ -124,6 +131,7 @@ function osCheck() {
     locative.loc = locative.loc.split(',').map(coord => parseFloat(coord));
     delete locative.ip;
     const track = {
+      id: uuidv4(),
       utc: timestamp.toUTCString(),
       timestamp: timestamp.getTime(),
       locative: locative,
