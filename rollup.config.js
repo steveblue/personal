@@ -5,6 +5,12 @@ import replace from '@rollup/plugin-replace';
 import postcss from 'rollup-plugin-postcss';
 import html from 'rollup-plugin-string-html';
 
+function replaceHost() {
+    return (process.env.EMULATE_API) ?
+            replace({ 'http://localhost:4443': 'http://localhost:4444' }) :
+            replace({ 'http://localhost:4444': 'https://stephenbelovarich.com' });
+}
+
 export default [{
     input: 'src/client/index.ts',
     treeshake: true,
@@ -13,7 +19,7 @@ export default [{
         format: 'esm'
     },
     plugins: [
-        (process.env.EMULATE_API) ? replace({ 'http://localhost:4443': 'http://localhost:4444' }) : replace({ 'http://localhost:4443': 'https://stephenbelovarich.com' }),
+        replaceHost(),
         nodeResolve({
             mainFields: ['module', 'jsnext'],
             extensions: ['.ts', '.js']
@@ -51,7 +57,49 @@ export default [{
         format: 'esm'
     },
     plugins: [
-        (process.env.EMULATE_API) ? replace({ 'http://localhost:4443': 'http://localhost:4444' }) : replace({ 'http://localhost:4443': 'https://stephenbelovarich.com' }),
+        replaceHost(),
+        nodeResolve({
+            mainFields: ['module', 'jsnext'],
+            extensions: ['.ts', '.js']
+        }),
+        typescript()
+    ],
+    onwarn: function (message) {
+
+        console.log(message);
+
+    }
+},
+{
+    input: 'src/config.ts',
+    treeshake: true,
+    output: {
+        file: 'dist/config.js',
+        format: 'cjs'
+    },
+    plugins: [
+        replaceHost(),
+        nodeResolve({
+            mainFields: ['module', 'jsnext'],
+            extensions: ['.ts', '.js']
+        }),
+        typescript()
+    ],
+    onwarn: function (message) {
+
+        console.log(message);
+
+    }
+},
+{
+    input: 'src/config.ts',
+    treeshake: true,
+    output: {
+        file: 'dist/server/config.js',
+        format: 'cjs'
+    },
+    plugins: [
+        replaceHost(),
         nodeResolve({
             mainFields: ['module', 'jsnext'],
             extensions: ['.ts', '.js']

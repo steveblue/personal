@@ -15,11 +15,11 @@
     "serve": "NODE_ENV=production node dist/server",
     "db:init": "NODE_ENV=production node dist/db && mv db.json dist/db.json && mv analytic.json dist/analytic.json",
     "clean:dist": "rimraf dist",
-    "build:prod": "npm run prod:ssr && npm run prod:index && concurrently \"npm run prod:client\" \"npm run prod:server\"",
+    "build:prod": "npm run prod:ssr && npm run prod:index && concurrently \"npm run prod:client\" \"npm run prod:server\" && node postscript.js",
     "print:asset": "ls -l dist/client/asset/img",
     "prod:asset": "mkdir -p dist/client/asset && cp -a src/client/asset/. dist/client/asset && cp src/client/sitemap.xml dist/client/sitemap.xml && cp src/client/robots.txt dist/client/robots.txt",
     "prod:client": "parcel build src/client/prod.html -d dist/client  --no-source-maps --out-file=index.html",
-    "prod:server": "npm run serve:config && parcel build src/server/index.ts -d dist/server --public-url /dist --target=node --no-source-maps",
+    "prod:server": "parcel build src/server/index.ts -d dist/server --public-url /dist --target=node --no-source-maps",
     "prod:ssr": "NODE_ENV=production rollup -c rollup.config.ssr.js",
     "prod:index": "NODE_ENV=production rollup -c rollup.config.js",
     "pretty:check": "prettier \"src/**/*.{js,ts,html,css,scss}\" --check",
@@ -66,7 +66,7 @@
     "node-sass": "^4.13.1",
     "parcel-bundler": "1.12.4",
     "parcel-plugin-css-as-string": "^1.0.0",
-    "parcel-plugin-externals": "^0.4.0-pre.20200405.1",
+    "parcel-plugin-externals": "^0.5.1",
     "parcel-plugin-inliner": "^1.0.14",
     "parcel-plugin-lazyload-lozad": "^0.0.1",
     "prettier": "^1.19.1",
@@ -83,5 +83,11 @@
     "Edge > 14",
     "Firefox > 63",
     "Chrome > 67"
-  ]
+  ],
+  "externals": [
+    "config"
+  ],
+  "alias": {
+    "config": "./src/config.ts"
+  }
 }

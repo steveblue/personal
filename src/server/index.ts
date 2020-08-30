@@ -18,7 +18,7 @@ const app: express.Application = express();
 const env: string = process.env.NODE_ENV || 'development';
 const port: string = process.env.PORT || config.port || '4443';
 const protocol: string = process.env.PROTOCOL || 'HTTP';
-const corsOptions = env === 'production' ? { origin : `${config.protocol}://${config.host}` } : {};
+const corsOptions = env === 'production' ? { origin : `${config.host}` } : {};
 let server: http.Server | https.Server;
 
 if (protocol === 'HTTPS') {
