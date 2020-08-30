@@ -1,12 +1,11 @@
 import fetch from 'node-fetch';
 
-function BroadcastChannel(channel) { }
-global['BroadcastChannel'] = BroadcastChannel;
+function BroadcastChannel(channel) {}
+global['BroadcastChannel'] = BroadcastChannel as any;
 global['observer$'] = {
   observe: () => { }
 };
-
-global['fetch'] = fetch;
+global['fetch'] = fetch as any;
 
 import {
   StageComponent,
