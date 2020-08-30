@@ -134,6 +134,7 @@ function osCheck() {
     delete locative.ip;
     const track = {
       id: uuidv4(),
+      type: 'visit',
       utc: timestamp.toUTCString(),
       timestamp: timestamp.getTime(),
       locative: locative,
