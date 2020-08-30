@@ -1,4 +1,4 @@
-import { requestPath } from '../config';
+import { config, requestPath } from '../config';
 
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -114,11 +114,9 @@ function osCheck() {
 }
 
 (async () => {
-  const tracking = await fetch(requestPath('api/track/token'));
-  const response = await tracking.json();
   const ipInfo = await fetch(`https://ipinfo.io`, {
     headers: {
-      'Authorization': `Bearer ${response.token}`,
+      'Authorization': `Bearer ${config.token.ipinfo}`,
       'Accept': `application/json`,
     },
   });
@@ -145,7 +143,7 @@ function osCheck() {
         host: window.location.host
       }
     };
-    await fetch(requestPath('api/track/save'), {
+    await fetch(requestPath('api/track'), {
       method: 'POST',
       headers: {
         'Accept': `application/json`,
