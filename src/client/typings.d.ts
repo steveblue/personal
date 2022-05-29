@@ -1,3 +1,3 @@
-declare module '*.html';
+declare module '*.html?raw';
 declare module '*.css';
 declare module '*.scss';

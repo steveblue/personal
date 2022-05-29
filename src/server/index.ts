@@ -18,7 +18,7 @@ const app: express.Application = express();
 const env: string = process.env.NODE_ENV || 'development';
 const port: string = process.env.PORT || config.port || '4443';
 const protocol: string = process.env.PROTOCOL || 'HTTP';
-const corsOptions = env === 'production' ? { origin : `${config.host}` } : {};
+const corsOptions = env === 'production' ? { origin: `${config.host}` } : {};
 let server: http.Server | https.Server;
 
 if (protocol === 'HTTPS') {
@@ -44,12 +44,16 @@ const staticOptions = {
   extensions: ['htm', 'html'],
   index: false,
   redirect: false
-}
+};
 
 if (env === 'production') {
   app.use(compression());
-  app.use(express.static(path.resolve(process.cwd(), 'dist', 'client'), staticOptions));
-  app.use(express.static(path.resolve(process.cwd(), 'dist',  'client', 'asset')));
+  app.use(
+    express.static(path.resolve(process.cwd(), 'dist', 'client'), staticOptions)
+  );
+  app.use(
+    express.static(path.resolve(process.cwd(), 'dist', 'client', 'asset'))
+  );
   // commented out code enables non ssr server
   // app.get("/*", (req, res) => {
   //   res.sendFile(path.resolve(process.cwd(), "dist", "client", "index.html"));
@@ -71,4 +75,5 @@ server.listen(port, (): void => {
   );
 });
 
+export const createViteNodeApp = app;
 export default app;
