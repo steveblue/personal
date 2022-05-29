@@ -6,7 +6,7 @@ import {
 } from './../../../../util/anim';
 import { WebAnimation } from './../../../../util/anim/interface';
 import style from './profile.scss';
-import template from './profile.html';
+import template from './profile.html?raw';
 
 declare global {
   interface Window {
@@ -20,7 +20,6 @@ declare global {
   template: template
 })
 class ProfileComponent extends CustomElement {
-
   private wrapper!: HTMLElement;
   private isVisible: boolean | null = null;
   private animIn: AnimationPlayer[];
@@ -34,7 +33,6 @@ class ProfileComponent extends CustomElement {
   }
 
   connectedCallback() {
-
     this.setAttribute('data-index', 'profile-0');
     if (this.shadowRoot && this.shadowRoot.querySelector) {
       const root = this.shadowRoot as ShadowRoot;
@@ -67,9 +65,7 @@ class ProfileComponent extends CustomElement {
   }
 
   @Listen('entry')
-  onIntersect(ev: any) {
-
-  }
+  onIntersect(ev: any) {}
 
   @Listen('exit')
   onExit(ev: any) {
@@ -119,7 +115,6 @@ class ProfileComponent extends CustomElement {
   // scale(v: number, min: number, max: number, gmin: number, gmax: number) {
   //   return ((v - min) / (max - min)) * (gmax - gmin) + gmin;
   // }
-
 }
 
 // customElements.define('t-profile', ProfileComponent);

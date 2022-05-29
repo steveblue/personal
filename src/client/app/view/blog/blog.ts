@@ -2,7 +2,7 @@ import { CustomElement, Component, State } from '@readymade/core';
 import { requestPath } from '../../../../config';
 
 import style from './blog.scss';
-import template from './blog.html';
+import template from './blog.html?raw';
 
 declare global {
   interface Window {
@@ -71,7 +71,13 @@ class BlogComponent extends CustomElement {
   connectedCallback() {
     this.getModel();
     if (!this.shadowRoot.querySelectorAll) return;
-    setTimeout(() => this.shadowRoot.querySelector('.blog__title').classList.add('is--visible'), 0);
+    setTimeout(
+      () =>
+        this.shadowRoot
+          .querySelector('.blog__title')
+          .classList.add('is--visible'),
+      0
+    );
   }
   disconnectedCallback() {
     document.body.classList.remove('is--light');
@@ -79,13 +85,13 @@ class BlogComponent extends CustomElement {
   getModel() {
     return new Promise((res, rej) => {
       fetch(requestPath('api/blog'))
-      .then(data => data.json())
-      .then((json) => {
-        this.render(json);
-        res();
-      })
-      .catch((error) => rej(error));
-    })
+        .then(data => data.json())
+        .then(json => {
+          this.render(json);
+          res();
+        })
+        .catch(error => rej(error));
+    });
   }
   render(data) {
     if (data && data.length) {
@@ -164,7 +170,7 @@ class BlogComponent extends CustomElement {
         section.appendChild(post);
         wrapper.appendChild(section);
 
-        img.addEventListener('entry', (ev) => {
+        img.addEventListener('entry', ev => {
           img.style.background = img.getAttribute('data-bg');
           img.style.backgroundRepeat = 'no-repeat';
           img.style.backgroundSize = 'contain';

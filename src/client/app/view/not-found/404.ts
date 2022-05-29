@@ -1,7 +1,7 @@
 import { CustomElement, Component, State } from '@readymade/core';
 
 import style from './404.scss';
-import template from './404.html';
+import template from './404.html?raw';
 
 @Component({
   selector: 'not-found-view',

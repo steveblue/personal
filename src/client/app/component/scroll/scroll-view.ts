@@ -1,7 +1,7 @@
 import { CustomElement, Component, Listen } from '@readymade/core';
 
 import style from './scroll-view.scss';
-import template from './scroll-view.html';
+import template from './scroll-view.html?raw';
 import { ScrollPayload } from './scroll';
 
 @Component({

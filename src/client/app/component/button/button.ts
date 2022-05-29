@@ -7,7 +7,7 @@ import {
 } from '@readymade/core';
 
 import style from './button.scss';
-import template from './button.html';
+import template from './button.html?raw';
 
 class ButtonState {
   public model: string = 'Hello Readymade!';

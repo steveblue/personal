@@ -1,7 +1,7 @@
 import { CustomElement, Component, Listen, Emitter } from '@readymade/core';
 
 import style from './section.scss';
-import template from './section.html';
+import template from './section.html?raw';
 
 declare global {
   interface Window {
@@ -23,7 +23,7 @@ class SectionComponent extends CustomElement {
     if (window && window.observer$) {
       window.observer$.observe(this);
     }
-  } 
+  }
   @Emitter('load', {}, 'lazy')
   @Listen('entry')
   onIntersect(ev: any) {
@@ -37,7 +37,6 @@ class SectionComponent extends CustomElement {
       'lazy'
     );
   }
-
 }
 
 // customElements.define('v-section', SectionComponent);

@@ -1,7 +1,7 @@
 import { CustomElement, Component } from '@readymade/core';
 
 import style from './stage.scss';
-import template from './stage.html';
+import template from './stage.html?raw';
 
 @Component({
   selector: 'v-stage',

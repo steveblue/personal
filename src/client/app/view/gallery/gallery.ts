@@ -1,7 +1,7 @@
 import { CustomElement, Component, State } from '@readymade/core';
 
 import style from './gallery.scss';
-import template from './gallery.html';
+import template from './gallery.html?raw';
 
 @Component({
   selector: 'gallery-view',

@@ -1,7 +1,7 @@
 import { CustomElement, Component, Listen } from '@readymade/core';
 
 import style from './home.scss';
-import template from './home.html';
+import template from './home.html?raw';
 
 @Component({
   selector: 'home-view',
@@ -19,12 +19,19 @@ class HomeComponent extends CustomElement {
     if (ev.detail.index === '2') {
       let items: HTMLElement[] = [];
       const blurb: HTMLElement = this.shadowRoot.querySelector(`.blurb`);
-      items = items.concat([blurb]).concat(Array.from(this.shadowRoot.querySelectorAll(`.icon`)));
+      items = items
+        .concat([blurb])
+        .concat(Array.from(this.shadowRoot.querySelectorAll(`.icon`)));
       items.forEach((item, index) => this.stagger(index, item));
     }
     if (ev.detail.index === '3' || ev.detail.index === '5') {
-      const photos = Array.from(this.shadowRoot.querySelectorAll(`[lazy-index="${ev.detail.index}"]`));
-      if (photos.length && photos.filter(img => !img.getAttribute('src')).length) {
+      const photos = Array.from(
+        this.shadowRoot.querySelectorAll(`[lazy-index="${ev.detail.index}"]`)
+      );
+      if (
+        photos.length &&
+        photos.filter(img => !img.getAttribute('src')).length
+      ) {
         photos.forEach(img => {
           const src = img.getAttribute('data-src');
           img.setAttribute('src', src);

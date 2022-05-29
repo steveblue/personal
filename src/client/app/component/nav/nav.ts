@@ -7,7 +7,7 @@ import {
 } from './../../util/anim';
 import { WebAnimation } from 'app/util/anim/interface';
 import style from './nav.scss';
-import template from './nav.html';
+import template from './nav.html?raw';
 
 @Component({
   selector: 'v-nav',
@@ -28,28 +28,46 @@ class NavComponent extends CustomElement {
   }
   connectedCallback() {
     if (!this.shadowRoot.querySelector) return;
-    this.shadowRoot.querySelector('.nav__button').addEventListener('click', this.toggle.bind(this), false);
+    this.shadowRoot
+      .querySelector('.nav__button')
+      .addEventListener('click', this.toggle.bind(this), false);
   }
   toggle() {
     if (!this.shadowRoot.querySelector) return;
     this.isActive = this.isActive ? false : true;
-    this.navIn = animate((<unknown>this.shadowRoot.querySelector('nav')) as HTMLElement, this.animations.navIn);
-    this.navOut = animate((<unknown>this.shadowRoot.querySelector('nav')) as HTMLElement, this.animations.navOut);
-    if (!this.shadowRoot.querySelector('.nav__container').classList.contains('is--init')) {
-      this.shadowRoot.querySelector('.nav__container').classList.add('is--init');
+    this.navIn = animate(
+      (<unknown>this.shadowRoot.querySelector('nav')) as HTMLElement,
+      this.animations.navIn
+    );
+    this.navOut = animate(
+      (<unknown>this.shadowRoot.querySelector('nav')) as HTMLElement,
+      this.animations.navOut
+    );
+    if (
+      !this.shadowRoot
+        .querySelector('.nav__container')
+        .classList.contains('is--init')
+    ) {
+      this.shadowRoot
+        .querySelector('.nav__container')
+        .classList.add('is--init');
     }
     if (this.isActive) {
       this.style.width = '100vw';
       this.style.width = '100vh';
       this.navOut.cancel();
       this.navIn.play();
-      this.shadowRoot.querySelector('.nav__container').classList.add('is--open');
+      this.shadowRoot
+        .querySelector('.nav__container')
+        .classList.add('is--open');
     } else {
       this.style.width = '44px';
       this.style.width = '44px';
       this.navIn.cancel();
       this.navOut.play();
-      this.shadowRoot.querySelector('.nav__container').classList.remove('is--open');
+      this.shadowRoot
+        .querySelector('.nav__container')
+        .classList.remove('is--open');
     }
   }
 }

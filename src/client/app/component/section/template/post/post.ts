@@ -1,7 +1,7 @@
 import { CustomElement, Component, Listen } from '@readymade/core';
 
 import style from './post.scss';
-import template from './post.html';
+import template from './post.html?raw';
 
 @Component({
   selector: 't-post',
@@ -23,7 +23,6 @@ class PostComponent extends CustomElement {
       this.shadowRoot.querySelector('.post__wrapper').classList.add(newValue);
     }
   }
-
 }
 
 // customElements.define('t-post', PostComponent);

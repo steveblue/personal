@@ -9,7 +9,7 @@ import {
 import { WebAnimation } from 'app/util/anim/interface';
 
 import style from './card.scss';
-import template from './card.html';
+import template from './card.html?raw';
 import { ScrollPayload } from '../scroll/scroll';
 
 @Component({

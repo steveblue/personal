@@ -1,7 +1,7 @@
 import { CustomElement, Component, Listen, Emitter } from '@readymade/core';
 
 import style from './scroll.scss';
-import template from './scroll.html';
+import template from './scroll.html?raw';
 
 export interface ScrollOptions {
   direction: number;
