@@ -877,11 +877,6 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@corpuscule/custom-builtin-elements@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@corpuscule/custom-builtin-elements/-/custom-builtin-elements-0.3.0.tgz#caccf10e9735f9127775858223f90a88d251fe8f"
-  integrity sha512-hVE+3splyYXhp8aamO0PWO5AYVNDanQ2Bmt9tq4gBMx/kUisSxK/dU6WlhOnLzhr3H2BDnH4oBdExZRC2o+2Yw==
-
 "@iarna/toml@^2.2.0":
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/@iarna/toml/-/toml-2.2.5.tgz#b32366c89b43c6f8cefbdefac778b9c828e3ba8c"
@@ -1137,6 +1132,11 @@
     lodash "^4.17.15"
     semver "^7.3.2"
     tsutils "^3.17.1"
+
+"@ungap/custom-elements@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@ungap/custom-elements/-/custom-elements-1.0.2.tgz#aafb2287ce729bac1dda18721768876d84a2a792"
+  integrity sha512-fBklebkGTtQR2ktxMxnfahTHdrSwvITZPMbCuHEeycVMYjhyVH7w8UFmxf1waXWxN+5tyGSOUiueJPbvhR81bg==
 
 abab@^2.0.0:
   version "2.0.4"

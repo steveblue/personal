@@ -75,5 +75,4 @@ server.listen(port, (): void => {
   );
 });
 
-export const createViteNodeApp = app;
 export default app;
