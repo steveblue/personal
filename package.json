@@ -47,7 +47,6 @@
     "lowdb": "^1.0.0",
     "node-fetch": "^2.6.0",
     "rimraf": "^3.0.2",
-    "vite-node": "^0.12.9",
     "web-animations-js": "^2.3.2"
   },
   "devDependencies": {
