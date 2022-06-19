@@ -877,6 +877,16 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@fontsource/exo-2@^4.5.8":
+  version "4.5.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/exo-2/-/exo-2-4.5.8.tgz#0ecf830e74725978803d695e2bd24f343cefbbaa"
+  integrity sha512-UHffqkk27vKuz2ApNWP/ySwsftEiRnNODyPLSU+SwL510kPiqf2TVszfYk0WTRscN14xIgb5nvBxgnWuxu6b3w==
+
+"@fontsource/lato@^4.5.8":
+  version "4.5.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-4.5.8.tgz#20acb60d0895cc82723b4999492c70b1f9816460"
+  integrity sha512-IoSvhhzHsSzJu5XEOmDqzqcSmtfcJ788nz2TDgGXac076DApUsYIPHHBd0dh9guMBIVuHZ8Y2dlXNHFl4bCyLA==
+
 "@iarna/toml@^2.2.0":
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/@iarna/toml/-/toml-2.2.5.tgz#b32366c89b43c6f8cefbdefac778b9c828e3ba8c"

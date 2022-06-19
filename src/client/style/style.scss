@@ -1,21 +1,27 @@
+@import '@fontsource/exo-2/300.css';
+@import '@fontsource/exo-2/500.css';
+@import '@fontsource/exo-2/700.css';
+@import '@fontsource/exo-2/900.css';
+@import '@fontsource/lato/300.css';
+@import '@fontsource/lato/400.css';
+@import '@fontsource/lato/700.css';
 
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500;700;900&family=Lato:wght@300;400;700&display=swap');
 @import 'theme/card';
 
 :root {
-  --c-dk-gray: rgba(20, 20, 20, 1.0);
-  --c-lt-gray: rgba(220, 220, 220, 1.0);
-  --c-body: rgba(20, 20, 20, 1.0);
-  --c-font: rgba(220, 220, 220, 1.0);
-  --c-gray-500: rgba(125, 125, 125, 1.0);
-  --c-cta: rgba(255, 45, 85, 1.0);
-  --c-orange: rgba(251, 97, 7, 1.0);
-  --c-white: rgba(240, 240, 240, 1.0);
-  --c-black: rgba(10, 10, 10, 1.0);
-  --c-red: rgba(255, 45, 85, 1.0);
+  --c-dk-gray: rgba(20, 20, 20, 1);
+  --c-lt-gray: rgba(220, 220, 220, 1);
+  --c-body: rgba(20, 20, 20, 1);
+  --c-font: rgba(220, 220, 220, 1);
+  --c-gray-500: rgba(125, 125, 125, 1);
+  --c-cta: rgba(255, 45, 85, 1);
+  --c-orange: rgba(251, 97, 7, 1);
+  --c-white: rgba(240, 240, 240, 1);
+  --c-black: rgba(10, 10, 10, 1);
+  --c-red: rgba(255, 45, 85, 1);
   --c-green: rgb(138, 201, 38);
   --c-blue: rgb(65, 234, 212);
-  --c-space-gray: #A5ADB0;
+  --c-space-gray: #a5adb0;
   --f-headline: 'Exo 2', sans-serif;
   --f-body: 'Lato', sans-serif;
 }
@@ -42,7 +48,8 @@ body {
   }
 }
 
-a:link, a:visited {
+a:link,
+a:visited {
   color: var(--c-cta);
 }
 

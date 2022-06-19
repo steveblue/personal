@@ -17,7 +17,7 @@
     "clean:dist": "rimraf dist",
     "build:prod": "npm run prod:ssr && npm run prod:index && concurrently \"npm run prod:client\" \"npm run prod:server\" && node postscript.js",
     "print:asset": "ls -l dist/client/asset/img",
-    "prod:asset": "mkdir -p dist/client/asset && cp -a src/client/asset/. dist/client/asset && cp src/client/sitemap.xml dist/client/sitemap.xml && cp src/client/robots.txt dist/client/robots.txt",
+    "prod:asset": "mkdir -p dist/client/asset && cp -a src/client/asset/. dist/client/asset && cp src/client/sitemap.xml dist/client/sitemap.xml && cp src/client/robots.txt dist/client/robots.txt && cp -a node_modules/@fontsource dist/client",
     "prod:client": "parcel build src/client/prod.html -d dist/client  --no-source-maps --out-file=index.html",
     "prod:server": "parcel build src/server/index.ts -d dist/server --public-url /dist --target=node --no-source-maps",
     "prod:ssr": "NODE_ENV=production rollup -c rollup.config.ssr.js",
@@ -27,6 +27,8 @@
     "lint": "eslint src/**/*.ts --fix"
   },
   "dependencies": {
+    "@fontsource/exo-2": "^4.5.8",
+    "@fontsource/lato": "^4.5.8",
     "@readymade/core": "~1.1.0",
     "@rollup/plugin-replace": "^2.3.2",
     "@skatejs/ssr": "^0.19.11",
