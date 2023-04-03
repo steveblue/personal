@@ -43,10 +43,15 @@
         );
       }
     }
-    &.is--workday {
+    &.is--swimlane {
       color: #ffffff;
       .post__background {
-        background: rgb(0, 109, 182);
+        background: linear-gradient(
+          135deg,
+          rgba(2, 9, 86, 1) 0%,
+          rgba(9, 9, 121, 1) 50%,
+          rgba(52, 120, 246, 1) 80%
+        );
       }
     }
     &.has--curved-top {
