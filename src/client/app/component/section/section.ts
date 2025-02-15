@@ -1,6 +1,6 @@
 import { CustomElement, Component, Listen, Emitter } from '@readymade/core';
 
-import style from './section.scss';
+import style from './section.css?raw';
 import template from './section.html?raw';
 
 declare global {
@@ -12,7 +12,7 @@ declare global {
 @Component({
   selector: 'v-section',
   style: style,
-  template: template
+  template: template,
 })
 class SectionComponent extends CustomElement {
   constructor() {
@@ -31,10 +31,10 @@ class SectionComponent extends CustomElement {
       new CustomEvent('load', {
         detail: {
           type: 'load',
-          index: this.getAttribute('data-index')
-        }
+          index: this.getAttribute('data-index'),
+        },
       }),
-      'lazy'
+      'lazy',
     );
   }
 }

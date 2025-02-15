@@ -2,10 +2,10 @@ import { CustomElement, Component, Listen } from '@readymade/core';
 import {
   animate,
   AnimationPlayer,
-  slideInAnimation
+  slideInAnimation,
 } from './../../../../util/anim';
 import { WebAnimation } from './../../../../util/anim/interface';
-import style from './profile.scss';
+import style from './profile.css?raw';
 import template from './profile.html?raw';
 
 declare global {
@@ -17,14 +17,14 @@ declare global {
 @Component({
   selector: 't-profile',
   style: style,
-  template: template
+  template: template,
 })
 class ProfileComponent extends CustomElement {
   private wrapper!: HTMLElement;
   private isVisible: boolean | null = null;
   private animIn: AnimationPlayer[];
   private animations: { [key: string]: (options: any) => WebAnimation } = {
-    slideIn: slideInAnimation
+    slideIn: slideInAnimation,
   };
 
   constructor() {

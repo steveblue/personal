@@ -1,12 +1,12 @@
 import { CustomElement, Component, State } from '@readymade/core';
 
-import style from './resume.scss';
+import style from './resume.css?raw';
 import template from './resume.html?raw';
 
 @Component({
   selector: 'resume-view',
   style: style,
-  template: template
+  template: template,
 })
 class ResumeComponent extends CustomElement {
   constructor() {
@@ -15,7 +15,7 @@ class ResumeComponent extends CustomElement {
   @State()
   getState() {
     return {
-      scale: 1.0
+      scale: 1.0,
     };
   }
   connectedCallback() {
@@ -23,11 +23,22 @@ class ResumeComponent extends CustomElement {
     setTimeout(
       () =>
         this.shadowRoot.querySelector('.title').classList.add('is--visible'),
-      0
+      0,
     );
   }
 }
 
+const render = () => `
+  <resume-view>
+    <template shadowrootmode="open">
+      <style>
+        ${style}
+      </style>
+      ${template}
+    </template>
+  </resume-view>
+`;
+
 // customElements.define('resume-view', ResumeComponent);
 
-export { ResumeComponent };
+export { ResumeComponent, render };

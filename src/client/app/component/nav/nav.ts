@@ -1,18 +1,18 @@
-import { CustomElement, Component, Listen } from '@readymade/core';
+import { CustomElement, Component } from '@readymade/core';
 import {
   animate,
   AnimationPlayer,
   navOutAnimation,
-  navInAnimation
+  navInAnimation,
 } from './../../util/anim';
-import { WebAnimation } from 'app/util/anim/interface';
-import style from './nav.scss';
+import { WebAnimation } from '../../../app/util/anim/interface';
+import style from './nav.css?raw';
 import template from './nav.html?raw';
 
 @Component({
   selector: 'v-nav',
   style: style,
-  template: template
+  template: template,
 })
 class NavComponent extends CustomElement {
   private isActive: boolean;
@@ -20,7 +20,7 @@ class NavComponent extends CustomElement {
   private navOut: AnimationPlayer;
   private animations: { [key: string]: WebAnimation } = {
     navIn: navInAnimation,
-    navOut: navOutAnimation
+    navOut: navOutAnimation,
   };
   constructor() {
     super();
@@ -37,11 +37,11 @@ class NavComponent extends CustomElement {
     this.isActive = this.isActive ? false : true;
     this.navIn = animate(
       (<unknown>this.shadowRoot.querySelector('nav')) as HTMLElement,
-      this.animations.navIn
+      this.animations.navIn,
     );
     this.navOut = animate(
       (<unknown>this.shadowRoot.querySelector('nav')) as HTMLElement,
-      this.animations.navOut
+      this.animations.navOut,
     );
     if (
       !this.shadowRoot

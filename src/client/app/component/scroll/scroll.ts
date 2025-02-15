@@ -1,6 +1,6 @@
 import { CustomElement, Component, Listen, Emitter } from '@readymade/core';
 
-import style from './scroll.scss';
+import style from './scroll.css?raw';
 import template from './scroll.html?raw';
 
 export interface ScrollOptions {
@@ -39,13 +39,13 @@ export interface ScrollWheelEvent extends WheelEvent {}
 
 export enum SCROLL_DIRECTION {
   X = 0,
-  Y = 1
+  Y = 1,
 }
 
 @Component({
   selector: 'v-scroll-sync',
   style: style,
-  template: template
+  template: template,
 })
 class ScrollSync extends CustomElement {
   public options: ScrollOptions;
@@ -62,7 +62,7 @@ class ScrollSync extends CustomElement {
       preventDefault: true,
       lineHeight: 16,
       scale: 1,
-      velocitySampleLength: 10
+      velocitySampleLength: 10,
     };
     this.payload = {
       delta: 0,
@@ -71,7 +71,7 @@ class ScrollSync extends CustomElement {
       slip: true,
       timestamp: Date.now(),
       clientX: 0,
-      clientY: 0
+      clientY: 0,
     };
 
     if (this.options.direction !== undefined) {
@@ -99,11 +99,11 @@ class ScrollSync extends CustomElement {
     if (name === 'scale') {
       const scale = parseFloat(this.getAttribute('scale') as string);
       const options = {
-        scale: scale
+        scale: scale,
       };
       this.options = {
         ...this.options,
-        ...options
+        ...options,
       };
     }
   }
@@ -129,9 +129,9 @@ class ScrollSync extends CustomElement {
     this.history.push(this.payload);
     this.emitter.broadcast(
       new CustomEvent('update', {
-        detail: this.payload
+        detail: this.payload,
       }),
-      'scroll'
+      'scroll',
     );
   }
 
@@ -213,9 +213,9 @@ class ScrollSync extends CustomElement {
     this.history.push(this.payload);
     this.emitter.broadcast(
       new CustomEvent('update', {
-        detail: this.payload
+        detail: this.payload,
       }),
-      'scroll'
+      'scroll',
     );
   }
 
@@ -224,9 +224,9 @@ class ScrollSync extends CustomElement {
     this.payload.type = 'end';
     this.emitter.broadcast(
       new CustomEvent('update', {
-        detail: this.payload
+        detail: this.payload,
       }),
-      'scroll'
+      'scroll',
     );
   }
 
@@ -246,9 +246,9 @@ class ScrollSync extends CustomElement {
       this.payload.type = 'start';
       this.emitter.broadcast(
         new CustomEvent('update', {
-          detail: this.payload
+          detail: this.payload,
         }),
-        'scroll'
+        'scroll',
       );
     }
 
@@ -319,9 +319,9 @@ class ScrollSync extends CustomElement {
     this.history.push(this.payload);
     this.emitter.broadcast(
       new CustomEvent('update', {
-        detail: this.payload
+        detail: this.payload,
       }),
-      'scroll'
+      'scroll',
     );
   }
 }

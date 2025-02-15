@@ -1,78 +1,108 @@
+import { installShimOnGlobal } from './shim.js';
+
+installShimOnGlobal();
+
+import path from 'path';
 import chalk from 'chalk';
 import express from 'express';
-import path from 'path';
-import compression from 'compression';
-import fs from 'fs';
-import http from 'http';
-import https from 'https';
+import helmet from 'helmet';
 import cors from 'cors';
-import bodyParser from 'body-parser';
+import { UserConfig } from 'vite';
 
-import apiRouter from './middleware/router';
-import errorHandler from './middleware/errorHandler';
-import ssr from './middleware/ssr';
+import { config } from './config';
 
-import { config } from '../config';
+import { ssrMiddleware } from './middleware/ssr.js';
 
-const app: express.Application = express();
+import { BlogController } from './api/blog';
+import { TrackerController } from './api/tracker';
+
 const env: string = process.env.NODE_ENV || 'development';
 const port: string = process.env.PORT || config.port || '4443';
-const protocol: string = process.env.PROTOCOL || 'HTTP';
-const corsOptions = env === 'production' ? { origin: `${config.host}` } : {};
-let server: http.Server | https.Server;
+const hmrPort: string = process.env.HMR_PORT || config.hmrPort || '7443';
 
-if (protocol === 'HTTPS') {
-  const sslOptions = {
-    key: fs.readFileSync(path.join(process.cwd(), '.config', 'ssl', 'key.pem')),
-    cert: fs.readFileSync(
-      path.join(process.cwd(), '.config', 'ssl', 'cert.pem')
-    ),
-    requestCert: false,
-    rejectUnauthorized: false
+async function createServer(root = process.cwd()) {
+  const resolve = (p: string) => path.resolve(root, p);
+  const app: express.Application = express();
+  // const apiRouter: express.Router = express.Router();
+
+  const blog: BlogController = new BlogController();
+  const trackr: TrackerController = new TrackerController();
+
+  const corsOptions =
+    env === 'production'
+      ? { origin: `${config.protocol}://${config.host}` }
+      : {};
+
+  const hmrOptions =
+    env === 'development'
+      ? { connectSrc: ["'self'", `ws://localhost:${hmrPort}`] }
+      : {};
+
+  const helmetConfig = {
+    crossOriginEmbedderPolicy: false,
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+        scriptSrc: [
+          "'self'",
+          () => `'sha256-5+YTmTcBwCYdJ8Jetbr6kyjGp0Ry/H7ptpoun6CrSwQ='`,
+        ],
+        ...hmrOptions,
+      },
+    },
   };
-  server = https.createServer(sslOptions, app);
-} else {
-  server = http.createServer(app);
+
+  app.use(helmet(helmetConfig));
+  app.use(cors(corsOptions));
+
+  app.get('/api/blog', blog.getPosts);
+  app.get('/api/track/token', trackr.getToken);
+  app.get('/api/track/analytic', trackr.get);
+  app.post('/api/track', trackr.save);
+
+  if (env === 'production') {
+    app.use((await import('compression')).default());
+    app.use(
+      (await import('serve-static')).default(resolve('dist/client'), {
+        index: false,
+      }),
+    );
+    app.use('*', ssrMiddleware({}));
+  } else {
+    const viteServerConfig: UserConfig = {
+      base: resolve('src/client/'),
+      root: resolve('src/client'),
+      appType: 'custom',
+      server: {
+        middlewareMode: true,
+        port: Number(port),
+        hmr: {
+          protocol: 'ws',
+          port: Number(hmrPort),
+        },
+      },
+    };
+    const vite = await (
+      await import('vite')
+    ).createServer((<unknown>viteServerConfig) as UserConfig);
+    app.use(vite.middlewares);
+    app.use('*', ssrMiddleware({ vite }));
+  }
+
+  return { app };
 }
 
-app.use(cors(corsOptions));
-app.use(bodyParser.json());
-app.use(errorHandler);
-
-const staticOptions = {
-  dotfiles: 'ignore',
-  extensions: ['htm', 'html'],
-  index: false,
-  redirect: false
-};
-
-if (env === 'production') {
-  app.use(compression());
-  app.use(
-    express.static(path.resolve(process.cwd(), 'dist', 'client'), staticOptions)
-  );
-  app.use(
-    express.static(path.resolve(process.cwd(), 'dist', 'client', 'asset'))
-  );
-  // commented out code enables non ssr server
-  // app.get("/*", (req, res) => {
-  //   res.sendFile(path.resolve(process.cwd(), "dist", "client", "index.html"));
-  // });
-  app.get('/', ssr);
-  app.get('/blog', ssr);
-  app.get('/resume', ssr);
-  app.get('/cv', ssr);
-}
-
-app.use('/api', apiRouter);
-
-server.listen(port, (): void => {
-  const addr = `${protocol === 'HTTPS' ? 'https' : 'http'}://localhost:${port}`;
-  process.stdout.write(
-    `\n [${new Date().toISOString()}] ${chalk.green(
-      'Server running:'
-    )} ${chalk.blue(addr)} \n`
-  );
+createServer().then(({ app }) => {
+  const port: string = process.env.PORT || config.port || '4443';
+  app.listen(port, (): void => {
+    const addr = `${
+      config.protocol === 'HTTPS' ? 'https' : 'http'
+    }://localhost:${port}`;
+    process.stdout.write(
+      `\n [${new Date().toISOString()}] ${chalk.green(
+        'Server running:',
+      )} ${chalk.blue(addr)} \n`,
+    );
+  });
 });
-
-export default app;

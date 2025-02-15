@@ -1,6 +1,6 @@
 import { CustomElement, Component, State } from '@readymade/core';
 
-import style from './404.scss';
+import style from './404.css?raw';
 import template from './404.html?raw';
 
 @Component({
@@ -20,6 +20,15 @@ class FileNotFoundComponent extends CustomElement {
   }
 }
 
-// customElements.define('not-found-view', FileNotFoundComponent);
+const render = () => `
+  <not-found-view>
+    <template shadowrootmode="open">
+      <style>
+        ${style}
+      </style>
+      ${template}
+    </template>
+  </not-found-view>
+`;
 
-export { FileNotFoundComponent };
+export { FileNotFoundComponent, render };

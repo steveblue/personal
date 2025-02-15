@@ -1,18 +1,14 @@
-@import 'theme/card';
-@import 'component/link';
-@import 'template/responsive';
-
 :host {
   display: block;
   overflow-x: hidden;
-  h2 {
+  & h2 {
     font-family: var(--f-headline);
     font-weight: 700;
     &.is--center {
       text-align: center;
     }
   }
-  h4 {
+  & h4 {
     display: block;
     box-sizing: border-box;
     height: 100%;
@@ -26,15 +22,103 @@
     margin-top: 0px;
     margin-bottom: 0px;
   }
-  a:link,
-  a:visited {
-    @include link();
+  & a:link,
+  & a:visited {
+    color: var(--c-cta);
+    text-decoration: none;
+    &.is--cta {
+      &:not(.is--inline) {
+        display: block;
+      }
+      &:after {
+        content: '';
+        display: inline-block;
+        transform: translateX(7px) translateY(1px);
+        width: 0;
+        height: 0;
+        border-left: 7px solid var(--c-cta);
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+      }
+      &:hover {
+        color: rgba(251, 97, 7, 1);
+        &:after {
+          border-left: 7px solid rgba(251, 97, 7, 1);
+        }
+      }
+    }
+    &.is--dark {
+      color: var(--c-dk-gray);
+      background: transparent;
+      &.is--cta {
+        &:after {
+          border-left: 7px solid var(--c-dk-gray);
+        }
+      }
+      &:hover {
+        color: var(--c-cta);
+        &.is--cta {
+          &:after {
+            border-left: 7px solid var(--c-cta);
+          }
+        }
+      }
+    }
+    &.is--blue {
+      color: var(--c-blue);
+      &.is--cta {
+        &:after {
+          border-left: 7px solid var(--c-blue);
+        }
+      }
+      &:hover {
+        color: var(--c-green);
+        &.is--cta {
+          &:after {
+            border-left: 7px solid var(--c-green);
+          }
+        }
+      }
+    }
+    @media only screen and (max-width: 767px) {
+      &.is--cta:not(.is--inline) {
+        margin-top: 1em;
+      }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+      &.is--cta:not(.is--inline) {
+        margin-top: 1.33em;
+      }
+    }
+
+    @media only screen and (min-width: 1024px) and (max-width: 1359px) {
+      &.is--cta:not(.is--inline) {
+        margin-top: 1.25em;
+      }
+    }
+
+    @media only screen and (min-width: 1360px) and (max-width: 1879px) {
+      &.is--cta:not(.is--inline) {
+        margin-top: 1em;
+      }
+    }
+
+    @media only screen and (min-width: 1880px) {
+      &.is--cta:not(.is--inline) {
+        margin-top: 1em;
+      }
+    }
     display: block;
   }
 }
 
 .i--center {
-  @include i--center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  text-align: center;
 }
 
 .is--dark {
@@ -57,13 +141,13 @@
 }
 
 .meta.is--bubbles {
-  .icon {
+  & .icon {
     width: 60px;
     height: 60px;
     opacity: 0.8;
     transition: all 0.5s ease-out;
 
-    img {
+    & img {
       width: 80%;
     }
 
@@ -100,7 +184,7 @@
 }
 
 .photo {
-  img {
+  & img {
     width: 100%;
   }
   &:nth-child(1) {
@@ -142,8 +226,8 @@
     max-width: 320px;
     max-height: 320px;
     margin-left: 15vw;
-    svg,
-    img {
+    & svg,
+    & img {
       position: relative;
       left: 50%;
       top: 50%;
@@ -154,30 +238,30 @@
   }
 }
 
-@include phone {
+@media only screen and (max-width: 767px) {
   :host {
-    h2 {
+    & h2 {
       margin-block-start: 0.5em;
       margin-block-end: 0.5em;
       font-size: 2em;
     }
-    h4 {
+    & h4 {
       font-size: 2.75em;
     }
-    p {
+    & p {
       font-size: 1em;
     }
-    .icon {
+    & .icon {
       padding: 16px;
       &.is--visible {
         width: 72px;
         height: 72px;
       }
     }
-    .swimlane-logo {
+    & .swimlane-logo {
       max-width: calc(100% - 40px);
     }
-    .image {
+    & .image {
       &.dev {
         max-width: 200px;
         margin-left: 0%;
@@ -188,25 +272,25 @@
         }
       }
     }
-    .is--book img {
+    & .is--book img {
       width: 65%;
       transform: translateY(-40px);
     }
-    [theme='learning'] {
+    & [theme='learning'] {
       margin-bottom: 40px;
     }
   }
 }
 
-@include portrait {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   :host {
-    h2 {
+    & h2 {
       font-size: 3.25em;
     }
-    p {
+    & p {
       font-size: 1.33em;
     }
-    .icon {
+    & .icon {
       padding: 12px;
       &.is--visible {
         width: 110px;
@@ -216,99 +300,99 @@
         transform: translateX(20px) translateY(-120px);
       }
     }
-    .blurb {
-      a:link,
-      a:visited {
+    & .blurb {
+      & a:link,
+      & a:visited {
         margin-top: 0.5em;
       }
     }
-    .image {
+    & .image {
       &.dev {
         margin-left: 0%;
         margin-right: 4%;
       }
     }
-    .is--book img {
+    & .is--book img {
       width: 60%;
       transform: translateY(0px);
     }
   }
 }
 
-@include landscape {
+@media only screen and (min-width: 1024px) and (max-width: 1359px) {
   :host {
-    h2 {
+    & h2 {
       font-size: 3.25em;
     }
-    p {
+    & p {
       font-size: 1.25em;
     }
-    .icon {
+    & .icon {
       padding: 20px;
       &.is--visible {
         width: 120px;
         height: 120px;
       }
     }
-    .blurb {
-      a:link,
-      a:visited {
+    & .blurb {
+      & a:link,
+      & a:visited {
         margin-top: 0.5em;
       }
     }
   }
 }
 
-@include desktop {
+@media only screen and (min-width: 1360px) and (max-width: 1879px) {
   :host {
-    h2 {
+    & h2 {
       font-size: 4em;
     }
-    p {
+    & p {
       font-size: 1.4em;
     }
-    .icon {
+    & .icon {
       padding: 20px;
       &.is--visible {
         width: 130px;
         height: 130px;
       }
     }
-    .blurb {
+    & .blurb {
       h2 {
         margin-block-start: 0.5em;
         margin-block-end: 0.5em;
       }
-      a:link,
-      a:visited {
+      & a:link,
+      & a:visited {
         margin-top: 0.5em;
       }
     }
   }
 }
 
-@include monitor {
+@media only screen and (min-width: 1880px) {
   :host {
-    h2 {
+    & h2 {
       font-size: 4em;
     }
-    p {
+    & p {
       font-size: 1.4em;
     }
-    .icon {
+    & .icon {
       padding: 20px;
       &.is--visible {
         width: 140px;
         height: 140px;
       }
     }
-    .blurb {
-      h2 {
+    & .blurb {
+      & h2 {
         margin-block-start: 0.5em;
         margin-block-end: 0.5em;
       }
-      a:link,
-      a:visited {
+      & a:link,
+      & a:visited {
         margin-top: 0.5em;
       }
     }

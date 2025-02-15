@@ -1,12 +1,7 @@
-import {
-  ButtonComponent,
-  Component,
-  Emitter,
-  Listen,
-  State
-} from '@readymade/core';
+import { Component, Emitter, Listen, State } from '@readymade/core';
+import { ButtonComponent } from '@readymade/dom';
 
-import style from './button.scss';
+import style from './button.css?raw';
 import template from './button.html?raw';
 
 class ButtonState {
@@ -18,7 +13,7 @@ class ButtonState {
   selector: 'rd-button',
   custom: { extends: 'button' },
   style: style,
-  template: template
+  template: template,
 })
 class RdButtonComponent extends ButtonComponent {
   constructor() {
@@ -46,10 +41,10 @@ class RdButtonComponent extends ButtonComponent {
     this.emitter.broadcast(
       new CustomEvent('bang', {
         detail: {
-          message: msg
-        }
+          message: msg,
+        },
       }),
-      'main'
+      'main',
     );
   }
 }

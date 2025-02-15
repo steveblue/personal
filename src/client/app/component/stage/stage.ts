@@ -1,12 +1,12 @@
 import { CustomElement, Component } from '@readymade/core';
 
-import style from './stage.scss';
+import style from './stage.css?raw';
 import template from './stage.html?raw';
 
 @Component({
   selector: 'v-stage',
   style: style,
-  template: template
+  template: template,
 })
 class StageComponent extends CustomElement {
   constructor() {

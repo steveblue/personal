@@ -1,18 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Steve Belovarich : Web Engineer and Digital Artist in Portland, OR</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>
+      Steve Belovarich : Web Engineer and Digital Artist in Portland, OR
+    </title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="./style/style.scss" />
-    <script src="./polyfill.ts"></script>
-    <script src="./global.ts"></script>
+    <link rel="stylesheet" href="./style/style.css" />
+    <!--style-outlet-->
+    <script src="./polyfill.ts" type="module"></script>
+    <script src="./global.ts" type="module"></script>
   </head>
-  <body>
-    <div id="root"></div>
-    <script src="./index.ts"></script>
-    <script src="./bus.ts"></script>
+  <body class="is--init">
+    <div id="root">
+      <!--ssr-outlet-->
+    </div>
+    <script src="./index.ts" type="module"></script>
+    <script src="./bus.ts" type="module"></script>
   </body>
 </html>

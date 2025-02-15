@@ -1,1 +1,1 @@
-export { FileNotFoundComponent } from './404';
+export { FileNotFoundComponent, render } from './404';

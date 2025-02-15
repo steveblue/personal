@@ -4,18 +4,18 @@ import {
   animate,
   AnimationPlayer,
   slideUpAnimation,
-  zoomInAnimation
+  zoomInAnimation,
 } from './../../util/anim';
-import { WebAnimation } from 'app/util/anim/interface';
+import { WebAnimation } from '../../../app/util/anim/interface';
 
-import style from './card.scss';
+import style from './card.css?raw';
 import template from './card.html?raw';
 import { ScrollPayload } from '../scroll/scroll';
 
 @Component({
   selector: 'v-card',
   style: style,
-  template: template
+  template: template,
 })
 class CardComponent extends CustomElement {
   private multiplier: number = 1500;
@@ -26,7 +26,7 @@ class CardComponent extends CustomElement {
   private in: WebAnimation = zoomInAnimation;
   private animations: { [key: string]: WebAnimation } = {
     zoomIn: zoomInAnimation,
-    slideUp: slideUpAnimation
+    slideUp: slideUpAnimation,
   };
 
   constructor() {

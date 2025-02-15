@@ -6,8 +6,6 @@
 @import '@fontsource/lato/400.css';
 @import '@fontsource/lato/700.css';
 
-@import 'theme/card';
-
 :root {
   --c-dk-gray: rgba(20, 20, 20, 1);
   --c-lt-gray: rgba(220, 220, 220, 1);
@@ -24,6 +22,12 @@
   --c-space-gray: #a5adb0;
   --f-headline: 'Exo 2', sans-serif;
   --f-body: 'Lato', sans-serif;
+  --phone-width: 420px;
+  --portrait-width: 768px;
+  --landscape-width: 1024px;
+  --desktop-width: 1360px;
+  --monitor-width: 1880px;
+  --transition-duration: 0.7s;
 }
 
 body {

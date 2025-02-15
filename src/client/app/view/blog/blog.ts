@@ -1,7 +1,7 @@
 import { CustomElement, Component, State } from '@readymade/core';
-import { requestPath } from '../../../../config';
+import { requestPath } from './../../../../server/config';
 
-import style from './blog.scss';
+import style from './blog.css?raw';
 import template from './blog.html?raw';
 
 declare global {
@@ -55,7 +55,7 @@ export interface DevPost {
 @Component({
   selector: 'blog-view',
   style: style,
-  template: template
+  template: template,
 })
 class BlogComponent extends CustomElement {
   constructor() {
@@ -65,7 +65,7 @@ class BlogComponent extends CustomElement {
   @State()
   getState() {
     return {
-      scale: 1.0
+      scale: 1.0,
     };
   }
   connectedCallback() {
@@ -76,7 +76,7 @@ class BlogComponent extends CustomElement {
         this.shadowRoot
           .querySelector('.blog__title')
           .classList.add('is--visible'),
-      0
+      0,
     );
   }
   disconnectedCallback() {
@@ -85,12 +85,11 @@ class BlogComponent extends CustomElement {
   getModel() {
     return new Promise((res, rej) => {
       fetch(requestPath('api/blog'))
-        .then(data => data.json())
-        .then(json => {
+        .then((data) => data.json())
+        .then((json) => {
           this.render(json);
-          res();
         })
-        .catch(error => rej(error));
+        .catch((error) => rej(error));
     });
   }
   render(data) {
@@ -113,7 +112,7 @@ class BlogComponent extends CustomElement {
         const formattedDate: string = date.toLocaleString('en-US', {
           month: 'long', // "June"
           day: '2-digit', // "01"
-          year: 'numeric' // "2019"
+          year: 'numeric', // "2019"
         });
 
         section.setAttribute('data-index', (index + 1).toString());
@@ -151,7 +150,7 @@ class BlogComponent extends CustomElement {
 
         if (article.tag_list && article.tag_list.length) {
           const ul = document.createElement('ul');
-          article.tag_list.forEach(tag => {
+          article.tag_list.forEach((tag) => {
             const li = document.createElement('li');
             li.innerHTML = tag;
             ul.appendChild(li);
@@ -170,10 +169,11 @@ class BlogComponent extends CustomElement {
         section.appendChild(post);
         wrapper.appendChild(section);
 
-        img.addEventListener('entry', ev => {
+        img.addEventListener('entry', (ev) => {
           img.style.background = img.getAttribute('data-bg');
           img.style.backgroundRepeat = 'no-repeat';
           img.style.backgroundSize = 'contain';
+          console.log(img.style);
         });
         window.observer$.observe(img);
       });
@@ -181,6 +181,15 @@ class BlogComponent extends CustomElement {
   }
 }
 
-// customElements.define('blog-view', BlogComponent);
+const render = () => `
+  <blog-view>
+    <template shadowrootmode="open">
+      <style>
+        ${style}
+      </style>
+      ${template}
+    </template>
+  </blog-view>
+`;
 
-export { BlogComponent };
+export { BlogComponent, render };

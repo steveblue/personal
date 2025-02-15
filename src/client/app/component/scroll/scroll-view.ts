@@ -1,13 +1,13 @@
 import { CustomElement, Component, Listen } from '@readymade/core';
 
-import style from './scroll-view.scss';
+import style from './scroll-view.css?raw';
 import template from './scroll-view.html?raw';
 import { ScrollPayload } from './scroll';
 
 @Component({
   selector: 'v-scroll-view',
   style: style,
-  template: template
+  template: template,
 })
 class ScrollView extends CustomElement {
   transform: string = '';

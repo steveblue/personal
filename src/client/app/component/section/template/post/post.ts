@@ -1,12 +1,12 @@
-import { CustomElement, Component, Listen } from '@readymade/core';
+import { CustomElement, Component } from '@readymade/core';
 
-import style from './post.scss';
+import style from './post.css?raw';
 import template from './post.html?raw';
 
 @Component({
   selector: 't-post',
   style: style,
-  template: template
+  template: template,
 })
 class PostComponent extends CustomElement {
   constructor() {

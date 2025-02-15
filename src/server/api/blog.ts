@@ -1,21 +1,27 @@
 import { IRoute } from 'express';
 import { join } from 'path';
 
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync(join(process.cwd(), 'dist', 'db.json'),
-{
-    defaultValue: { posts: [] },
-    serialize: input => JSON.stringify(input)
-});
-const db = low(adapter);
+// import { Low } from 'lowdb';
+// import { JSONFileSync } from 'lowdb/node';
+import { readFileSync } from 'fs';
 
-class BlogController implements IRoute {
-    constructor() {}
-    getPosts(req, res) {
-        const data = db.get('posts').orderBy('created_at', 'desc').value();
-        res.status(200).send(data);
-    }
+// const adapter = new JSONFileSync(join(process.cwd(), 'dist', 'db.json'));
+// const db = new Low(adapter);
+
+class BlogController implements Partial<IRoute> {
+  constructor() {
+    // db.data ||= { posts: [] };
+    // db.write();
+  }
+  getPosts(req, res) {
+    const db = readFileSync(join(process.cwd(), 'dist', 'db.json'), 'utf-8');
+    const data = [...JSON.parse(db).posts].sort(
+      (a, b) =>
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+    );
+
+    res.status(200).send(data);
+  }
 }
 
 export { BlogController };

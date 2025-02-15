@@ -1,30 +1,25 @@
 import fetch from 'node-fetch';
-import { config } from '../config';
+import { config } from './config';
 import { join } from 'path';
 
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
+import { Low } from 'lowdb';
+import { JSONFileSync } from 'lowdb/node';
 
-const adapter = new FileSync(join('db.json'),
-{
-  defaultValue: { posts: [] },
-  serialize: input => JSON.stringify(input)
-});
-const db = low(adapter);
+const adapter = new JSONFileSync(join('db.json'));
+const db = new Low(adapter);
 
-const analyticsAdapter = new FileSync(join('analytic.json'),
-{
-  defaultValue: { stats: [] },
-  serialize: input => JSON.stringify(input)
-});
-const analytics = low(analyticsAdapter);
+const analyticsAdapter = new JSONFileSync(join('analytic.json'));
+const analytics = new Low(analyticsAdapter);
 
 function databaseInitialize() {
-  init(db.get('posts'));
+  db.data ||= { posts: [] };
+  db.write();
+  init(db.data.posts);
 }
 
 function analyticsInitialize() {
-
+  analytics.data ||= { stats: [] };
+  analytics.write();
 }
 
 function serialize(article) {
@@ -34,25 +29,17 @@ function serialize(article) {
 
 function init(coll) {
   return fetch('https://dev.to/api/articles?username=steveblue', {
-      method: 'get',
-      headers: { 
-                  'Content-Type': 'application/json',
-                  'api-key': config.token.dev
-               }
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json',
+      'api-key': config.token.dev,
+    },
   })
-  .then(res => res.json())
-  .then(json => {
-      json.forEach(article => {
-        article = serialize(article);
-        if ( coll.find({id: article.id}).value() ) {
-          console.log(`updating ${article.id}`);
-          coll.find({id: article.id}).assign(article).write();
-        } else {
-          console.log(`adding ${article.id}`);
-          coll.push(article).write();
-        }
-      });
-  });
+    .then((res) => res.json())
+    .then((json) => {
+      db.data.posts = json;
+      db.write();
+    });
 }
 
 databaseInitialize();

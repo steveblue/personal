@@ -1,29 +1,40 @@
 import { IRoute } from 'express';
 import { join } from 'path';
-import { config } from '../../config';
+import { config } from '../config.js';
 
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync(join(process.cwd(), 'dist', 'analytic.json'),
-{
-    defaultValue: { stats: [] },
-    serialize: input => JSON.stringify(input)
-});
-const db = low(adapter);
+const dbPath = join(process.cwd(), 'dist', 'db.json');
+
+// import { Low } from 'lowdb';
+// import { JSONFileSync } from 'lowdb/node';
+
+// const adapter = new JSONFileSync(join(process.cwd(), 'dist', 'analytic.json'));
+// const db = new Low(adapter);
+
+import { readFileSync, writeFileSync } from 'fs';
 
 class TrackerController implements IRoute {
-    constructor() {}
-    getToken(req, res) {
-        res.status(200).send({ token: config.token.ipinfo });
-    }
-    get(req, res) {
-        const data = db.get('stats').orderBy('timestamp', 'desc').value();
-        res.status(200).send(data);
-    }
-    save(req, res) {
-        db.get('stats').push(req.body).write();
-        res.status(200).send();
-    }
+  constructor() {
+    // db.data ||= { stats: [] };
+    // db.write();
+  }
+  getToken(req, res) {
+    res.status(200).send({ token: config.token.ipinfo });
+  }
+  get(req, res) {
+    const db = readFileSync(dbPath, 'utf-8');
+    const data = JSON.parse(db).stats.sort(
+      (a, b) =>
+        new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime(),
+    );
+    res.status(200).send(data);
+  }
+  save(req, res) {
+    const db = readFileSync(dbPath, 'utf-8');
+    const stats = JSON.parse(db).stats;
+    stats.push(req.body);
+    writeFileSync(JSON.stringify(stats), dbPath);
+    res.status(200).send();
+  }
 }
 
 export { TrackerController };

@@ -1,1 +1,1 @@
-export { ResumeComponent } from './resume';
+export { ResumeComponent, render } from './resume';

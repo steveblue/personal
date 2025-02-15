@@ -1,6 +1,6 @@
 import { CustomElement, Component, State } from '@readymade/core';
 
-import style from './gallery.scss';
+import style from './gallery.css?raw';
 import template from './gallery.html?raw';
 
 @Component({
@@ -20,6 +20,15 @@ class GalleryComponent extends CustomElement {
   }
 }
 
-// customElements.define('gallery-view', GalleryComponent);
+const render = () => `
+  <gallery-view>
+    <template shadowrootmode="open">
+      <style>
+        ${style}
+      </style>
+      ${template}
+    </template>
+  </gallery-view>
+`;
 
-export { GalleryComponent };
+export { GalleryComponent, render };

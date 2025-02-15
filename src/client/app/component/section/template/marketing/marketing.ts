@@ -1,12 +1,12 @@
-import { CustomElement, Component, Listen } from '@readymade/core';
+import { CustomElement, Component } from '@readymade/core';
 
-import style from './marketing.scss';
+import style from './marketing.css?raw';
 import template from './marketing.html?raw';
 
 @Component({
   selector: 't-market',
   style: style,
-  template: template
+  template: template,
 })
 class MarketingComponent extends CustomElement {
   theme: string[];
@@ -23,15 +23,15 @@ class MarketingComponent extends CustomElement {
     if (!this.shadowRoot.querySelector) return;
     if (name === 'theme') {
       this.theme = newValue.split(' ');
-      this.theme.forEach(theme =>
-        this.shadowRoot.querySelector('.post__wrapper').classList.add(theme)
+      this.theme.forEach((theme) =>
+        this.shadowRoot.querySelector('.post__wrapper').classList.add(theme),
       );
     }
   }
 
   onConnectedCallbck() {
-    this.theme.forEach(theme =>
-      this.shadowRoot.querySelector('.post__wrapper').classList.add(theme)
+    this.theme.forEach((theme) =>
+      this.shadowRoot.querySelector('.post__wrapper').classList.add(theme),
     );
   }
 }

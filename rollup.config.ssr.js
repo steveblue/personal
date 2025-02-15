@@ -14,27 +14,27 @@ export default [
       'lowdb',
       'lowdb/adapters/FileSync',
       'path',
-      'html-minifier-terser'
+      'html-minifier-terser',
     ],
     output: {
       file: 'src/server/view/index.js',
-      format: 'esm'
+      format: 'esm',
     },
     plugins: [
       process.env.EMULATE_API
         ? replace({
             'http://localhost:4443': 'http://localhost:4444',
             'dist/db.json': 'db.json',
-            '?raw': ''
+            '?raw': '',
           })
         : replace({
             'http://localhost:4443': 'https://stephenbelovarich.com',
             'dist/db.json': 'db.json',
-            '?raw': ''
+            '?raw': '',
           }),
       nodeResolve({
         mainFields: ['module', 'jsnext'],
-        extensions: ['.ts', '.js']
+        extensions: ['.ts', '.js'],
       }),
       postcss({
         extract: false,
@@ -43,23 +43,23 @@ export default [
           [
             'sass',
             {
-              includePaths: ['src/client/style']
-            }
-          ]
+              includePaths: ['src/client/style'],
+            },
+          ],
         ],
         minimize: true,
-        extensions: ['.scss', '.css']
+        extensions: ['.css', '.css'],
       }),
       html({
         include: ['**/*.html'],
         exclude: ['**/index.html'],
-        minifier: {}
+        minifier: {},
       }),
       typescript(),
-      commonjsResolve()
+      commonjsResolve(),
     ],
-    onwarn: function(message) {
+    onwarn: function (message) {
       console.log(message);
-    }
-  }
+    },
+  },
 ];

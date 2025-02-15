@@ -1,1 +1,1 @@
-export { BlogComponent } from './blog';
+export { BlogComponent, render } from './blog';

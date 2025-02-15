@@ -1,0 +1,202 @@
+:host {
+  display: block;
+  & a:link,
+  & a:visited {
+    color: var(--c-cta);
+    text-decoration: none;
+    &.is--cta {
+      &:not(.is--inline) {
+        display: block;
+      }
+      &:after {
+        content: '';
+        display: inline-block;
+        transform: translateX(7px) translateY(1px);
+        width: 0;
+        height: 0;
+        border-left: 7px solid var(--c-cta);
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+      }
+      &:hover {
+        color: rgba(251, 97, 7, 1);
+        &:after {
+          border-left: 7px solid rgba(251, 97, 7, 1);
+        }
+      }
+    }
+    &.is--dark {
+      color: var(--c-dk-gray);
+      background: transparent;
+      &.is--cta {
+        &:after {
+          border-left: 7px solid var(--c-dk-gray);
+        }
+      }
+      &:hover {
+        color: var(--c-cta);
+        &.is--cta {
+          &:after {
+            border-left: 7px solid var(--c-cta);
+          }
+        }
+      }
+    }
+    &.is--blue {
+      color: var(--c-blue);
+      &.is--cta {
+        &:after {
+          border-left: 7px solid var(--c-blue);
+        }
+      }
+      &:hover {
+        color: var(--c-green);
+        &.is--cta {
+          &:after {
+            border-left: 7px solid var(--c-green);
+          }
+        }
+      }
+    }
+    @media only screen and (max-width: 767px) {
+      &.is--cta:not(.is--inline) {
+        margin-top: 1em;
+      }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+      &.is--cta:not(.is--inline) {
+        margin-top: 1.33em;
+      }
+    }
+
+    @media only screen and (min-width: 1024px) and (max-width: 1359px) {
+      &.is--cta:not(.is--inline) {
+        margin-top: 1.25em;
+      }
+    }
+
+    @media only screen and (min-width: 1360px) and (max-width: 1879px) {
+      &.is--cta:not(.is--inline) {
+        margin-top: 1em;
+      }
+    }
+
+    @media only screen and (min-width: 1880px) {
+      &.is--cta:not(.is--inline) {
+        margin-top: 1em;
+      }
+    }
+    display: block;
+  }
+  & h4 {
+    display: block;
+    box-sizing: border-box;
+    height: 100%;
+    font-family: var(--f-headline);
+    font-size: 3.75em;
+    line-height: 1.1em;
+    font-weight: 700;
+    padding-left: 0em;
+    padding-top: 0em;
+    padding-right: 0em;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  & footer {
+    & p {
+      font-size: 1.25em;
+    }
+  }
+  & .resume__wrapper {
+    overflow: hidden;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    & header {
+      overflow: hidden;
+    }
+    & .job {
+      & header {
+        display: flex;
+        justify-content: space-between;
+        & .icon__header {
+          display: flex;
+        }
+      }
+      &:last-child {
+        margin-bottom: 120px;
+      }
+    }
+    & h1 {
+      font-family: var(--f-headline);
+      font-size: 4em;
+      font-weight: 900;
+      margin-block-start: 0em;
+    }
+    & .title {
+      transition: all 0.5s cubic-bezier(0, 0, 0.58, 1);
+      transform: translateY(70vh);
+      &.is--visible {
+        transform: translateY(0%);
+      }
+    }
+    & h3 {
+      margin-block-end: 0px;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    & h4 {
+      font-size: 2.75em;
+    }
+    & .resume__wrapper {
+      max-width: calc(100vw - 40px);
+      & h1 {
+        font-size: 3em;
+      }
+      & header {
+        & p {
+          text-align: right;
+          transform: translateY(4px);
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    & .resume__wrapper {
+      max-width: 640px;
+      & h1 {
+        font-size: 5em;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 1024px) and (max-width: 1359px) {
+    & .resume__wrapper {
+      max-width: 720px;
+      & h1 {
+        font-size: 5em;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 1360px) and (max-width: 1879px) {
+    & .resume__wrapper {
+      max-width: 840px;
+      & h1 {
+        font-size: 6em;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 1880px) {
+    & .resume__wrapper {
+      max-width: 840px;
+      & h1 {
+        font-size: 6em;
+      }
+    }
+  }
+}

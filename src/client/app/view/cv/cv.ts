@@ -1,6 +1,6 @@
 import { CustomElement, Component, State } from '@readymade/core';
 
-import style from './../resume/resume.scss';
+import style from './../resume/resume.css?raw';
 import template from './cv.html?raw';
 
 @Component({
@@ -28,6 +28,15 @@ class CVComponent extends CustomElement {
   }
 }
 
-// customElements.define('cv-view', CVComponent);
+const render = () => `
+  <cv-view>
+    <template shadowrootmode="open">
+      <style>
+        ${style}
+      </style>
+      ${template}
+    </template>
+  </cv-view>
+`;
 
-export { CVComponent };
+export { CVComponent, render };

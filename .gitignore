@@ -10,6 +10,8 @@ src/server/view/index.js
 src/client/asset
 .cache
 .parcel-cache
+.yarn
+
 
 *.log
 DB

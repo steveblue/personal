@@ -1,22 +1,25 @@
-import globalStyle from '@originjs/vite-plugin-global-style';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
-const config = {
-  base: '/',
-  build: {
-    outDir: 'dist/client'
+export default {
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'public/images',
+          dest: 'images',
+        },
+      ],
+    }),
+  ],
+  esbuild: {
+    format: 'esm',
+    target: 'es2022',
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        includePaths: ['src/client/style']
-      }
-    }
+  rollupOptions: {
+    output: {
+      name: 'window',
+      sourcemap: false,
+      extend: true,
+    },
   },
-  publicDir: 'public',
-  server: {
-    port: '4443'
-  },
-  plugins: [globalStyle({ sassEnabled: true })]
 };
-
-export default config;

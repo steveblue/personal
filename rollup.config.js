@@ -10,7 +10,7 @@ function replaceHost() {
     ? replace({ 'http://localhost:4443': 'http://localhost:4444' })
     : replace({
         'http://localhost:4444': 'https://stephenbelovarich.com',
-        '?raw': ''
+        '?raw': '',
       });
 }
 
@@ -20,13 +20,13 @@ export default [
     treeshake: true,
     output: {
       file: 'src/client/index.js',
-      format: 'esm'
+      format: 'esm',
     },
     plugins: [
       replaceHost(),
       nodeResolve({
         mainFields: ['module', 'jsnext'],
-        extensions: ['.ts', '.js']
+        extensions: ['.ts', '.js'],
       }),
       postcss({
         extract: false,
@@ -35,81 +35,81 @@ export default [
           [
             'sass',
             {
-              includePaths: ['src/client/style']
-            }
-          ]
+              includePaths: ['src/client/style'],
+            },
+          ],
         ],
         minimize: true,
-        extensions: ['.scss', '.css']
+        extensions: ['.css', '.css'],
       }),
       html({
         include: ['**/*.html'],
         exclude: ['**/index.html'],
-        minifier: {}
+        minifier: {},
       }),
       typescript(),
-      commonjsResolve()
+      commonjsResolve(),
     ],
-    onwarn: function(message) {
+    onwarn: function (message) {
       console.log(message);
-    }
+    },
   },
   {
     input: 'src/client/bus.ts',
     treeshake: true,
     output: {
       file: 'src/client/bus.js',
-      format: 'esm'
+      format: 'esm',
     },
     plugins: [
       replaceHost(),
       nodeResolve({
         mainFields: ['module', 'jsnext'],
-        extensions: ['.ts', '.js']
+        extensions: ['.ts', '.js'],
       }),
-      typescript()
+      typescript(),
     ],
-    onwarn: function(message) {
+    onwarn: function (message) {
       console.log(message);
-    }
+    },
   },
   {
     input: 'src/config.ts',
     treeshake: true,
     output: {
       file: 'dist/config.js',
-      format: 'cjs'
+      format: 'cjs',
     },
     plugins: [
       replaceHost(),
       nodeResolve({
         mainFields: ['module', 'jsnext'],
-        extensions: ['.ts', '.js']
+        extensions: ['.ts', '.js'],
       }),
-      typescript()
+      typescript(),
     ],
-    onwarn: function(message) {
+    onwarn: function (message) {
       console.log(message);
-    }
+    },
   },
   {
     input: 'src/config.ts',
     treeshake: true,
     output: {
       file: 'dist/server/config.js',
-      format: 'cjs'
+      format: 'cjs',
     },
     plugins: [
       replaceHost(),
       nodeResolve({
         mainFields: ['module', 'jsnext'],
-        extensions: ['.ts', '.js']
+        extensions: ['.ts', '.js'],
       }),
-      typescript()
+      typescript(),
     ],
-    onwarn: function(message) {
+    onwarn: function (message) {
       console.log(message);
-    }
+    },
   },
   {
     input: 'src/server/db.ts',
@@ -117,18 +117,18 @@ export default [
     external: ['nedb', 'node-fetch', 'chalk', 'path'],
     output: {
       file: 'dist/db.js',
-      format: 'cjs'
+      format: 'cjs',
     },
     plugins: [
       replace({ 'dist/db.json': 'db.json' }),
       nodeResolve({
         mainFields: ['main', 'module'],
-        extensions: ['.ts', '.js']
+        extensions: ['.ts', '.js'],
       }),
-      typescript()
+      typescript(),
     ],
-    onwarn: function(message) {
+    onwarn: function (message) {
       console.log(message);
-    }
-  }
+    },
+  },
 ];

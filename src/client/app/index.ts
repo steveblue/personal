@@ -5,7 +5,7 @@ import {
   SectionComponent,
   ProfileComponent,
   PostComponent,
-  MarketingComponent
+  MarketingComponent,
 } from './shared';
 
 // views
@@ -16,19 +16,18 @@ import { CVComponent } from './view/cv';
 import { FileNotFoundComponent } from './view/not-found';
 
 // router
-import { rdrouter } from './router';
+export { Router, routing } from './routing';
 
-document.body.classList.add('is--init');
-
-export { StageComponent,
-         NavComponent,
-         SectionComponent,
-         ProfileComponent,
-         PostComponent,
-         MarketingComponent,
-         HomeComponent,
-         BlogComponent,
-         ResumeComponent,
-         CVComponent,
-         FileNotFoundComponent,
-         rdrouter };
+export {
+  StageComponent,
+  NavComponent,
+  SectionComponent,
+  ProfileComponent,
+  PostComponent,
+  MarketingComponent,
+  HomeComponent,
+  BlogComponent,
+  ResumeComponent,
+  CVComponent,
+  FileNotFoundComponent,
+};

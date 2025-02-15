@@ -1,1 +1,1 @@
-export { CVComponent } from './cv';
+export { CVComponent, render } from './cv';
