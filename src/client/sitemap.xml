@@ -4,24 +4,30 @@
     <loc>https://stephenbelovarich.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1</priority>
-    <lastmod>2020-05-07</lastmod>
+    <lastmod>2025-02-16</lastmod>
   </url>
   <url>
     <loc>https://stephenbelovarich.com/blog/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2020-05-06</lastmod>
+    <lastmod>2025-02-16</lastmod>
   </url>
   <url>
     <loc>https://stephenbelovarich.com/resume/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2020-05-06</lastmod>
+    <lastmod>2025-02-16</lastmod>
   </url>
   <url>
     <loc>https://stephenbelovarich.com/cv/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2020-05-06</lastmod>
+    <lastmod>2025-02-16</lastmod>
+  </url>
+   <url>
+    <loc>https://stephenbelovarich.com/photographer-in-portland-or/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-02-16</lastmod>
   </url>
 </urlset>

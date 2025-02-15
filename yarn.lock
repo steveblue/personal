@@ -9919,6 +9919,7 @@ __metadata:
     node-fetch: "npm:2.6.7"
     node-window-polyfill: "npm:^1.0.2"
     postcss: "npm:^8.4.14"
+    postcss-nested: "npm:^7.0.2"
     prettier: "npm:^3.3.3"
     rimraf: "npm:^3.0.2"
     rollup: "npm:4.24.0"
@@ -10423,6 +10424,17 @@ __metadata:
   peerDependencies:
     postcss: ^8.0.0
   checksum: 10c0/944e52c67900869c4f5bbdec7c91b31564ce80aa6addb2eea61e11d336d9f84873de17f10782fa0bab9afae491ce24590a83dac6d825fc4eff625cc85bbbca02
+  languageName: node
+  linkType: hard
+
+"postcss-nested@npm:^7.0.2":
+  version: 7.0.2
+  resolution: "postcss-nested@npm:7.0.2"
+  dependencies:
+    postcss-selector-parser: "npm:^7.0.0"
+  peerDependencies:
+    postcss: ^8.2.14
+  checksum: 10c0/b467f328c89c5b0dcd1b569ae083f6163235c0cac09494a0b284eef5275fa1386bbc26c66c85adf194cef0a65d315994140724a34539a096e5acd39d9c753338
   languageName: node
   linkType: hard
 

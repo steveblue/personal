@@ -1,34 +1,34 @@
 import { CustomElement, Component, State } from '@readymade/core';
 
-import style from './gallery.css?raw';
-import template from './gallery.html?raw';
+import style from './photo.css?raw';
+import template from './photo.html?raw';
 
 @Component({
-  selector: 'gallery-view',
+  selector: 'photo-view',
   style: style,
-  template: template
+  template: template,
 })
-class GalleryComponent extends CustomElement {
+class PhotoComponent extends CustomElement {
   constructor() {
     super();
   }
   @State()
   getState() {
     return {
-      scale: 1.0
+      scale: 1.0,
     };
   }
 }
 
 const render = () => `
-  <gallery-view>
+  <photo-view>
     <template shadowrootmode="open">
       <style>
         ${style}
       </style>
       ${template}
     </template>
-  </gallery-view>
+  </photo-view>
 `;
 
-export { GalleryComponent, render };
+export { PhotoComponent, render };

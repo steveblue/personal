@@ -4,8 +4,9 @@
     "autoprefixer": {
       "grid": true
     },
+    "postcss-nested": {},
     "cssnano": {
       "default": true
     }
-	}
+  }
 }

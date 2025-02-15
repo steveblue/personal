@@ -12,9 +12,7 @@ import { UserConfig } from 'vite';
 import { config } from './config';
 
 import { ssrMiddleware } from './middleware/ssr.js';
-
-import { BlogController } from './api/blog';
-import { TrackerController } from './api/tracker';
+import { apiRouter } from './api/router.js';
 
 const env: string = process.env.NODE_ENV || 'development';
 const port: string = process.env.PORT || config.port || '4443';
@@ -23,10 +21,6 @@ const hmrPort: string = process.env.HMR_PORT || config.hmrPort || '7443';
 async function createServer(root = process.cwd()) {
   const resolve = (p: string) => path.resolve(root, p);
   const app: express.Application = express();
-  // const apiRouter: express.Router = express.Router();
-
-  const blog: BlogController = new BlogController();
-  const trackr: TrackerController = new TrackerController();
 
   const corsOptions =
     env === 'production'
@@ -55,11 +49,7 @@ async function createServer(root = process.cwd()) {
 
   app.use(helmet(helmetConfig));
   app.use(cors(corsOptions));
-
-  app.get('/api/blog', blog.getPosts);
-  app.get('/api/track/token', trackr.getToken);
-  app.get('/api/track/analytic', trackr.get);
-  app.post('/api/track', trackr.save);
+  app.use('/api', apiRouter);
 
   if (env === 'production') {
     app.use((await import('compression')).default());

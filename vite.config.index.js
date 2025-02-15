@@ -1,5 +1,3 @@
-import { viteStaticCopy } from 'vite-plugin-static-copy';
-
 export default {
   esbuild: {
     format: 'esm',
@@ -15,14 +13,6 @@ export default {
         );
       },
     },
-    viteStaticCopy({
-      targets: [
-        {
-          src: 'public/images',
-          dest: 'client/images',
-        },
-      ],
-    }),
   ],
   build: {
     minify: false,

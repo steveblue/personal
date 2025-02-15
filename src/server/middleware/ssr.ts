@@ -12,12 +12,27 @@ import { config } from '../config';
 
 import * as cheerio from 'cheerio';
 
+interface JSONLDSchema {
+  '@context'?: string | Record<string, unknown>;
+  '@type'?: string;
+  [key: string]: unknown;
+}
 interface View {
+  SELECTOR: string;
+  routing: Array<{
+    component: string;
+    description?: string;
+    schema?: JSONLDSchema;
+    title?: string;
+  }>;
   render: () => string;
 }
 
 const SSR_OUTLET_MARKER = '<!--ssr-outlet-->';
 const GLOBAL_STYLE_MARKER = '<!--style-outlet-->';
+const TITLE_MARKER = '<!--title-outlet-->';
+const DESCRIPTION_MARKER = '<!--description-outlet-->';
+const SCHEMA_MARKER = '<!--schema-outlet-->';
 
 async function* concatStreams(...readables) {
   for (const readable of readables) {
@@ -125,12 +140,31 @@ const ssrMiddleware = (options?: { vite?: ViteDevServer }) => {
       }
 
       // if you need to modify the index template here
+      // simple find and replace
+      if (env === 'production') {
+        const routeConfig = view.routing.find(
+          (route) => route.component === view.SELECTOR,
+        );
+        if (routeConfig) {
+          const { title, description, schema } = routeConfig;
+          if (title) {
+            template = template.replace(TITLE_MARKER, title);
+          }
+          if (description) {
+            template = template.replace(DESCRIPTION_MARKER, description);
+          }
+          if (schema) {
+            template = template.replace(SCHEMA_MARKER, JSON.stringify(schema));
+          }
+        }
+      }
       const $ = cheerio.load(template);
       template = $.html();
 
       if (env === 'production') {
         $('[rel="stylesheet"]').remove();
         template = $.html();
+
         const styleIndex = template.indexOf(GLOBAL_STYLE_MARKER);
         const preStyle = Readable.from(template.substring(0, styleIndex));
         const postStyle = Readable.from(
@@ -157,11 +191,11 @@ const ssrMiddleware = (options?: { vite?: ViteDevServer }) => {
       );
 
       if (env === 'production') {
-        if (true) {
+        if (config.ignoreHTMLMinify?.has(routeDirectoryName)) {
           res.status(200).send(he.decode(output));
         } else {
           minify(he.decode(output), {
-            minifyCSS: true,
+            minifyCSS: false,
             removeComments: true,
             collapseWhitespace: true,
             conservativeCollapse: true,
