@@ -176,7 +176,7 @@
   & h2 {
     font-family: var(--f-headline);
     font-size: 2em;
-    font-weight: 700;
+    font-weight: 400;
   }
   & p {
     font-size: 1.4em;

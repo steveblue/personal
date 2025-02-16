@@ -96,7 +96,7 @@
     font-family: var(--f-headline);
     font-size: 3.75em;
     line-height: 1.1em;
-    font-weight: 700;
+    font-weight: 400;
     padding-left: 0em;
     padding-top: 0em;
     padding-right: 0em;
@@ -131,7 +131,7 @@
     & h1 {
       font-family: var(--f-headline);
       font-size: 4em;
-      font-weight: 900;
+      font-weight: 400;
       margin-block-start: 0em;
     }
     & .title {

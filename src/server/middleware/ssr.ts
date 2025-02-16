@@ -17,6 +17,7 @@ interface JSONLDSchema {
   '@type'?: string;
   [key: string]: unknown;
 }
+
 interface View {
   SELECTOR: string;
   routing: Array<{
@@ -141,6 +142,8 @@ const ssrMiddleware = (options?: { vite?: ViteDevServer }) => {
 
       // if you need to modify the index template here
       // simple find and replace
+      // if you need to replace entire templates,
+      // that should be handled with cheerio
       if (env === 'production') {
         const routeConfig = view.routing.find(
           (route) => route.component === view.SELECTOR,
@@ -158,6 +161,7 @@ const ssrMiddleware = (options?: { vite?: ViteDevServer }) => {
           }
         }
       }
+
       const $ = cheerio.load(template);
       template = $.html();
 

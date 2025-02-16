@@ -3,7 +3,7 @@
   overflow-x: hidden;
   & h2 {
     font-family: var(--f-headline);
-    font-weight: 700;
+    font-weight: 400;
     &.is--center {
       text-align: center;
     }
@@ -15,7 +15,7 @@
     font-family: var(--f-headline);
     font-size: 3.75em;
     line-height: 1.1em;
-    font-weight: 700;
+    font-weight: 400;
     padding-left: 0em;
     padding-top: 0em;
     padding-right: 0em;

@@ -1,3 +1,45 @@
 :host {
-    display: block;
+  display: block;
+  min-height: 100000px;
+  background: var(--c-black);
+  & .blog__header {
+    position: relative;
+
+    .header__background {
+      position: absolute;
+      height: 640px;
+      width: 100%;
+      background: var(--c-white);
+      clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
+    }
+    & .header__content {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      & h1 {
+        display: block;
+        align-self: flex-end;
+        padding-left: calc((100vw - 720px) / 2);
+        font-family: var(--f-headline);
+        font-weight: 400;
+      }
+      & .quote {
+        flex: 1;
+        align-self: center;
+        color: var(--c-lt-gray);
+        max-width: 640px;
+        padding-right: 60px;
+        blockquote {
+          font-family: var(--f-body);
+          font-size: 2.5em;
+          font-weight: 400;
+        }
+        & p {
+          font-size: 2.5em;
+          text-align: right;
+          padding-right: 40px;
+        }
+      }
+    }
+  }
 }

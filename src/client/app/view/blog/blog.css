@@ -7,7 +7,7 @@
     font-family: var(--f-headline);
     font-size: 3.75em;
     line-height: 1.1em;
-    font-weight: 700;
+    font-weight: 400;
     padding-left: 0em;
     padding-top: 0em;
     padding-right: 0em;
@@ -164,7 +164,7 @@
   & h1 {
     font-family: var(--f-headline);
     font-size: 4em;
-    font-weight: 900;
+    font-weight: 400;
   }
   & h2,
   & h3 {
@@ -174,7 +174,7 @@
     font-family: var(--f-headline);
     font-size: 3.75em;
     line-height: 1.1em;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--c-white);
     padding-left: 0em;
     padding-top: 0em;
@@ -220,7 +220,7 @@
         align-self: flex-end;
         padding-left: calc((100vw - 720px) / 2);
         font-family: var(--f-headline);
-        font-weight: 900;
+        font-weight: 400;
       }
       & .quote {
         flex: 1;

@@ -15,13 +15,13 @@
       align-self: center;
       text-align: left;
       text-transform: uppercase;
-      font-weight: 900;
+      font-weight: 400;
       height: 100%;
       & h1 {
         display: block;
         position: relative;
         font-family: var(--f-headline);
-        font-weight: 900;
+        font-weight: 400;
         margin-block-start: 0em;
         margin-block-end: 0em;
         margin-left: 16px;

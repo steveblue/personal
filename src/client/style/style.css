@@ -1,10 +1,7 @@
-@import '@fontsource/exo-2/300.css';
-@import '@fontsource/exo-2/500.css';
-@import '@fontsource/exo-2/700.css';
-@import '@fontsource/exo-2/900.css';
-@import '@fontsource/lato/300.css';
-@import '@fontsource/lato/400.css';
-@import '@fontsource/lato/700.css';
+@import url('@fontsource/tilt-warp/latin-400.css');
+@import url('@fontsource/lato/300.css');
+@import url('@fontsource/lato/400.css');
+@import url('@fontsource/lato/700.css');
 
 :root {
   --c-dk-gray: rgba(20, 20, 20, 1);
@@ -20,7 +17,7 @@
   --c-green: rgb(138, 201, 38);
   --c-blue: rgb(65, 234, 212);
   --c-space-gray: #a5adb0;
-  --f-headline: 'Exo 2', sans-serif;
+  --f-headline: 'Tilt Warp', serif;
   --f-body: 'Lato', sans-serif;
   --phone-width: 420px;
   --portrait-width: 768px;
