@@ -4,6 +4,7 @@ dist/
 out-tsc/
 src/client/index.js
 src/client/bus.js
+src/client/config.ts
 src/server/config.ts
 src/server/view/index.js
 src/client/asset
